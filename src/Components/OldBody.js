@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import 'bootstrap/dist/css/bootstrap.css';
-import Header from './Components/Header';
 import { Container, Table } from 'react-bootstrap';
-import { MyTable } from './Components/MyTable';
-import { spellsListData } from './Variables/Spells';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { spellsListData } from '../Variables/Spells';
+import { MyTable } from './MyTable';
 
-function App(props) {
-  console.log('app');
+const Body = (props) => {
+  console.log('body');
   const [loadingTable, setLoadingTable] = useState(false);
   const [apiSpellsByClass, setApiSpellsByClass] = useState([
     { index: '', name: '', url: '' },
@@ -128,51 +127,94 @@ function App(props) {
   }, [apiSpellsByLevel]);
 
   console.log(yourSpells);
+
+  // if (yourSpells) {
+  //   console.log('set loading table');
+  //   setLoadingTable(true);
+  // }
+  // useEffect(() => {
+  //   console.log('4');
+  //   console.log(yourSpells);
+
+  //   // let k;
+  //   // // for (k = 0; k < yourSpells.length; k++) {
+  //   // //   console.log(k);
+  //   // // }
+  //   // const url = `https://www.dnd5eapi.co/api/spells`;
+  //   // let json;
+  //   // const fetchData = async () => {
+  //   //   try {
+  //   //     const response = await fetch(url);
+  //   //     json = await response.json();
+  //   //   } catch (error) {
+  //   //     console.log('error', error);
+  //   //   }
+  //   //   setApiSpellsByClass(json.results);
+  //   // };
+  //   // fetchData();
+  // }, []);
+
+  // useEffect(() => {
+  //   return (
+  //     <Container className="my-auto mx-auto">
+  //       <Table striped bordered hover className="w-50 my-auto mx-auto">
+  //         <thead>
+  //           <tr>
+  //             <th style={{ width: '25px' }}>Prep</th>
+  //             <th>Spell Name:</th>
+  //             <th>Details</th>
+  //             <th>Cast it!</th>
+  //           </tr>
+  //         </thead>
+  //         <tbody>
+  //           {yourSpells.map((spell, index) => {
+  //             return (
+  //               <MyTable
+  //                 index={index}
+  //                 {...props}
+  //                 spell={spell}
+  //                 setLoadingTable={setLoadingTable}
+  //                 loadingTable={loadingTable}
+  //               />
+  //             );
+  //           })}
+  //         </tbody>
+  //       </Table>
+  //     </Container>
+  //   );
+  // }, [yourSpells]);
   const data = spellsListData;
   return (
-    <div className="App">
-      <Container>
-        <div>
-          <Header
-            spellsPreparable={props.spellsPreparable}
-            setSpellsPreparable={props.setSpellsPreparable}
-            spellSlots={props.spellSlots}
-            setSpellSlots={props.setSpellSlots}
-          />
-          <Container className="my-auto mx-auto">
-            {yourSpells ? (
-              <Table striped bordered hover className="w-50 my-auto mx-auto">
-                <thead>
-                  <tr>
-                    {console.log(yourSpells)}
-                    <th style={{ width: '25px' }}>Prep</th>
-                    <th>Spell Name:</th>
-                    <th>Details</th>
-                    <th>Cast it!</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {data.map((spell, index) => {
-                    return (
-                      <MyTable
-                        key={index}
-                        {...props}
-                        spell={spell}
-                        setLoadingTable={setLoadingTable}
-                        loadingTable={loadingTable}
-                      />
-                    );
-                  })}
-                </tbody>
-              </Table>
-            ) : (
-              'Loading...'
-            )}
-          </Container>
-        </div>
-      </Container>
-    </div>
+    <Container className="my-auto mx-auto">
+      {yourSpells ? (
+        <Table striped bordered hover className="w-50 my-auto mx-auto">
+          <thead>
+            <tr>
+              <th style={{ width: '25px' }}>Prep</th>
+              <th>Spell Name:</th>
+              <th>Details</th>
+              <th>Cast it!</th>
+            </tr>
+          </thead>
+          <tbody>
+            {data.map((spell, index) => {
+              return (
+                <MyTable
+                  key={index}
+                  {...props}
+                  spell={spell}
+                  setLoadingTable={setLoadingTable}
+                  loadingTable={loadingTable}
+                />
+              );
+            })}
+          </tbody>
+        </Table>
+      ) : (
+        'Loading...'
+      )}
+    </Container>
   );
-}
+};
 
-export default App;
+export default Body;
