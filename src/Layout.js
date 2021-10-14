@@ -4,7 +4,8 @@ import { Container } from 'reactstrap';
 import Login from './Components/Login';
 import App from './App';
 import { spellSlotsByLevel } from './Variables/SpellSlotChart';
-import useThing from './Components/useThing';
+
+// if app is loading have a d20 instead of "loading..."
 
 const Layout = () => {
   const [loggedIn, setLoggedIn] = useState(false);
@@ -12,9 +13,81 @@ const Layout = () => {
   const [playerLevel, setPlayerLevel] = useState(0);
   const [modifier, setModifier] = useState(1);
   const [spellSlots, setSpellSlots] = useState(null);
+  const [loading, setLoading] = useState(true);
 
-  const [apiSpellsByLevel, relevantSpellNames, loading, setLoading] =
-    useThing(playerLevel);
+  const [allSpellsApi, setAllSpellsApi] = useState([]);
+  const [api, setApi] = useState({ index: '', name: '', url: '' });
+
+  useEffect(() => {
+    const fetchAllSpellsData = async () => {
+      let json;
+      let url;
+      url = 'https://www.dnd5eapi.co/api/spells';
+      try {
+        const response = await fetch(url);
+        json = await response.json();
+      } catch (error) {
+        console.log('error', error);
+      }
+      setAllSpellsApi(json.results);
+      return json.results;
+    };
+
+    const spellDataByName = async (e) => {
+      let json;
+      let url;
+      let i;
+      console.log(e);
+      for (i = 0; i < e.length; i++) {
+        url = `https://www.dnd5eapi.co/api/spells${i}`;
+        try {
+          const response = await fetch(url);
+          json = await response.json();
+        } catch (error) {
+          console.log('error', error);
+        }
+      }
+      setAllSpellsApi(json.results);
+      return json.results;
+    };
+
+    fetchAllSpellsData().then((e) => {
+      spellDataByName(e);
+    });
+  }, [loading]);
+
+  const levelArray = [];
+  useEffect(() => {
+    let json;
+    let i;
+    let spellsByLevelUrl;
+    const fetchData2 = async () => {
+      for (i = 1; i < +9 + 1; i++) {
+        spellsByLevelUrl = `https://www.dnd5eapi.co/api/classes/cleric/levels/${i}/spells`;
+        try {
+          const response = await fetch(spellsByLevelUrl);
+          json = await response.json();
+          levelArray[i - 1] = json;
+        } catch (error) {
+          console.log('error', error);
+        }
+      }
+      // console.log(levelArray);
+      setApi(levelArray);
+      return levelArray;
+    };
+    fetchData2().then((e) => {
+      // console.log(e);
+      setApi(e);
+    });
+  }, []);
+
+  useEffect(() => {
+    setLoading(false);
+  }, [setApi]);
+
+  // const [apiSpellsByLevel, relevantSpellNames, loading, setLoading] =
+  //   useThing(playerLevel);
 
   // useEffect(() => {
   //   console.log(apiSpellsByLevel);
@@ -49,7 +122,6 @@ const Layout = () => {
     setLoading(!loggedIn);
   };
 
-  console.log(relevantSpellNames);
   // EXPERIMENT var thing = { logIn: [loggedIn, setLoggedIn] };
   return (
     <div>
@@ -83,3 +155,41 @@ const Layout = () => {
 };
 
 export default Layout;
+
+// useEffect(() => {
+//   const fetchAllSpellsData = async () => {
+//     let json;
+//     let url;
+//     url = 'https://www.dnd5eapi.co/api/spells';
+//     try {
+//       const response = await fetch(url);
+//       json = await response.json();
+//     } catch (error) {
+//       console.log('error', error);
+//     }
+//     setAllSpellsApi(json.results);
+//     return json.results;
+//   };
+
+//   const spellDataByName = async (e) => {
+//     let json;
+//     let url;
+//     let i;
+//     console.log(e);
+//     for (i = 0; i < e.length; i++) {
+//       url = `https://www.dnd5eapi.co/api/spells${i}`;
+//       try {
+//         const response = await fetch(url);
+//         json = await response.json();
+//       } catch (error) {
+//         console.log('error', error);
+//       }
+//     }
+//     setAllSpellsApi(json.results);
+//     return json.results;
+//   };
+
+//   fetchAllSpellsData().then((e) => {
+//     spellDataByName(e);
+//   });
+// }, [loading]);
