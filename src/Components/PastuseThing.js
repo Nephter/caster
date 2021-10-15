@@ -47,7 +47,9 @@ const useThing = (props) => {
       return levelArray;
     };
     fetchData2().then((e) => {
+      console.log(e);
       setApiSpellsByLevel(e);
+      console.log(e);
     });
   }, []);
 

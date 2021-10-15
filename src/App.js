@@ -6,7 +6,6 @@ import { MyTable } from './Components/MyTable';
 import { spellsListData } from './Variables/Spells';
 
 function App(props) {
-  console.log('app');
   const [loadingTable, setLoadingTable] = useState(false);
   const [apiSpellsByClass, setApiSpellsByClass] = useState([
     { index: '', name: '', url: '' },
@@ -17,7 +16,6 @@ function App(props) {
 
   // API call for spells
   useEffect(() => {
-    console.log('1');
     // returns all cleric spells
     const url = `https://www.dnd5eapi.co/api/classes/cleric/spells`;
     let json;
@@ -31,6 +29,7 @@ function App(props) {
       setApiSpellsByClass(json.results);
     };
     fetchData1();
+
     //returns all D&D spells of input level and each previous level down to 1
     let json2;
     const fetchData2 = async () => {
@@ -98,7 +97,6 @@ function App(props) {
 
   // compares all cleric spells with all D&D spells available up to your level
   useEffect(() => {
-    console.log('2');
     if (loading === false) {
       var spellIndexesByLevel = apiSpellsByLevel.map((a) => {
         return a.results.map((b) => {
@@ -119,15 +117,12 @@ function App(props) {
       });
       setYourSpells(relevantSpells);
     }
-    console.log('your spells ' + [yourSpells]);
   }, [loading, apiSpellsByLevel]);
 
   useEffect(() => {
-    console.log('3');
     setLoading(false);
   }, [apiSpellsByLevel]);
 
-  console.log(yourSpells);
   const data = spellsListData;
   return (
     <div className="App">
@@ -144,7 +139,6 @@ function App(props) {
               <Table striped bordered hover className="w-50 my-auto mx-auto">
                 <thead>
                   <tr>
-                    {console.log(yourSpells)}
                     <th style={{ width: '25px' }}>Prep</th>
                     <th>Spell Name:</th>
                     <th>Details</th>
