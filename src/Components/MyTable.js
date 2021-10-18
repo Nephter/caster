@@ -4,7 +4,7 @@ import MyCheckbox from './MyCheckbox';
 import MyButton from './MyButton';
 
 export function MyTable(props) {
-  console.log('mytable');
+  // console.log('mytable');
   const [available, setAvailable] = useState(false);
 
   const showButton = () => {

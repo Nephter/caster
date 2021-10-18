@@ -3,7 +3,7 @@ import React from 'react';
 import { Col, Row, Label, Container } from 'reactstrap';
 
 const Header = (props) => {
-  console.log('header');
+  // console.log('header');
   return (
     <Container style={{ padding: '30px' }}>
       <Row>
