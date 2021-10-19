@@ -56,11 +56,13 @@ const MyButton = (props) => {
   for (i = 0; i < props.spellSlots.length; i++) {
     sum += props.spellSlots[i];
   }
+
   return (
     <div>
       {props.available ? (
         <div key={props.available ? props.index : ''}>
           <Button
+            size="small"
             color={sum >= 1 ? 'primary' : 'warning'}
             aria-describedby={id}
             variant="contained"
@@ -82,7 +84,7 @@ const MyButton = (props) => {
               key={props.index}
             >
               <Typography key={props.index} sx={{ p: 2 }}>
-                {props.spell.spellName}
+                {props.spell.name}
               </Typography>
 
               {/* s is the number of spell slots of particular spell level */}
@@ -106,9 +108,7 @@ const MyButton = (props) => {
           </ThemeProvider>
         </div>
       ) : (
-        <Button key={props.available ? '' : props.index} disabled>
-          Cast
-        </Button>
+        ''
       )}
     </div>
   );

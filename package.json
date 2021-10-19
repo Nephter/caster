@@ -10,6 +10,7 @@
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
+    "argon-dashboard-pro-react": "https://github.com/sirbenchalot757/D-D.git",
     "bootstrap": "5.1.1",
     "bootstrap-css": "^4.0.0-alpha.5",
     "ngx-simple-modal": "^1.4.17",
