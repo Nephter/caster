@@ -5,10 +5,29 @@ import { Card, CardHeader, Table } from 'reactstrap';
 import ChooseSpellsTable from './Components/ChooseSpellsTable';
 import ChooseSpellsHeader from './Components/ChooseSpellsHeader';
 import parchment from './assets/img/theme/parchment5.jpg';
+import List from 'list.js';
 
 function App(props) {
   const [loadingTable, setLoadingTable] = useState(true);
   const [table, setTable] = useState(false);
+
+  const firstListRef = React.useRef(null);
+  const secondListRef = React.useRef(null);
+  const thirdListRef = React.useRef(null);
+  React.useEffect(() => {
+    new List(firstListRef.current, {
+      valueNames: ['prep', 'level', 'name', 'duration'],
+      listClass: 'list',
+    });
+    new List(secondListRef.current, {
+      valueNames: ['prep', 'level', 'name', 'duration'],
+      listClass: 'list',
+    });
+    new List(thirdListRef.current, {
+      valueNames: ['prep', 'level', 'name', 'duration'],
+      listClass: 'list',
+    });
+  }, []);
 
   const handleClick = () => {
     setTable(true);
@@ -23,7 +42,6 @@ function App(props) {
           width: '80%',
           backgroundImage: `url(${parchment})`,
           backgroundSize: 'contain',
-          // backgroundRepeat: 'no-repeat',
         }}
       >
         <Card style={{ background: 'transparent' }}>
@@ -46,8 +64,9 @@ function App(props) {
                   />
                 </CardHeader>
                 <Table
-                  className=" align-items-center "
+                  className=" table-sm align-items-center "
                   responsive
+                  hover
                   striped
                   borderless
 

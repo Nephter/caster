@@ -1,21 +1,13 @@
 import React, { useState } from 'react';
 import MyCheckbox from './MyCheckbox.js';
-import { Media } from 'reactstrap';
+import { Col, Media, Row } from 'reactstrap';
 
 const ChooseSpellsTable = (props) => {
   const [available, setAvailable] = useState(props.spellsPrepared);
-  // const spellTable = React.useRef(null);
-
-  // useEffect(() => {
-  //   new List(spellTable.current, {
-  //     valueNames: ['prep', 'level', 'name', 'status'],
-  //     listClass: 'list',
-  //   });
-  // }, []);
 
   return (
     <tr key={props.index}>
-      <td>
+      <td className="prep">
         <MyCheckbox
           spellsPreparable={props.spellsPreparable}
           setSpellsPreparable={props.setSpellsPreparable}
@@ -29,8 +21,8 @@ const ChooseSpellsTable = (props) => {
       </td>
       <td>
         <Media className="align-items-center">
-          <span className="">{props.spell.level}</span>
-          <a
+          <h5 className="level">{props.spell.level}</h5>
+          {/* <a
             className="avatar rounded-circle"
             href="#pablo"
             onClick={(e) => e.preventDefault()}
@@ -39,18 +31,15 @@ const ChooseSpellsTable = (props) => {
               alt="..."
               src={require('../assets/img/theme/bootstrap.jpg').default}
             />
-          </a>
+          </a> */}
         </Media>
       </td>
-      <td className="name">
-        <h4>{props.spell.name}</h4>
-        <div>
-          <span>{props.spell.casting_time} </span>
-          <span> </span>
-          <span> {props.spell.components}</span>
-        </div>
-      </td>
       <td>
+        <h4>{props.spell.name}</h4>
+        <h6> {props.spell.casting_time}</h6>
+        <h6>{props.spell.components}</h6>
+      </td>
+      <td className="duration">
         <h6>Duration: {props.spell.duration}</h6>
         <h6>Range: {props.spell.range}</h6>
       </td>

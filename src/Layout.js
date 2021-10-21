@@ -7,10 +7,7 @@ import { spellSlotsByLevel } from './Variables/SpellSlotChart';
 import background from './assets/img/theme/tabletop3.jpg';
 
 // if app is loading have a d20 instead of "loading..."
-
-// on submit. ill take the arrays of spell information based on character level and hydrate the table
-
-// take spellDataJson and filter it by spell's index of spellByLevel
+// set woodgrain background size smaller so I dont feel like my head is right above the table
 
 const Layout = () => {
   const [loggedIn, setLoggedIn] = useState(false);
@@ -124,8 +121,11 @@ const Layout = () => {
     <div
       style={{
         backgroundImage: `url(${background})`,
-        width: '100vw',
+        // width: '100vw',
         height: '100vh',
+        // backgroundRepeat: ' repeat',
+        backgroundSize: 'contain',
+        // backgroundPosition: 'center',
       }}
     >
       <Container>
