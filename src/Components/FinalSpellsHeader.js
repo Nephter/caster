@@ -1,18 +1,12 @@
-import { Container, Row, Col, Label } from 'reactstrap';
+import { Container, Row, Col } from 'reactstrap';
 import { Avatar, Chip } from '@mui/material';
 import React from 'react';
 
-const Header = (props) => {
-  // console.log('header');
+const FinalSpellsHeader = (props) => {
   return (
     <Container fluid>
       <div className="header-body">
         <Row className="align-items-center">
-          <Col lg="6" xs="7">
-            <Label for="spellsPreparable">
-              <h2>Preparable: {props.spellsPreparable}</h2>
-            </Label>
-          </Col>
           <Row className="align-items-center">
             <Col lg="6" xs="7">
               <h4>Spell Slots:</h4>
@@ -44,10 +38,10 @@ const Header = (props) => {
               })}
             </Col>
           </Row>
-        </Row>{' '}
+        </Row>
       </div>
     </Container>
   );
 };
 
-export default Header;
+export default FinalSpellsHeader;

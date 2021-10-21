@@ -17,7 +17,6 @@ const MyCheckbox = (props) => {
       var count;
       isChecked ? (count = 1) : (count = -1);
       props.onCheckboxHandler(count);
-      props.showButton();
     }
   };
 

@@ -59,7 +59,7 @@ const MyButton = (props) => {
 
   return (
     <div>
-      {props.available ? (
+      {!props.available && (
         <div key={props.available ? props.index : ''}>
           <Button
             size="small"
@@ -84,7 +84,7 @@ const MyButton = (props) => {
               key={props.index}
             >
               <Typography key={props.index} sx={{ p: 2 }}>
-                {props.spell.name}
+                {/* {props.spell.name} */}
               </Typography>
 
               {/* s is the number of spell slots of particular spell level */}
@@ -107,8 +107,6 @@ const MyButton = (props) => {
             </Popover>
           </ThemeProvider>
         </div>
-      ) : (
-        ''
       )}
     </div>
   );

@@ -4,6 +4,7 @@ import { Container } from 'reactstrap';
 import Login from './Components/Login';
 import App from './App';
 import { spellSlotsByLevel } from './Variables/SpellSlotChart';
+import background from './assets/img/theme/tabletop3.jpg';
 
 // if app is loading have a d20 instead of "loading..."
 
@@ -18,9 +19,9 @@ const Layout = () => {
   const [modifier, setModifier] = useState(1);
   const [spellSlots, setSpellSlots] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [allSpellData, setAllSpellData] = useState([]);
   const [spellsByLevel, setSpellsByLevel] = useState([]);
 
+  // fetch spell data by character level
   let spellDataJson;
   useEffect(() => {
     const fetchJson = async () => {
@@ -92,7 +93,6 @@ const Layout = () => {
 
     fetchJson();
   }, [playerLevel]);
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   // sets spell slots based on players level
   useEffect(() => {
@@ -121,7 +121,13 @@ const Layout = () => {
 
   // EXPERIMENT var thing = { logIn: [loggedIn, setLoggedIn] };
   return (
-    <div>
+    <div
+      style={{
+        backgroundImage: `url(${background})`,
+        width: '100vw',
+        height: '100vh',
+      }}
+    >
       <Container>
         {!loggedIn ? (
           <Login

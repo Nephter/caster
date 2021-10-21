@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import {
   CardHeader,
   CardFooter,
@@ -7,16 +8,17 @@ import {
   PaginationLink,
   Table,
 } from 'reactstrap';
-import Header from './Header.js';
+import MyButton from './MyButton.js';
+import FinalSpellsHeader from './FinalSpellsHeader.js';
 
-const MyNewTable = (props) => {
+const FinalSpellsTable = (props) => {
+  const [available, setAvailable] = useState(props.spellsPrepared);
   return (
     <div>
       <CardHeader className="border-0">
-        {' '}
-        <Header
-          // name="Tables"
-          // parentName="Tables"
+        <FinalSpellsHeader
+          loadingTable={props.loadingTable}
+          setLoadingTable={props.setLoadingTable}
           spellSlots={props.spellSlots}
           setSpellSlots={props.setSpellSlots}
           spellsPreparable={props.spellsPreparable}
@@ -27,15 +29,15 @@ const MyNewTable = (props) => {
         <thead className="thead-light">
           <tr>
             <th className="sort" data-sort="name" scope="col">
-              School + Level
+              School Level
             </th>
             <th className="sort" data-sort="budget" scope="col">
-              Name
+              Name Casting Time
             </th>
             <th className="sort" data-sort="status" scope="col">
-              Casting Time Duration Range/Area
+              Duration Range
             </th>
-            <th scope="col">Cast</th>
+            <th scope="col">Cast It!</th>
           </tr>
         </thead>
         <tbody className="list">
@@ -62,13 +64,22 @@ const MyNewTable = (props) => {
               <h6>V,S,M </h6>
             </th>
             <td>
-              <h6>Casting Time</h6>
               <h6>Duration</h6>
-              <h6>Range/Area</h6>
+              <h6>Range</h6>
             </td>
-            <td>
-              <button>Cast</button>
-            </td>
+            <th scope="row">
+              <MyButton
+                small
+                spellSlots={props.spellSlots}
+                setSpellSlots={props.setSpellSlots}
+                available={available}
+                setAvailable={setAvailable}
+                index={props.index}
+                spell={props.spell}
+                spellsPreparable={props.spellsPreparable}
+                onPopoverHandler={props.onPopoverHandler}
+              />
+            </th>
           </tr>
         </tbody>
       </Table>
@@ -79,16 +90,6 @@ const MyNewTable = (props) => {
             className="pagination justify-content-end mb-0"
             listClassName="justify-content-end mb-0"
           >
-            <PaginationItem className="disabled">
-              <PaginationLink
-                href="#pablo"
-                onClick={(e) => e.preventDefault()}
-                tabIndex="-1"
-              >
-                <i className="fas fa-angle-left" />
-                <span className="sr-only">Previous</span>
-              </PaginationLink>
-            </PaginationItem>
             <PaginationItem className="active">
               <PaginationLink href="#pablo" onClick={(e) => e.preventDefault()}>
                 1
@@ -104,12 +105,6 @@ const MyNewTable = (props) => {
                 3
               </PaginationLink>
             </PaginationItem>
-            <PaginationItem>
-              <PaginationLink href="#pablo" onClick={(e) => e.preventDefault()}>
-                <i className="fas fa-angle-right" />
-                <span className="sr-only">Next</span>
-              </PaginationLink>
-            </PaginationItem>
           </Pagination>
         </nav>
       </CardFooter>
@@ -117,4 +112,4 @@ const MyNewTable = (props) => {
   );
 };
 
-export default MyNewTable;
+export default FinalSpellsTable;

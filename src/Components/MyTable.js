@@ -5,11 +5,6 @@ import MyButton from './MyButton';
 
 export function MyTable(props) {
   const [available, setAvailable] = useState(props.spellsPrepared);
-  const [finalTable, setFinalTable] = useState(false);
-
-  // const showButton = () => {
-  //   setAvailable(!available);
-  // };
 
   return (
     <tr key={props.index}>
@@ -20,7 +15,6 @@ export function MyTable(props) {
           onCheckboxHandler={props.onCheckboxHandler}
           available={available}
           setAvailable={setAvailable}
-          showButton={props.showButton}
           index={props.index}
           key={props.index}
         />
@@ -32,15 +26,12 @@ export function MyTable(props) {
           small
           spellSlots={props.spellSlots}
           setSpellSlots={props.setSpellSlots}
-          spellsPreparable={props.spellsPreparable}
-          onPopoverHandler={props.onPopoverHandler}
-          index={props.index}
-          spell={props.spell}
           available={available}
           setAvailable={setAvailable}
-          key={props.index}
-          spellsPrepared={props.spellsPrepared}
-          setSpellsPrepared={props.setSpellsPrepared}
+          index={props.index}
+          spell={props.spell}
+          spellsPreparable={props.spellsPreparable}
+          onPopoverHandler={props.onPopoverHandler}
         />
       </td>
     </tr>
