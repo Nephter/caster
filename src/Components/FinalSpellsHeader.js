@@ -9,7 +9,7 @@ const FinalSpellsHeader = (props) => {
         <Row className="align-items-center">
           <Row className="align-items-center">
             <Col lg="6" xs="7">
-              <h4>Spell Slots:</h4>
+              <h1 style={{ color: 'maroon' }}>Spell Slots:</h1>
               {props.spellSlots.map((k, key) => {
                 var num = `Lvl ${key + 1}`;
                 return k === 0 ? (
@@ -26,13 +26,18 @@ const FinalSpellsHeader = (props) => {
                   />
                 ) : (
                   <Chip
-                    style={{ paddingRight: '7px', marginInline: '5px' }}
+                    style={{
+                      paddingRight: '7px',
+                      marginInline: '5px',
+                      background: 'transparent',
+                      border: '1px solid lightgrey',
+                    }}
                     dir="rtl"
                     key={key}
                     label={num}
                     avatar={<Avatar>{k}</Avatar>}
                     size="small"
-                    color="success"
+                    // color="success"
                   />
                 );
               })}

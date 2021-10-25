@@ -1852,7 +1852,7 @@ html.rtl {
 }
 
 html {
-  /* font-size: 1.5rem; */
+  font-size: 1rem;
   font-family: sans-serif;
   line-height: 1;
   -webkit-text-size-adjust: 100%;
@@ -1894,7 +1894,7 @@ hr {
   height: 0;
   overflow: visible;
 }
-
+/* change  */
 h1,
 h2,
 h3,
@@ -1903,7 +1903,7 @@ h5,
 h6 {
   /* transform: scale(2); */
   margin-top: 0;
-  margin-bottom: 0.5rem;
+  /* margin-bottom: 0.5rem; */
 }
 
 p {
@@ -1931,7 +1931,6 @@ ul,
 dl {
   margin-top: 0;
   margin-bottom: 1rem;
-  /* transform: scale(2); */
 }
 
 ol ol,
@@ -1939,12 +1938,10 @@ ul ul,
 ol ul,
 ul ol {
   margin-bottom: 0;
-  /* transform: scale(2); */
 }
 
 dt {
   font-weight: 600;
-  /* transform: scale(2); */
 }
 
 dd {
@@ -2049,7 +2046,7 @@ th {
 
 label {
   display: inline-block;
-  margin-bottom: 0.5rem;
+  /* margin-bottom: 0.5rem; */
 }
 
 button {
@@ -2186,6 +2183,7 @@ template {
   display: none !important;
 }
 
+/* change */
 h1,
 h2,
 h3,
@@ -2198,7 +2196,7 @@ h6,
 .h4,
 .h5,
 .h6 {
-  margin-bottom: 0.5rem;
+  /* margin-bottom: 0.5rem; */
   font-family: inherit;
   font-weight: 600;
   line-height: 1.5;
@@ -3423,16 +3421,17 @@ pre code {
     margin-left: 91.66667%;
   }
 }
-
+/* -------------------------------------------------------------------------------------------- */
+/* change this table info edit */
 .table {
   width: 100%;
-  margin-bottom: 1rem;
+  /* margin-bottom: 1rem; */
   color: #525f7f;
   background-color: transparent;
 }
 .table th,
 .table td {
-  padding: 1rem;
+  /* padding: 1rem; */
   vertical-align: top;
   border-top: 1px solid #e9ecef;
 }
@@ -3446,10 +3445,12 @@ pre code {
 
 .table-sm th,
 .table-sm td {
-  padding: 0.5rem;
-  /* padding: 0rem; */
+  /* padding: 1rem; */
+  padding: 0rem;
+  padding-top: 0.2rem;
 }
 
+/* -------------------------------------------------------------------------------------------- */
 .table-bordered {
   border: 1px solid #e9ecef;
 }
@@ -8957,7 +8958,7 @@ button.bg-darker:focus {
 
 .rounded-circle,
 .avatar.rounded-circle img {
-  border-radius: 50% !important;
+  border-radius: 20% !important;
 }
 
 .rounded-pill {
@@ -16111,6 +16112,7 @@ a.text-darker:focus {
   .table {
     border-collapse: collapse !important;
   }
+
   .table td,
   .table th {
     background-color: #fff !important;
@@ -21281,10 +21283,15 @@ textarea[resize='horizontal'] {
 .card .table {
   margin-bottom: 0;
 }
+/* change */
 .card .table td,
 .card .table th {
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-bottom: 0;
+  margin-bottom: 0;
+  /* padding-left: 1.5rem;
+  padding-right: 1.5rem; */
 }
 
 .table .custom-toggle {
@@ -27115,7 +27122,7 @@ html:not([dir='rtl']) .noUi-horizontal .noUi-handle {
 }
 
 .react-bootstrap-table th {
-  color: #8898aa;
+  /* color: #8898aa; */
   background-color: #f6f9fc;
 }
 .react-bootstrap-table th.sortable {
@@ -27164,7 +27171,7 @@ html:not([dir='rtl']) .noUi-horizontal .noUi-handle {
   text-align: left;
   white-space: nowrap;
   display: inline-block;
-  margin-bottom: 0.5rem;
+  /* margin-bottom: 0.5rem; */
 }
 .react-bootstrap-table-pagination .dataTables_length select {
   width: auto;

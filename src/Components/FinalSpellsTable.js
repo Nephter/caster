@@ -1,114 +1,72 @@
 import { useState } from 'react';
-import {
-  CardHeader,
-  CardFooter,
-  Media,
-  Pagination,
-  PaginationItem,
-  PaginationLink,
-  Table,
-} from 'reactstrap';
 import MyButton from './MyButton.js';
-import FinalSpellsHeader from './FinalSpellsHeader.js';
+import MyModal from './MyModal.js';
 
 const FinalSpellsTable = (props) => {
-  const [available, setAvailable] = useState(props.spellsPrepared);
-  return (
-    <div>
-      <CardHeader className="border-0">
-        <FinalSpellsHeader
-          loadingTable={props.loadingTable}
-          setLoadingTable={props.setLoadingTable}
-          spellSlots={props.spellSlots}
-          setSpellSlots={props.setSpellSlots}
-          spellsPreparable={props.spellsPreparable}
-          setSpellsPreparable={props.setSpellsPreparable}
-        />
-      </CardHeader>
-      <Table className="align-items-center " responsive>
-        <thead className="thead-light">
-          <tr>
-            <th className="sort" data-sort="name" scope="col">
-              School Level
-            </th>
-            <th className="sort" data-sort="budget" scope="col">
-              Name Casting Time
-            </th>
-            <th className="sort" data-sort="status" scope="col">
-              Duration Range
-            </th>
-            <th scope="col">Cast It!</th>
-          </tr>
-        </thead>
-        <tbody className="list">
-          <tr>
-            <th scope="row">
-              <Media className="align-items-center">
-                <a
-                  className="avatar rounded-circle mr-3"
-                  href="#pablo"
-                  onClick={(e) => e.preventDefault()}
-                >
-                  <img
-                    alt="..."
-                    src={require('../assets/img/theme/bootstrap.jpg').default}
-                  />
-                </a>
-                <Media>
-                  <span className="">2</span>
-                </Media>
-              </Media>
-            </th>
-            <th scope="row">
-              <h4>Spell Name Spell Name Spell Name</h4>
-              <h6>V,S,M </h6>
-            </th>
-            <td>
-              <h6>Duration</h6>
-              <h6>Range</h6>
-            </td>
-            <th scope="row">
-              <MyButton
-                small
-                spellSlots={props.spellSlots}
-                setSpellSlots={props.setSpellSlots}
-                available={available}
-                setAvailable={setAvailable}
-                index={props.index}
-                spell={props.spell}
-                spellsPreparable={props.spellsPreparable}
-                onPopoverHandler={props.onPopoverHandler}
-              />
-            </th>
-          </tr>
-        </tbody>
-      </Table>
+  const [available, setAvailable] = useState(props.spellPrepped);
+  const [modalIsOpen, setModalIsOpen] = useState(false);
 
-      <CardFooter className="py-4">
-        <nav aria-label="...">
-          <Pagination
-            className="pagination justify-content-end mb-0"
-            listClassName="justify-content-end mb-0"
+  const rowClickHandler = () => {
+    setModalIsOpen(!modalIsOpen);
+  };
+
+  return (
+    <>
+      <tr
+        key={props.index}
+        onClick={rowClickHandler}
+        style={{ cursor: 'pointer' }}
+      >
+        <td
+          className="prep"
+          style={{
+            width: '10px',
+          }}
+        >
+          <h2
+            className="level"
+            style={{
+              alignItems: 'center',
+              justifyContent: 'center',
+              marginLeft: '40%',
+            }}
           >
-            <PaginationItem className="active">
-              <PaginationLink href="#pablo" onClick={(e) => e.preventDefault()}>
-                1
-              </PaginationLink>
-            </PaginationItem>
-            <PaginationItem>
-              <PaginationLink href="#pablo" onClick={(e) => e.preventDefault()}>
-                2 <span className="sr-only">(current)</span>
-              </PaginationLink>
-            </PaginationItem>
-            <PaginationItem>
-              <PaginationLink href="#pablo" onClick={(e) => e.preventDefault()}>
-                3
-              </PaginationLink>
-            </PaginationItem>
-          </Pagination>
-        </nav>
-      </CardFooter>
-    </div>
+            {props.spell.level}
+          </h2>
+        </td>
+        <td>
+          <span>{props.spell.name}</span>
+          <span>{props.spell.casting_time}</span>
+          <h6>{props.spell.components}</h6>
+        </td>
+        <td>
+          <h6>Duration: {props.spell.duration}</h6>
+          <h6>Range: {props.spell.range}</h6>
+        </td>
+        <td style={{ padding: 0, margin: 0 }}>
+          <MyButton
+            small
+            spellSlots={props.spellSlots}
+            setSpellSlots={props.setSpellSlots}
+            available={available}
+            setAvailable={setAvailable}
+            index={props.index}
+            spell={props.spell}
+            onPopoverHandler={props.onPopoverHandler}
+          />
+          <MyModal
+            key={props.index}
+            spell={props.spell}
+            rowClickHandler={rowClickHandler}
+            modalIsOpen={modalIsOpen}
+            setModalIsOpen={setModalIsOpen}
+            spellDescription={props.spellDescription}
+            setSpellDescription={props.setSpellDescription}
+          />
+          ;
+        </td>
+      </tr>
+    </>
   );
 };
 

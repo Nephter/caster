@@ -18,7 +18,9 @@ const ChooseSpellsHeader = (props) => {
                   Prepare your spells
                 </Button>
               ) : (
-                <h2>Preparable: {props.spellsPreparable}</h2>
+                <h1 style={{ color: 'maroon' }}>
+                  Preparable: {props.spellsPreparable}
+                </h1>
               )
             ) : (
               ''

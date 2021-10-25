@@ -13,7 +13,7 @@ const Layout = () => {
   const [loggedIn, setLoggedIn] = useState(false);
   const [spellsPreparable, setSpellsPreparable] = useState(0);
   const [playerLevel, setPlayerLevel] = useState(0);
-  const [modifier, setModifier] = useState(1);
+  const [modifier, setModifier] = useState(0);
   const [spellSlots, setSpellSlots] = useState(null);
   const [loading, setLoading] = useState(true);
   const [spellsByLevel, setSpellsByLevel] = useState([]);
@@ -91,7 +91,7 @@ const Layout = () => {
     fetchJson();
   }, [playerLevel]);
 
-  // sets spell slots based on players level
+  // sets spell slots based on players level and modifier
   useEffect(() => {
     setSpellSlots(spellSlotsByLevel[playerLevel - 1]);
   }, [playerLevel]);
@@ -121,11 +121,8 @@ const Layout = () => {
     <div
       style={{
         backgroundImage: `url(${background})`,
-        // width: '100vw',
         height: '100vh',
-        // backgroundRepeat: ' repeat',
         backgroundSize: 'contain',
-        // backgroundPosition: 'center',
       }}
     >
       <Container>

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import MyCheckbox from './MyCheckbox.js';
 
-const ChooseSpellsTable = (props) => {
+const useChooseSpellsTable = (props) => {
   const [available, setAvailable] = useState(false);
 
   return (
@@ -29,4 +29,4 @@ const ChooseSpellsTable = (props) => {
   );
 };
 
-export default ChooseSpellsTable;
+export default useChooseSpellsTable;
