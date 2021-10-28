@@ -3435,6 +3435,10 @@ pre code {
   vertical-align: top;
   border-top: 1px solid #e9ecef;
 }
+thead tr th {
+  position: sticky;
+  top: '100px';
+}
 .table thead th {
   vertical-align: bottom;
   border-bottom: 2px solid #e9ecef;
@@ -3750,11 +3754,13 @@ pre code {
   background-color: #172b4d;
   border-color: #1f3a68;
 }
-
+/* change */
 .table .thead-light th {
   color: #8898aa;
   background-color: #f6f9fc;
   border-color: #e9ecef;
+  position: 'sticky';
+  top: '100px';
 }
 
 .table-dark {
@@ -8958,7 +8964,7 @@ button.bg-darker:focus {
 
 .rounded-circle,
 .avatar.rounded-circle img {
-  border-radius: 20% !important;
+  border-radius: 35% !important;
 }
 
 .rounded-pill {
@@ -21215,7 +21221,7 @@ textarea[resize='horizontal'] {
   font-size: 0.65rem;
   text-transform: uppercase;
   letter-spacing: 1px;
-  border-bottom: 1px solid #e9ecef;
+  /* border-bottom: 1px solid #e9ecef; */
 }
 
 .table th {
@@ -21292,6 +21298,10 @@ textarea[resize='horizontal'] {
   margin-bottom: 0;
   /* padding-left: 1.5rem;
   padding-right: 1.5rem; */
+}
+/* change  */
+.Yourclass > .castButton {
+  pointer-events: none;
 }
 
 .table .custom-toggle {

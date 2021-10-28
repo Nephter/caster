@@ -21,7 +21,6 @@ const MyCheckbox = (props) => {
       props.setSpellPrepped(!isChecked);
     }
   };
-  console.log('checkbox ' + isChecked);
   return (
     <div key={props.index} className="text-center">
       <input type="checkbox" checked={isChecked} onChange={handleCheckbox} />

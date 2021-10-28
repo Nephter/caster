@@ -4,10 +4,10 @@ import { Container } from 'reactstrap';
 import Login from './Components/Login';
 import App from './App';
 import { spellSlotsByLevel } from './Variables/SpellSlotChart';
-import background from './assets/img/theme/tabletop3.jpg';
+import tableTop from './assets/img/theme/tabletop3.jpg';
 
 // if app is loading have a d20 instead of "loading..."
-// set woodgrain background size smaller so I dont feel like my head is right above the table
+// set woodgrain tableTop size smaller so I dont feel like my head is right above the table
 
 const Layout = () => {
   const [loggedIn, setLoggedIn] = useState(false);
@@ -102,7 +102,7 @@ const Layout = () => {
   };
 
   // based on spell level cast, subtracts 1 from the corresponding spell slots total
-  const onPopoverHandler = (spellLevel) => {
+  const onDropdownClick = (spellLevel) => {
     let newSpellSlotsValues = [...spellSlots];
     newSpellSlotsValues[spellLevel] = newSpellSlotsValues[spellLevel] - 1;
     setSpellSlots(newSpellSlotsValues);
@@ -120,12 +120,13 @@ const Layout = () => {
   return (
     <div
       style={{
-        backgroundImage: `url(${background})`,
+        backgroundImage: `url(${tableTop})`,
         height: '100vh',
-        backgroundSize: 'contain',
+        overflow: 'hidden',
+        backgroundSize: '50% auto',
       }}
     >
-      <Container>
+      <Container style={{}}>
         {!loggedIn ? (
           <Login
             onSubmit={onSubmit}
@@ -143,7 +144,7 @@ const Layout = () => {
             setSpellSlots={setSpellSlots}
             spellsPreparable={spellsPreparable}
             setSpellsPreparable={setSpellsPreparable}
-            onPopoverHandler={onPopoverHandler}
+            onDropdownClick={onDropdownClick}
             onCheckboxHandler={onCheckboxHandler}
             spellsByLevel={spellsByLevel}
           />

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Modal from 'react-modal';
-import parchment from '../assets/img/theme/parchment1.jpg';
+import parchment from '../assets/img/parchment2.svg';
 
 Modal.setAppElement('#root');
 
@@ -12,7 +12,8 @@ const MyModal = (props) => {
       left: 0,
       right: 0,
       bottom: 0,
-      backgroundColor: 'transparent',
+      background: 'transparent',
+      zIndex: '999',
     },
     content: {
       top: '50%',
@@ -27,18 +28,22 @@ const MyModal = (props) => {
       minHeight: '40%',
       whiteSpace: 'pre-line',
       backgroundImage: `url(${parchment})`,
-      backgroundRepeat: 'no-repeat',
+      // backgroundRepeat: 'no-repeat',
       backgroundSize: 'cover',
-      filter: 'brightness(120%)',
       border: 0,
       color: 'black',
+      // position: 'absolute',
+      background: 'transparent',
+      padding: '4%',
     },
   };
 
   return (
     <Modal key={props.index} style={modalStyles} isOpen={props.modalIsOpen}>
-      <div style={{ display: 'flex' }}>
-        <div style={{ fontSize: '2rem' }}>{props.spell.name}</div>
+      <div style={{ background: 'transparent' }}>
+        <div style={{ fontSize: '2rem', paddingTop: '10px' }}>
+          {props.spell.name}
+        </div>
         <div
           style={{
             fontSize: '.75rem',
