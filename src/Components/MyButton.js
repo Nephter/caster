@@ -5,14 +5,6 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import { Col, Media } from 'reactstrap';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
-import Abjuration from '../assets/img/theme/Abjuration.jpg';
-import Conjuration from '../assets/img/theme/Conjuration.jpg';
-import Divination from '../assets/img/theme/Divination.jpg';
-import Enchantment from '../assets/img/theme/Enchantment.jpg';
-import Evocation from '../assets/img/theme/Evocation.jpg';
-import Illusion from '../assets/img/theme/Illusion.jpg';
-import Necromancy from '../assets/img/theme/Necromancy.jpg';
-import Transmutation from '../assets/img/theme/Transmutation.jpg';
 
 // add back button in case of accident
 
@@ -64,49 +56,17 @@ const MyButton = (props) => {
   const open = Boolean(anchorEl);
   const id = open ? 'simple-popover' : undefined;
 
-  var school;
-  switch (props.spell.school.name) {
-    case 'Abjuration':
-      school = Abjuration;
-      break;
-    case 'Conjuration':
-      school = Conjuration;
-      break;
-    case 'Divination':
-      school = Divination;
-      break;
-    case 'Enchantment':
-      school = Enchantment;
-      break;
-    case 'Evocation':
-      school = Evocation;
-      break;
-    case 'Illusion':
-      school = Illusion;
-      break;
-    case 'Necromancy':
-      school = Necromancy;
-      break;
-    case 'Transmutation':
-      school = Transmutation;
-      break;
-  }
-
   return (
     <div key={props.index}>
-      <button
+      <Button
+        small
         aria-describedby={id}
         onClick={handleClick}
         key={props.index}
-        style={{
-          position: 'relative',
-          padding: 0,
-          top: '6px',
-          border: 0,
-        }}
+        variant="contained"
       >
-        <img className="avatar rounded-circle" alt="..." src={school} />
-      </button>
+        Cast
+      </Button>
       <ThemeProvider theme={theme}>
         <Popover
           id={id}
@@ -123,8 +83,6 @@ const MyButton = (props) => {
             {props.spell.name}
           </Typography>
 
-          {/* s is the number of spell slots of particular spell level */}
-          {/* key is the array position of each spell slot number */}
           {props.spellSlots.map((s, key) => {
             return s === 0 ? (
               ''
