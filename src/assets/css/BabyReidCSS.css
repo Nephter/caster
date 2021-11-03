@@ -20,3 +20,13 @@
   box-shadow: none !important;
   border: 0;
 }
+
+th.tableStickyHead {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background-image: url(../img/fuck.svg) !important;
+  background-position-y: -110px !important;
+  background-size: 690px 768px !important;
+  /* background-color: transparent; */
+}

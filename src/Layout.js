@@ -126,7 +126,7 @@ const Layout = () => {
         backgroundSize: '50% auto',
       }}
     >
-      <Container style={{ maxHeight: 'inherit' }}>
+      <Container>
         {!loggedIn ? (
           <Login
             onSubmit={onSubmit}

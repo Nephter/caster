@@ -30,16 +30,3 @@ const ChooseSpellsTable = (props) => {
 };
 
 export default ChooseSpellsTable;
-
-// var lvl = document.getElementById('lvl');
-// var lvlRef = document.getElementById('lvlRef');
-// var name = document.getElementById('name');
-// var nameRef = document.getElementById('nameRef');
-// var duration = document.getElementById('duration');
-// var durationRef = document.getElementById('durationRef');
-// var cast = document.getElementById('cast');
-// var castRef = document.getElementById('castRef');
-// lvl.style.width = lvlRef.clientWidth + 'px';
-// name.style.width = nameRef.clientWidth + 'px';
-// duration.style.width = durationRef.clientWidth + 'px';
-// cast.style.width = castRef.clientWidth + 'px';
