@@ -1,431 +1,385 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import { Container } from 'react-bootstrap';
-import { Card, CardHeader, Table } from 'reactstrap';
+import { Card, CardBody, CardHeader, Table } from 'reactstrap';
 import ChooseSpellsTable from './Components/ChooseSpellsTable';
 import ChooseSpellsHeader from './Components/ChooseSpellsHeader';
-import parchment from './assets/img/parchment2.svg';
+import parchment from './assets/img/fuck.svg';
 import FinalSpellsHeader from './Components/FinalSpellsHeader';
 import FinalSpellsTable from './Components/FinalSpellsTable';
 
-// set header content to highest z index, table header to second, space for table rows to disapear next, then rows, then parchment
+// set preppared spells state of parent of both components, set = ([]). pass state to both components
+
+//all checkboxes that are selected are used as a reference in final table
 
 function App(props) {
   const [loadingTable, setLoadingTable] = useState(true);
   const [table, setTable] = useState(false);
-  const [spellPrepped, setSpellPrepped] = useState(false);
+  const [newspellPrepped, setnewSpellPrepped] = useState({ spell: [] });
   const [spellDescription, setSpellDescription] = useState(false);
 
+  const data = props.spellsByLevel;
+
   const handleClick = () => {
+    // setWidth();
     setTable(true);
   };
+  let lvlWidth;
+  let nameWidth;
+  // useEffect(() => {
+  //   var lvl = document.getElementById('lvl');
+  //   var lvlRef = document.getElementById('lvlRef');
+  //   const lvlWidthSetter = () => {
+  //     return (lvlWidth = lvlRef.clientWidth + 'px');
+  //   };
 
-  const data = props.spellsByLevel;
-  console.log(spellPrepped);
+  //   const nothing = () => {
+  //     console.log('nothing');
+  //   };
+  //   lvlRef.clientWidth === 0 ? nothing() : lvlWidthSetter();
+  // }, [table]);
+  function setWidth() {
+    var lvl = document.getElementById('lvl');
+    var lvlRef = document.getElementById('lvlRef');
+    var name = document.getElementById('name');
+    var nameRef = document.getElementById('nameRef');
+    var duration = document.getElementById('duration');
+    var durationRef = document.getElementById('durationRef');
+    var cast = document.getElementById('cast');
+    var castRef = document.getElementById('castRef');
+    // lvl.style.width = lvlRef.clientWidth + 'px';
+    // name.style.width = nameRef.clientWidth + 'px';
+    // duration.style.width = durationRef.clientWidth + 'px';
+    // cast.style.width = castRef.clientWidth + 'px';
+    let lvlWidth = lvlRef.clientWidth + 'px';
+    let nameWidth = nameRef.clientWidth + 'px';
+    let durationWidth = durationRef.clientWidth + 'px';
+    let castWidth = castRef.clientWidth + 'px';
+  }
+
   return !loadingTable ? (
     'Loading...'
   ) : (
-    <Container
+    <div
+      className="mx-auto"
       style={{
-        // width: 'auto',
-        // height: '900px',
-        // maxHeight: '90vh',
         backgroundImage: `url(${parchment})`,
-        backgroundSize: 'contain',
+        backgroundSize: 'cover',
         backgroundRepeat: 'no-repeat',
-        // overflow: 'scroll',
-        // alignItems: 'center',
-        // justifyContent: 'center',
-        // display: 'flex',
-        marginLeft: '20%',
-        // border: '1px dotted yellow',
+        maxWidth: '690px',
+        maxHeight: '100vh',
       }}
     >
-      <Card style={{ background: 'transparent' }}>
-        {!table ? (
-          <Container style={{ background: 'transparent' }}>
-            <CardHeader
-              className="border-0"
-              style={{ background: 'transparent' }}
-            >
-              <ChooseSpellsHeader
-                table={table}
-                handleClick={handleClick}
-                spellsPreparable={props.spellsPreparable}
-                setSpellsPreparable={props.setSpellsPreparable}
-              />
-            </CardHeader>
-            <Table
-              className=" table-sm align-items-center "
-              responsive
-              hover
-              striped
-              borderless
-            >
-              <thead className="thead-light">
-                <tr>
-                  <th
-                    className="sort"
-                    // data-sort="prep"
-                    scope="col"
+      {!table ? (
+        <Container style={{ background: 'transparent' }}>
+          <CardHeader
+            className="border-0"
+            style={{ background: 'transparent' }}
+          >
+            <ChooseSpellsHeader
+              table={table}
+              handleClick={handleClick}
+              spellsPreparable={props.spellsPreparable}
+              setSpellsPreparable={props.setSpellsPreparable}
+            />
+          </CardHeader>
+          <Table hover striped borderless>
+            <thead className="thead-light">
+              <tr>
+                <th
+                  className="sort"
+                  scope="col"
+                  style={{
+                    background: 'transparent',
+                    color: 'maroon',
+                    padding: 0,
+                  }}
+                >
+                  <h4
                     style={{
-                      background: 'transparent',
                       color: 'maroon',
                       padding: 0,
+                      margin: 0,
                     }}
                   >
-                    <h4
-                      style={{
-                        color: 'maroon',
-                        padding: 0,
-                        margin: 0,
-                        fontWeight: '900',
-                      }}
-                    >
-                      Prep
-                    </h4>
-                  </th>
-                  <th
-                    className="sort"
-                    // data-sort="level"
-                    scope="col"
-                    style={{ background: 'transparent', color: 'maroon' }}
-                  >
-                    <h4 style={{ color: 'maroon', padding: 0, margin: 0 }}>
-                      School Level
-                    </h4>
-                  </th>
-                  <th
-                    className="sort"
-                    // data-sort="name"
-                    scope="col"
+                    Prep
+                  </h4>
+                </th>
+                <th
+                  className="sort"
+                  scope="col"
+                  style={{ background: 'transparent', color: 'maroon' }}
+                >
+                  <h4 style={{ color: 'maroon', padding: 0, margin: 0 }}>
+                    School Level
+                  </h4>
+                </th>
+                <th
+                  className="sort"
+                  scope="col"
+                  style={{
+                    background: 'transparent',
+                    color: 'maroon',
+                    width: '151px',
+                  }}
+                >
+                  <h4
                     style={{
-                      background: 'transparent',
                       color: 'maroon',
-                      width: '151px',
+                      padding: 0,
+                      margin: 0,
                     }}
                   >
-                    <h4
-                      style={{
-                        color: 'maroon',
-                        padding: 0,
-                        margin: 0,
-                      }}
-                    >
-                      Name
-                    </h4>
-                  </th>
-                  <th
-                    className="sort"
-                    // data-sort="status"
-                    scope="col"
-                    style={{ background: 'transparent', color: 'maroon' }}
-                  >
-                    <h4 style={{ color: 'maroon', padding: 0, margin: 0 }}>
-                      Casting Time
-                    </h4>
-                  </th>
-                </tr>
-              </thead>
-              <tbody className="list">
-                {data.map((spell, index) => {
-                  return (
-                    <ChooseSpellsTable
-                      spell={spell}
-                      key={index}
-                      spellPrepped={spellPrepped}
-                      setSpellPrepped={setSpellPrepped}
-                      spellsPreparable={props.spellsPreparable}
-                      setSpellsPreparable={props.setSpellsPreparable}
-                      onCheckboxHandler={props.onCheckboxHandler}
-                    />
-                  );
-                })}
-              </tbody>
-            </Table>
-          </Container>
-        ) : (
-          <Container
+                    Name
+                  </h4>
+                </th>
+                <th
+                  className="sort"
+                  scope="col"
+                  style={{ background: 'transparent', color: 'maroon' }}
+                >
+                  <h4 style={{ color: 'maroon', padding: 0, margin: 0 }}>
+                    Casting Time
+                  </h4>
+                </th>
+              </tr>
+            </thead>
+            <tbody className="list">
+              {data.map((spell, index) => {
+                return (
+                  <ChooseSpellsTable
+                    key={index}
+                    spell={spell}
+                    index={index}
+                    newspellPrepped={newspellPrepped}
+                    setnewSpellPrepped={setnewSpellPrepped}
+                    spellsPreparable={props.spellsPreparable}
+                    setSpellsPreparable={props.setSpellsPreparable}
+                    onCheckboxHandler={props.onCheckboxHandler}
+                  />
+                );
+              })}
+            </tbody>
+          </Table>
+        </Container>
+      ) : (
+        <Card style={{ background: 'transparent' }}>
+          {setWidth}
+          <div
             style={{
-              background: 'inherit',
-              // overflowY: 'scroll',
-              // maxHeight: '2000px',
-              // height: '800px',
-              // border: '1px dotted red',
-              zIndex: '2',
-              width: '100%',
+              height: '105px',
+              background: 'transparent',
+            }}
+          />
+          <CardHeader
+            className="border-0"
+            style={{
+              background: 'transparent',
+              position: 'fixed',
+              top: '10px',
+              paddingBottom: 0,
             }}
           >
-            {' '}
-            <div
-              style={{
-                position: 'absolute',
-                width: '96%',
-                height: '145px',
-                // border: '1px dotted yellow',
-                background: 'inherit',
-                // zIndex: '999',
-              }}
+            <FinalSpellsHeader
+              spellSlots={props.spellSlots}
+              setSpellSlots={props.setSpellSlots}
             />
-            <div
-              style={{
-                width: '100%',
-                height: '105px',
-                // border: '1px dotted blue',
-                background: 'inherit',
-              }}
-            />
-            <CardHeader
-              className="border-0"
-              style={{
-                background: 'inherit',
-                position: 'fixed',
-                top: 0,
-                height: '100px',
-                width: '58%',
-              }}
-            >
-              <FinalSpellsHeader
-                spellSlots={props.spellSlots}
-                setSpellSlots={props.setSpellSlots}
-              />
-            </CardHeader>
+          </CardHeader>
+          <CardBody style={{ paddingTop: 0 }}>
             <Table
-              className=" table-sm align-items-center "
-              // responsive
               hover
-              // striped
               borderless
-              // ref={spellTable}
-              style={{ maxHeight: '600px', height: '600px' }}
+              style={{
+                height: '600px',
+                width: '100%',
+              }}
             >
-              <div>
+              <div className="table" style={{ height: '40px' }}>
                 <thead
                   className="thead-light"
                   style={{
-                    position: 'sticky',
-                    top: '18%',
                     transform: 'translateY(-10px)',
-                    // maxHeight: '0px !important',
-                    // overflow: 'hidden',
-                    // color: 'transparent',
+                    height: '40px',
                   }}
                 >
                   <tr>
                     <th
+                      id="lvl"
                       className="sort"
-                      // data-sort="name"
                       scope="col"
                       style={{
+                        paddingLeft: '5px',
                         background: 'transparent',
                         color: 'maroon',
-                        position: 'sticky',
-                        top: 0,
                       }}
                     >
-                      <h4
+                      <h2
                         style={{
                           color: 'maroon',
-                          padding: 0,
-                          margin: 0,
-                          position: 'sticky',
-                          top: 0,
                         }}
                       >
-                        Level School
-                      </h4>
+                        Lvl
+                      </h2>
                     </th>
                     <th
-                      id="two"
                       className="sort"
-                      // data-sort="budget"
                       scope="col"
                       style={{
                         background: 'transparent',
                         color: 'maroon',
-                        position: 'sticky',
-                        top: 0,
                       }}
                     >
-                      <h4
+                      <h2
                         style={{
                           color: 'maroon',
-                          padding: 0,
-                          margin: 0,
-                          position: 'sticky',
-                          top: 0,
                         }}
                       >
                         Name
-                      </h4>
+                      </h2>
                     </th>
                     <th
+                      id="duration"
                       className="sort"
-                      // data-sort="status"
                       scope="col"
                       style={{
                         background: 'transparent',
                         color: 'maroon',
-                        position: 'sticky',
-                        top: 0,
                       }}
                     >
-                      <h4
+                      <h2
                         style={{
                           color: 'maroon',
-                          paddingLeft: '50px',
-                          margin: 0,
-                          position: 'sticky',
-                          top: 0,
                         }}
                       >
                         Duration
-                      </h4>
+                      </h2>
                     </th>
                     <th
+                      id="cast"
                       scope="col"
                       style={{
                         background: 'transparent',
                         color: 'maroon',
-                        position: 'sticky',
-                        top: 0,
                       }}
                     >
-                      <h4
+                      <h2
                         style={{
                           color: 'maroon',
-                          padding: 0,
-                          margin: 0,
-                          position: 'sticky',
-                          top: 0,
                         }}
                       >
                         Cast It!
-                      </h4>
+                      </h2>
                     </th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
+                    <td id="lvl" style={{ width: { lvlWidth } }}>
+                      <h4 style={{ color: 'transparent' }}>fillerfillerl</h4>
+                    </td>
+                    <td>
+                      <h4
+                        id="name"
+                        style={{
+                          color: 'transparent',
+                          paddingRight: '5px',
+                          width: { nameWidth },
+                        }}
+                      >
+                        asdfasdfasdfasdfas
+                      </h4>
+                    </td>
+                    <td>
+                      <h4 style={{ color: 'transparent' }}></h4>
+                    </td>
+                    <td>
+                      <h4 style={{ color: 'transparent' }}></h4>
+                    </td>
                   </tr>
                 </tbody>
               </div>
-
-              {/* hidden Table Header */}
-
               <div
-                className=""
+                className="table spellTableBody"
                 style={{
-                  marginTop: '-18px',
-                  position: 'relative',
-                  // border: '1px dotted black',
+                  marginTop: '-15px',
                   overflow: 'scroll',
-                  maxHeight: '72vh',
-                  // paddingBottom: '20px',
-                  marginBottom: '50px',
+                  maxHeight: '65vh',
+                  width: '800px',
                 }}
               >
-                <thead
-                  className="thead-light mt-n3"
-                  style={{
-                    position: 'sticky',
-                  }}
-                >
+                <thead className="thead-light">
                   <tr>
                     <th
-                      className="sort mt-n3"
-                      // data-sort="name"
+                      id="lvlRef"
+                      className="sort "
                       scope="col"
                       style={{
-                        background: 'transparent',
-                        // color: 'transparent',
-                        position: 'sticky',
-                        top: 0,
+                        background: '',
+                        border: '1px dotted blue',
                       }}
                     >
-                      <h4 style={{ color: 'transparent' }}>Level School</h4>
+                      <h4 style={{ color: 'transparent' }}></h4>
                     </th>
                     <th
-                      className="sort mt-m3"
-                      // data-sort="budget"
+                      id="nameRef"
+                      className="sort"
                       scope="col"
-                      style={{
-                        background: 'transparent',
-                        // color: 'transparent',
-                        position: 'sticky',
-                        top: 0,
-                      }}
+                      style={{ marginRight: '10px', background: '' }}
                     >
-                      <h4 style={{ color: 'transparent' }}>Name</h4>
+                      <h4 style={{ color: 'transparent' }}>∫</h4>
                     </th>
                     <th
-                      className="sort mt-m3"
-                      // data-sort="status"
+                      id="durationRef"
+                      className="sort"
                       scope="col"
-                      style={{
-                        background: 'transparent',
-                        // color: 'transparent',
-                        position: 'sticky',
-                        top: 0,
-                      }}
+                      style={{ background: '', border: '1px dotted blue' }}
                     >
-                      <h4 style={{ color: 'transparent' }}>Duration</h4>
+                      <h4 style={{ color: 'transparent' }}></h4>
                     </th>
                     <th
-                      className="mt-m3"
+                      id="castRef"
+                      className=""
                       scope="col"
                       style={{
-                        background: 'transparent',
-                        // color: 'transparent',
-                        position: 'sticky',
-                        top: 0,
+                        background: '',
                       }}
                     >
-                      <h4 style={{ color: 'transparent' }}>Cast It!</h4>
+                      <h4 style={{ color: 'transparent' }}></h4>
                     </th>
                   </tr>
                 </thead>
                 <tbody
                   style={{
-                    // border: '1px dotted green',
-                    background: 'inherit',
-                    // marginTop: '-45px',
-                    overflow: 'scroll',
                     transform: 'translateY(-35px)',
-                    // paddingBottom: '30px',
-                    // position: 'sticky',
-                    height: '800px',
-                    width: '80%',
+                    minWidth: '100%',
+                    cursor: 'pointer',
                   }}
                 >
                   {data.map((spell, index) => {
                     return (
                       <FinalSpellsTable
-                        spell={spell}
                         key={index}
-                        spellPrepped={spellPrepped}
-                        setSpellPrepped={setSpellPrepped}
+                        spell={spell}
+                        index={index}
+                        newspellPrepped={newspellPrepped}
+                        setnewSpellPrepped={setnewSpellPrepped}
+                        spellDescription={spellDescription}
+                        setSpellDescription={setSpellDescription}
                         onDropdownClick={props.onDropdownClick}
                         spellSlots={props.spellSlots}
                         setSpellSlots={props.setSpellSlots}
                         spellsPreparable={props.spellsPreparable}
                         setSpellsPreparable={props.setSpellsPreparable}
-                        spellDescription={spellDescription}
-                        setSpellDescription={setSpellDescription}
                       />
                     );
                   })}
                 </tbody>
               </div>
             </Table>
-          </Container>
-        )}
-      </Card>
-    </Container>
+          </CardBody>
+        </Card>
+      )}
+    </div>
   );
 }
 

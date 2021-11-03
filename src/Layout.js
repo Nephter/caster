@@ -91,6 +91,14 @@ const Layout = () => {
     fetchJson();
   }, [playerLevel]);
 
+  // navigates to main page of app only after inputing relevant info
+  const onSubmit = () => {
+    setLoggedIn(!loggedIn);
+    setSpellsPreparable(+playerLevel + +modifier);
+    setPlayerLevel(playerLevel);
+    setLoading(!loggedIn);
+  };
+
   // sets spell slots based on players level and modifier
   useEffect(() => {
     setSpellSlots(spellSlotsByLevel[playerLevel - 1]);
@@ -108,14 +116,6 @@ const Layout = () => {
     setSpellSlots(newSpellSlotsValues);
   };
 
-  // navigates to main page of app only after inputing relevant info
-  const onSubmit = () => {
-    setLoggedIn(!loggedIn);
-    setSpellsPreparable(+playerLevel + +modifier);
-    setPlayerLevel(playerLevel);
-    setLoading(!loggedIn);
-  };
-
   // EXPERIMENT var thing = { logIn: [loggedIn, setLoggedIn] };
   return (
     <div
@@ -126,7 +126,7 @@ const Layout = () => {
         backgroundSize: '50% auto',
       }}
     >
-      <Container style={{}}>
+      <Container style={{ maxHeight: 'inherit' }}>
         {!loggedIn ? (
           <Login
             onSubmit={onSubmit}
@@ -168,6 +168,7 @@ export default Layout;
 //     } catch (error) {
 //       console.log('error', error);
 //     }
+
 //     var newArray = spellDataJson.filter((sl) => {
 //       let thing = sl.classes.filter((sub) => {
 //         return sub.name === 'Cleric';

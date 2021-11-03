@@ -1,0 +1,22 @@
+.spellTableBody::-webkit-scrollbar {
+  display: none;
+}
+.spellTableBody {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.MuiMenu-paper {
+  background-color: transparent !important;
+  background-image: url(../img/fuck.svg) !important;
+  background-size: cover;
+  box-shadow: none !important;
+  border: 0;
+}
+
+.MuiPopover-paper {
+  background-color: transparent !important;
+  background-image: url(../img/fuck.svg) !important;
+  background-size: cover;
+  box-shadow: none !important;
+  border: 0;
+}

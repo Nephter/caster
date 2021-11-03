@@ -4,8 +4,9 @@ import parchment from '../assets/img/parchment2.svg';
 
 Modal.setAppElement('#root');
 
-const MyModal = (props) => {
+const ModalDescription = (props) => {
   const modalStyles = {
+    marginLeft: '10px',
     overlay: {
       position: 'fixed',
       top: 0,
@@ -28,11 +29,9 @@ const MyModal = (props) => {
       minHeight: '40%',
       whiteSpace: 'pre-line',
       backgroundImage: `url(${parchment})`,
-      // backgroundRepeat: 'no-repeat',
       backgroundSize: 'cover',
       border: 0,
       color: 'black',
-      // position: 'absolute',
       background: 'transparent',
       padding: '4%',
     },
@@ -47,7 +46,6 @@ const MyModal = (props) => {
         <div
           style={{
             fontSize: '.75rem',
-            paddingLeft: '10px',
             paddingTop: '5px',
           }}
         >
@@ -67,4 +65,4 @@ const MyModal = (props) => {
   );
 };
 
-export default MyModal;
+export default ModalDescription;
