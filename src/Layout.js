@@ -126,7 +126,7 @@ const Layout = () => {
         backgroundSize: '50% auto',
       }}
     >
-      <Container>
+      <Container className="d-flex justify-content-center">
         {!loggedIn ? (
           <Login
             onSubmit={onSubmit}

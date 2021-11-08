@@ -51,7 +51,7 @@ export default function DropdownSchoolIcon(props) {
   }
 
   return (
-    <div>
+    <div className="">
       <Typography
         aria-owns={open ? 'mouse-over-popover' : undefined}
         aria-haspopup="true"
@@ -59,7 +59,7 @@ export default function DropdownSchoolIcon(props) {
         onMouseLeave={handlePopoverClose}
       >
         <img
-          className="avatar-sm ml-3 rounded-circle"
+          className="ml-3 rounded-circle avatar-sm"
           alt={'...'}
           src={school}
         />

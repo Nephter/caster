@@ -1,16 +1,8 @@
 import React from 'react';
-import parchment from '../assets/img/theme/parchment1.jpg';
-import {
-  Container,
-  Row,
-  Col,
-  Input,
-  Button,
-  Card,
-  CardTitle,
-  CardText,
-  Form,
-} from 'reactstrap';
+import clericSeal from '../assets/img/cleric-seal.svg';
+import bannerButton from '../assets/img/bannerButton.png';
+import { Input, Card, CardTitle, CardText, Form } from 'reactstrap';
+import Button from '@mui/material/Button';
 
 const Login = (props) => {
   const submitHandler = (e) => {
@@ -23,102 +15,59 @@ const Login = (props) => {
   };
   // EXPERIMENT props.thing.logIn[1](); making state an object, to cut down on the amount of states being passed around components
   return (
-    <Container className="py-5 w-50">
+    <div
+      className="w-75 mx-auto"
+      style={{
+        backgroundImage: `url(${clericSeal})`,
+        backgroundRepeat: 'no-repeat',
+        backgroundSize: 'cover',
+      }}
+    >
       <Form
         onSubmit={submitHandler}
-        className="text-center d-flex justify-content-center align-content-center "
+        className="text-center d-flex justify-content-center"
       >
-        <Card
-          className=""
-          body
-          style={{
-            backgroundImage: `url(${parchment})`,
-            backgroundRepeat: 'no-repeat',
-            backgroundSize: 'cover',
-          }}
-        >
-          <CardTitle tag="h2">Character Info</CardTitle>
-          <CardText tag="h5">Keep track of your Cleric spell info</CardText>
-          <Row className="flex-direction-column justify-content-center align-items-center">
-            <Col md={6}>
-              <Input
-                autoFocus
-                placeholder="Cleric Level"
-                className="text-center no-outline border-0 opacity-7 text-black "
-                type="number"
-                // value={+props.playerLevel}
-                onChange={(k) => props.setPlayerLevel(k.target.value)}
-              />
-            </Col>
-          </Row>
-          <Row className="flex-direction-column justify-content-center align-items-center">
-            <Col md={6}>
-              <Input
-                placeholder="Wisdom Modifier"
-                className="text-center my-2 border-0 opacity-7 text-black"
-                type="number"
-                value={props.modifier}
-                onChange={(s) => props.setModifier(s.target.value)}
-              />
-            </Col>
-          </Row>
-          <Row className="flex-direction-column justify-content-center align-items-center my-3">
-            <Col md={6}>
-              <Button className="opacity-7">Submit</Button>
-            </Col>
-          </Row>
+        <Card className="mb-2" style={{ background: 'transparent' }} body>
+          <CardTitle className="pt-9" tag="h1" style={{ fontSize: '2rem' }}>
+            Cleric
+          </CardTitle>
+          <CardText tag="h5" className="pt-7 pb-2" style={{ color: 'maroon' }}>
+            Keep track of your Cleric spell info
+          </CardText>
+          <Input
+            autoFocus
+            placeholder="Cleric Level"
+            className="text-center no-outline border-0 opacity-7 text-black w-50 mx-auto "
+            type="number"
+            onChange={(k) => props.setPlayerLevel(k.target.value)}
+          />
+          <Input
+            placeholder="Wisdom Modifier"
+            className="text-center my-2 border-0 opacity-7 text-black w-50 mx-auto"
+            type="number"
+            value={props.modifier}
+            onChange={(s) => props.setModifier(s.target.value)}
+          />
+          <Button
+            type="submit"
+            className=" mx-auto"
+            style={{
+              backgroundImage: `url(${bannerButton})`,
+              backgroundSize: '100% 100%',
+              backgroundColor: 'transparent',
+              color: 'maroon',
+              fontSize: '1rem',
+              fontFamily: 'Patrick Hand SC, cursive',
+              top: '1rem',
+              border: 0,
+            }}
+          >
+            <div className="px-5">Submit</div>
+          </Button>
         </Card>
       </Form>
-    </Container>
+    </div>
   );
 };
 
 export default Login;
-
-//  <Container>
-//    <Row>
-//      <Col md={4} />
-//      <Col md={4}>
-//        <Form
-//          onSubmit={submitHandler}
-//          className="text-center d-flex justify-content-center align-content-center "
-//        >
-//          <Card body color="">
-//            <CardTitle tag="h4">Character Info</CardTitle>
-//            <CardText>
-//              As of right now, this is an app for tracking spell casts of a
-//              Cleric.
-//            </CardText>
-//            <Row>
-//              <Col md={3} />
-//              <Col md={6}>
-//                <Input
-//                  autoFocus
-//                  placeholder="Level"
-//                  className="text-center"
-//                  type="number"
-//                  // value={+props.playerLevel}
-//                  onChange={(k) => props.setPlayerLevel(k.target.value)}
-//                />
-//              </Col>
-//            </Row>
-//            <Row>
-//              <Col md={3} />
-//              <Col md={6}>
-//                <Input
-//                  placeholder="Modifier"
-//                  className="text-center"
-//                  type="number"
-//                  value={props.modifier}
-//                  onChange={(s) => props.setModifier(s.target.value)}
-//                />
-//              </Col>
-//            </Row>
-//            <Row>
-//              <Button>Submit</Button>
-//            </Row>
-//          </Card>
-//        </Form>
-//      </Col>
-//    </Row>
-//  </Container>;

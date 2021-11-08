@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { Input } from 'reactstrap';
 
 const MyCheckbox = (props) => {
   const [isChecked, setIsChecked] = useState(false);
 
-  const handleCheckbox = () => {
+  const handleCheckbox = (e) => {
     const spellIndex = props.newspellPrepped.spell.indexOf(props.spell);
     // checked
     if (isChecked) {
@@ -14,6 +15,7 @@ const MyCheckbox = (props) => {
         spell: [...props.newspellPrepped.spell],
       });
       setIsChecked(!isChecked);
+
       // NOT checked
     } else {
       if (props.spellsPreparable === 0) {
@@ -26,11 +28,21 @@ const MyCheckbox = (props) => {
         setIsChecked(!isChecked);
       }
     }
+    e.stopPropagation();
   };
 
   return (
-    <div key={props.index} className="text-center">
-      <input type="checkbox" checked={isChecked} onChange={handleCheckbox} />
+    <div
+      key={props.index}
+      className="d-flex justify-content-center align-items-center castButton pt-1 pl-3"
+    >
+      <Input
+        className=""
+        style={{ position: 'relative', cursor: 'pointer' }}
+        type="checkbox"
+        checked={isChecked}
+        onClick={handleCheckbox}
+      />
     </div>
   );
 };

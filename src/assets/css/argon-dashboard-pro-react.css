@@ -29,10 +29,6 @@
 /* @import url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap'); */
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@600&display=swap');
 
-.actionType {
-  font-family: 'Raleway', sans-serif !important;
-}
-
 html.rtl {
   direction: rtl;
 }
@@ -1913,21 +1909,6 @@ h5,
 h6 {
   margin-top: 0;
   margin-bottom: 0;
-}
-
-.YourClass {
-  cursor: 'pointer';
-}
-.level {
-  /* margin-left: 5px !important; */
-  /* margin-right: -17px !important; */
-  margin-bottom: 0px !important;
-  line-height: 1;
-}
-
-.YourClass td {
-  flex-direction: 'column';
-  justify-content: 'start';
 }
 
 p {
@@ -21248,7 +21229,7 @@ textarea[resize='horizontal'] {
 }
 
 .table thead th {
-  padding-top: 0.75rem;
+  /* padding-top: 0.75rem; */
   padding-bottom: 0.75rem;
   font-size: 0.65rem;
   /* text-transform: uppercase; */
@@ -21330,10 +21311,6 @@ textarea[resize='horizontal'] {
   margin-bottom: 0;
   /* padding-left: 1.5rem;
   padding-right: 1.5rem; */
-}
-/* change  */
-.Yourclass > .castButton {
-  pointer-events: none;
 }
 
 .table .custom-toggle {

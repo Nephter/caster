@@ -1,12 +1,4 @@
 import { useState } from 'react';
-import Abjuration from '../assets/img/theme/Abjuration2.jpg';
-import Conjuration from '../assets/img/theme/Conjuration2.jpg';
-import Divination from '../assets/img/theme/Divination2.jpg';
-import Enchantment from '../assets/img/theme/Enchantment2.jpg';
-import Evocation from '../assets/img/theme/Evocation2.jpg';
-import Illusion from '../assets/img/theme/Illusion2.jpg';
-import Necromancy from '../assets/img/theme/Necromancy2.jpg';
-import Transmutation from '../assets/img/theme/Transmutation2.jpg';
 import DropdownSchoolIcon from './DropdownSchoolIcon.js';
 import PopoverCaster from './PopoverCaster.js';
 import ModalDescription from './ModalDescription.js';
@@ -31,18 +23,19 @@ const FinalSpellsTable = (props) => {
       castingTime = 'REACTION';
       break;
   }
-  console.log(props.newspellPrepped.spell);
 
   return (
-    <tr key={props.index} onClick={rowClickHandler} className="Yourclass">
-      <td className="d-flex justify-content-start align-items-center">
+    <tr key={props.index} onClick={rowClickHandler} className="yourClass">
+      <td className="d-flex align-items-center ml-1">
         <h2 className="level">{props.spell.level}</h2>
         <DropdownSchoolIcon spell={props.spell} />
       </td>
-      <td className="">
-        <h3 style={{ fontSize: '1rem' }}>{props.spell.name}</h3>
+      <td className="pl-0">
+        <h3 className="" style={{ fontSize: '1rem' }}>
+          {props.spell.name}
+        </h3>
         <span
-          className="actionType"
+          className="ralewayFont"
           style={{
             marginTop: 0,
             paddingTop: 0,
@@ -72,8 +65,6 @@ const FinalSpellsTable = (props) => {
         <PopoverCaster
           index={props.index}
           spell={props.spell}
-          modalIsOpen={modalIsOpen}
-          setModalIsOpen={setModalIsOpen}
           dropdownIsOpen={dropdownIsOpen}
           setDropdownIsOpen={setDropdownIsOpen}
           spellSlots={props.spellSlots}

@@ -12,6 +12,8 @@ import FinalSpellsTable from './Components/FinalSpellsTable';
 
 //all checkboxes that are selected are used as a reference in final table
 
+// domains make unordered list in seperate file. put it between lvl and modifier. have it animate down to the full height of the list. upon click it animates back up to the chosen item
+
 function App(props) {
   const [loadingTable, setLoadingTable] = useState(true);
   const [table, setTable] = useState(false);
@@ -29,7 +31,7 @@ function App(props) {
     'Loading...'
   ) : (
     <div
-      className="mx-auto"
+      className=""
       style={{
         backgroundImage: `url(${parchment})`,
         backgroundSize: 'contain',
@@ -37,104 +39,11 @@ function App(props) {
       }}
     >
       {!table ? (
-        <Container style={{ background: 'transparent' }}>
-          <CardHeader
-            className="border-0"
-            style={{ background: 'transparent' }}
-          >
-            <ChooseSpellsHeader
-              table={table}
-              handleClick={handleClick}
-              spellsPreparable={props.spellsPreparable}
-              setSpellsPreparable={props.setSpellsPreparable}
-            />
-          </CardHeader>
-          <Table hover striped borderless>
-            <thead className="thead-light">
-              <tr>
-                <th
-                  className="sort"
-                  scope="col"
-                  style={{
-                    background: 'transparent',
-                    color: 'maroon',
-                    padding: 0,
-                  }}
-                >
-                  <h4
-                    style={{
-                      color: 'maroon',
-                      padding: 0,
-                      margin: 0,
-                    }}
-                  >
-                    Prep
-                  </h4>
-                </th>
-                <th
-                  className="sort"
-                  scope="col"
-                  style={{ background: 'transparent', color: 'maroon' }}
-                >
-                  <h4 style={{ color: 'maroon', padding: 0, margin: 0 }}>
-                    School Level
-                  </h4>
-                </th>
-                <th
-                  className="sort"
-                  scope="col"
-                  style={{
-                    background: 'transparent',
-                    color: 'maroon',
-                    width: '151px',
-                  }}
-                >
-                  <h4
-                    style={{
-                      color: 'maroon',
-                      padding: 0,
-                      margin: 0,
-                    }}
-                  >
-                    Name
-                  </h4>
-                </th>
-                <th
-                  className="sort"
-                  scope="col"
-                  style={{ background: 'transparent', color: 'maroon' }}
-                >
-                  <h4 style={{ color: 'maroon', padding: 0, margin: 0 }}>
-                    Casting Time
-                  </h4>
-                </th>
-              </tr>
-            </thead>
-            <tbody className="list">
-              {data.map((spell, index) => {
-                return (
-                  <ChooseSpellsTable
-                    key={index}
-                    spell={spell}
-                    index={index}
-                    newspellPrepped={newspellPrepped}
-                    setnewSpellPrepped={setnewSpellPrepped}
-                    spellsPreparable={props.spellsPreparable}
-                    setSpellsPreparable={props.setSpellsPreparable}
-                    onCheckboxHandler={props.onCheckboxHandler}
-                  />
-                );
-              })}
-            </tbody>
-          </Table>
-        </Container>
-      ) : (
         <Card style={{ background: 'transparent' }}>
           <div
             style={{
               height: '155px',
               background: 'transparent',
-              zIndex: '10',
             }}
           />
           <CardHeader
@@ -144,6 +53,175 @@ function App(props) {
               position: 'fixed',
               top: '10px',
               paddingBottom: 0,
+            }}
+          >
+            <ChooseSpellsHeader
+              table={table}
+              handleClick={handleClick}
+              spellsPreparable={props.spellsPreparable}
+              setSpellsPreparable={props.setSpellsPreparable}
+            />
+          </CardHeader>
+          <CardBody style={{ paddingTop: 0 }}>
+            <Table
+              hover
+              borderless
+              style={{
+                height: '600px',
+                width: '100%',
+              }}
+            >
+              <div
+                className="table spellTableBody"
+                style={{
+                  marginTop: '-45px',
+                  overflow: 'scroll',
+                  maxHeight: '60vh',
+                }}
+              >
+                <thead className="thead-light">
+                  <tr
+                    style={{
+                      backgroundImage: `url(${parchment})`,
+                    }}
+                  >
+                    <th
+                      className="sort tableStickyHead2"
+                      scope="col"
+                      style={{ backgroundPosition: '-53px' }}
+                    >
+                      <h3 style={{ color: 'maroon' }}>Prep</h3>
+                    </th>
+                    <th
+                      className="sort tableStickyHead2 pl-0"
+                      scope="col"
+                      style={{ backgroundPosition: '-114px' }}
+                    >
+                      <h3 style={{ color: 'maroon' }}>Lvl</h3>
+                    </th>
+                    <th
+                      className="sort tableStickyHead2"
+                      scope="col"
+                      style={{ backgroundPosition: '-204px' }}
+                    >
+                      <h3 style={{ color: 'maroon' }}>Name</h3>
+                    </th>
+                    <th
+                      className="sort tableStickyHead2"
+                      scope="col"
+                      style={{
+                        backgroundPosition: '-458px',
+                      }}
+                    >
+                      <h3 style={{ color: 'maroon' }}>Casting Info</h3>
+                    </th>
+                  </tr>
+                </thead>
+                <tbody
+                  style={{
+                    minWidth: '100%',
+                    cursor: 'pointer',
+                    transform: 'translateY(-20px)',
+                  }}
+                >
+                  <tr
+                    style={{
+                      padding: 0,
+                    }}
+                  >
+                    <td
+                      style={{
+                        padding: 0,
+                      }}
+                    >
+                      <h4
+                        style={{
+                          color: 'transparent',
+                          padding: 0,
+                        }}
+                      >
+                        .
+                      </h4>
+                    </td>
+                    <td
+                      style={{
+                        padding: 0,
+                      }}
+                    >
+                      <h4
+                        style={{
+                          color: 'transparent',
+                          padding: 0,
+                        }}
+                      >
+                        .
+                      </h4>
+                    </td>
+                    <td
+                      style={{
+                        padding: 0,
+                      }}
+                    >
+                      <h4
+                        style={{
+                          color: 'transparent',
+                          padding: 0,
+                        }}
+                      >
+                        ............................................................
+                      </h4>
+                    </td>
+                    <td
+                      style={{
+                        padding: 0,
+                      }}
+                    >
+                      <h4
+                        style={{
+                          color: 'transparent',
+                          padding: 0,
+                        }}
+                      >
+                        ..........
+                      </h4>
+                    </td>
+                  </tr>
+                  {data.map((spell, index) => {
+                    return (
+                      <ChooseSpellsTable
+                        key={index}
+                        spell={spell}
+                        index={index}
+                        newspellPrepped={newspellPrepped}
+                        setnewSpellPrepped={setnewSpellPrepped}
+                        spellsPreparable={props.spellsPreparable}
+                        setSpellsPreparable={props.setSpellsPreparable}
+                        onCheckboxHandler={props.onCheckboxHandler}
+                      />
+                    );
+                  })}
+                </tbody>
+              </div>
+            </Table>
+          </CardBody>
+        </Card>
+      ) : (
+        // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+        <Card style={{ background: 'transparent' }}>
+          <div
+            style={{
+              height: '155px',
+              background: 'transparent',
+            }}
+          />
+          <CardHeader
+            className="border-0"
+            style={{
+              background: 'transparent',
+              position: 'fixed',
+              top: '10px',
+              paddingBottom: 0,
+              width: '68%',
             }}
           >
             <FinalSpellsHeader
@@ -170,52 +248,57 @@ function App(props) {
               >
                 <thead className="thead-light">
                   <tr
-                    className=""
                     style={{
                       backgroundImage: `url(${parchment})`,
-                      backgroundPosition: 'center',
-                      backgroundPositionY: '30%',
-                      backgroundSize: '690px auto',
                     }}
                   >
                     <th
-                      className="sort tableStickyHead"
+                      className="sort tableStickyHead pt-0"
                       scope="col"
-                      style={{ backgroundPosition: '-49px' }}
+                      style={{
+                        backgroundPosition: '-49px',
+                      }}
                     >
-                      <h4 style={{ color: 'maroon' }}>Lvl</h4>
+                      <h3 className="pl-0 pt-0" style={{ color: 'maroon' }}>
+                        Lvl
+                      </h3>
                     </th>
                     <th
-                      className="sort tableStickyHead"
+                      className="sort tableStickyHead pl-0 pt-0"
                       scope="col"
                       style={{ backgroundPosition: '-141px' }}
                     >
-                      <h4 style={{ color: 'maroon' }}>Name</h4>
+                      <h3 className="pt-0" style={{ color: 'maroon' }}>
+                        Name
+                      </h3>
                     </th>
                     <th
-                      className="sort tableStickyHead"
+                      className="sort tableStickyHead pt-0"
                       scope="col"
                       style={{ backgroundPosition: '-358px' }}
                     >
-                      <h4 style={{ color: 'maroon' }}>Duration</h4>
+                      <h3 className="pt-0" style={{ color: 'maroon' }}>
+                        Casting Info
+                      </h3>
                     </th>
                     <th
-                      className="tableStickyHead"
+                      className="tableStickyHead pt-0"
                       scope="col"
                       style={{
-                        backgroundPosition: '-544px',
+                        backgroundPosition: '-550px',
                       }}
                     >
-                      <h4 style={{ color: 'maroon' }}>Cast it!</h4>
+                      <h3 className="pt-0" style={{ color: 'maroon' }}>
+                        Cast it!
+                      </h3>
                     </th>
                   </tr>
                 </thead>
-
                 <tbody
                   style={{
                     minWidth: '100%',
                     cursor: 'pointer',
-                    transform: 'translateY(-30px)',
+                    transform: 'translateY(-25px)',
                   }}
                 >
                   <tr
@@ -234,7 +317,7 @@ function App(props) {
                           padding: 0,
                         }}
                       >
-                        ..........
+                        .
                       </h4>
                     </td>
                     <td

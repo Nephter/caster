@@ -21,6 +21,10 @@
   border: 0;
 }
 
+.MuiChip-label {
+  padding-top: 2px;
+}
+
 th.tableStickyHead {
   position: sticky;
   top: 0;
@@ -28,5 +32,31 @@ th.tableStickyHead {
   background-image: url(../img/fuck.svg) !important;
   background-position-y: -110px !important;
   background-size: 690px 768px !important;
-  /* background-color: transparent; */
+}
+
+th.tableStickyHead2 {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background-image: url(../img/fuck.svg) !important;
+  background-position-y: -109px !important;
+  background-size: 690px 768px !important;
+}
+.yourClass {
+  cursor: 'pointer';
+}
+.yourClass > .castButton {
+  pointer-events: none;
+}
+.yourClass td {
+  flex-direction: 'column';
+  justify-content: 'start';
+}
+
+.level {
+  margin-bottom: 0px !important;
+  line-height: 1;
+}
+.ralewayFont {
+  font-family: 'Raleway', sans-serif !important;
 }
