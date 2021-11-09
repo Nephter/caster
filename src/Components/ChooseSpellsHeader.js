@@ -1,8 +1,9 @@
-import { Container, Col, Label } from 'reactstrap';
+import { Container, Label } from 'reactstrap';
 import Button from '@mui/material/Button';
 import bannerButton from '../assets/img/bannerButton.png';
 
 const ChooseSpellsHeader = (props) => {
+  console.log(+props.playerLevel + +props.modifier);
   return (
     <Container fluid>
       <div className="header-body ">
@@ -11,7 +12,7 @@ const ChooseSpellsHeader = (props) => {
             props.spellsPreparable === 0 ? (
               <Button
                 size="small"
-                onClick={props.handleClick}
+                onClick={props.onPrepareClick}
                 style={{
                   backgroundImage: `url(${bannerButton})`,
                   backgroundSize: '100% 100%',
@@ -26,7 +27,8 @@ const ChooseSpellsHeader = (props) => {
               </Button>
             ) : (
               <h1 style={{ color: 'maroon' }}>
-                Preparable: {props.spellsPreparable}
+                Preparable: {props.spellsPreparable}/
+                {+props.playerLevel + +props.modifier}
               </h1>
             )
           ) : (

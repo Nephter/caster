@@ -21,6 +21,48 @@ const Layout = () => {
   // fetch spell data by character level
   let spellDataJson;
   useEffect(() => {
+    let num;
+    switch (playerLevel) {
+      case '1':
+      case '2':
+        num = '1';
+        break;
+      case '3':
+      case '4':
+        num = '2';
+        break;
+      case '5':
+      case '6':
+        num = '3';
+        break;
+      case '7':
+      case '8':
+        num = '4';
+        break;
+      case '9':
+      case '10':
+        num = '5';
+        break;
+      case '11':
+      case '12':
+        num = '6';
+        break;
+      case '13':
+      case '14':
+        num = '7';
+        break;
+      case '15':
+      case '16':
+        num = '8';
+        break;
+      case '17':
+      case '18':
+      case '19':
+      case '20':
+        num = '9';
+        break;
+      default:
+    }
     const fetchJson = async () => {
       let url;
       url = './AllClericSpellsData.json';
@@ -30,64 +72,22 @@ const Layout = () => {
       } catch (error) {
         console.log('error', error);
       }
-      let num;
-      switch (playerLevel) {
-        case '1':
-        case '2':
-          num = '1';
-          break;
-        case '3':
-        case '4':
-          num = '2';
-          break;
-        case '5':
-        case '6':
-          num = '3';
-          break;
-        case '7':
-        case '8':
-          num = '4';
-          break;
-        case '9':
-        case '10':
-          num = '5';
-          break;
-        case '11':
-        case '12':
-          num = '6';
-          break;
-        case '13':
-        case '14':
-          num = '7';
-          break;
-        case '15':
-        case '16':
-          num = '8';
-          break;
-        case '17':
-        case '18':
-        case '19':
-        case '20':
-          num = '9';
-          break;
-        default:
-      }
-      var bigArray = [];
-      const finalArray = () => {
+
+      var finalArray = [];
+      const bigArray = () => {
         for (let i = 0; i < num; i++) {
           var levelArray = spellDataJson.filter((sl) => {
             return sl.level === +i + 1;
           });
-          bigArray.push(levelArray);
+          finalArray.push(levelArray);
           levelArray = [];
         }
-        bigArray = [].concat.apply([], bigArray);
-        return bigArray;
+        finalArray = [].concat.apply([], finalArray);
+        return finalArray;
       };
-      finalArray();
-      setSpellsByLevel(bigArray);
+      bigArray();
+      setSpellsByLevel(finalArray);
     };
-
     fetchJson();
   }, [playerLevel]);
 
@@ -147,6 +147,8 @@ const Layout = () => {
             onDropdownClick={onDropdownClick}
             onCheckboxHandler={onCheckboxHandler}
             spellsByLevel={spellsByLevel}
+            playerLevel={playerLevel}
+            modifier={modifier}
           />
         )}
       </Container>

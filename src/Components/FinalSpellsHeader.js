@@ -9,7 +9,11 @@ const FinalSpellsHeader = (props) => {
         <h1 className="" style={{ color: 'maroon', paddingBottom: '5px' }}>
           Spell Slots:
         </h1>
-        <PopoverRest />
+        <PopoverRest
+          spellSlots={props.spellSlots}
+          onLongRestClick={props.onLongRestClick}
+          setnewSpellPrepped={props.setnewSpellPrepped}
+        />
       </span>
 
       <div style={{ width: '80%', zIndex: '20' }}>

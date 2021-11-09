@@ -19,12 +19,20 @@ function App(props) {
   const [table, setTable] = useState(false);
   const [newspellPrepped, setnewSpellPrepped] = useState({ spell: [] });
   const [spellDescription, setSpellDescription] = useState(false);
+  const [numberOfSpellsPreparable, setNumberOfSpellsPreparable] = useState(
+    +props.playerLevel + +props.modifier
+  );
 
+  console.log(numberOfSpellsPreparable);
   const data = props.spellsByLevel;
 
-  const handleClick = () => {
-    // setWidth();
+  const onPrepareClick = () => {
     setTable(true);
+  };
+
+  const onLongRestClick = () => {
+    setTable(false);
+    props.setSpellsPreparable(numberOfSpellsPreparable);
   };
 
   return !loadingTable ? (
@@ -57,9 +65,13 @@ function App(props) {
           >
             <ChooseSpellsHeader
               table={table}
-              handleClick={handleClick}
+              onPrepareClick={onPrepareClick}
               spellsPreparable={props.spellsPreparable}
               setSpellsPreparable={props.setSpellsPreparable}
+              numberOfSpellsPreparable={props.numberOfSpellsPreparable}
+              setNumberOfSpellsPreparable={props.setNumberOfSpellsPreparable}
+              playerLevel={props.playerLevel}
+              modifier={props.modifier}
             />
           </CardHeader>
           <CardBody style={{ paddingTop: 0 }}>
@@ -227,6 +239,8 @@ function App(props) {
             <FinalSpellsHeader
               spellSlots={props.spellSlots}
               setSpellSlots={props.setSpellSlots}
+              onLongRestClick={onLongRestClick}
+              setnewSpellPrepped={setnewSpellPrepped}
             />
           </CardHeader>
           <CardBody style={{ paddingTop: 0 }}>

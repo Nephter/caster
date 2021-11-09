@@ -23,6 +23,7 @@
 
 .MuiChip-label {
   padding-top: 2px;
+  padding-inline-start: 0 !important;
 }
 
 th.tableStickyHead {

@@ -1,10 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import clericSeal from '../assets/img/cleric-seal.svg';
 import bannerButton from '../assets/img/bannerButton.png';
-import { Input, Card, CardTitle, CardText, Form } from 'reactstrap';
-import Button from '@mui/material/Button';
+import { Input, Card, CardTitle, Form, Button } from 'reactstrap';
+import { domains } from '../Variables/Cleric/SpellDomains.js';
+import ButtonDomain from './ButtonDomain.js';
 
 const Login = (props) => {
+  const [domain, setDomain] = useState('.');
+
   const submitHandler = (e) => {
     e.preventDefault();
     if (props.playerLevel === undefined || props.modifier === undefined) {
@@ -27,30 +30,52 @@ const Login = (props) => {
         onSubmit={submitHandler}
         className="text-center d-flex justify-content-center"
       >
-        <Card className="mb-2" style={{ background: 'transparent' }} body>
-          <CardTitle className="pt-9" tag="h1" style={{ fontSize: '2rem' }}>
-            Cleric
+        <Card className="" style={{ background: 'transparent' }} body>
+          <CardTitle className=" d-flex mx-auto" style={{ fontSize: '2rem' }}>
+            <div>
+              <div className="pt-9">Cleric</div>
+              <h1
+                className="mx-auto"
+                style={{ fontSize: '2rem', minimumHeight: '2rem' }}
+              >
+                {domain}
+              </h1>
+            </div>
           </CardTitle>
-          <CardText tag="h5" className="pt-7 pb-2" style={{ color: 'maroon' }}>
+          {/* <CardText tag="h5" className="pt-7 pb-2" style={{ color: 'maroon' }}>
             Keep track of your Cleric spell info
-          </CardText>
+          </CardText> */}
           <Input
             autoFocus
             placeholder="Cleric Level"
-            className="text-center no-outline border-0 opacity-7 text-black w-50 mx-auto "
+            className="text-center no-outline border-0 opacity-7 text-black w-50 mx-auto mb-1 mt-5"
             type="number"
             onChange={(k) => props.setPlayerLevel(k.target.value)}
+            style={{ height: '32px' }}
           />
           <Input
             placeholder="Wisdom Modifier"
-            className="text-center my-2 border-0 opacity-7 text-black w-50 mx-auto"
+            className="text-center border-0 opacity-7 text-black w-50 mx-auto mb-1"
             type="number"
             value={props.modifier}
             onChange={(s) => props.setModifier(s.target.value)}
+            style={{ height: '32px' }}
           />
+
+          {domains.map((domainType, index) => {
+            return (
+              <ButtonDomain
+                domainType={domainType}
+                key={index}
+                index={index}
+                domain={domain}
+                setDomain={setDomain}
+              />
+            );
+          })}
           <Button
             type="submit"
-            className=" mx-auto"
+            className=" mx-auto py-1 "
             style={{
               backgroundImage: `url(${bannerButton})`,
               backgroundSize: '100% 100%',
@@ -60,9 +85,11 @@ const Login = (props) => {
               fontFamily: 'Patrick Hand SC, cursive',
               top: '1rem',
               border: 0,
+              outline: 0,
+              boxShadow: '0 0 0 0',
             }}
           >
-            <div className="px-5">Submit</div>
+            <div className="px-5 mb-2">Submit</div>
           </Button>
         </Card>
       </Form>
