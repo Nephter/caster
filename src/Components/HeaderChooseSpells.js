@@ -2,8 +2,7 @@ import { Container, Label } from 'reactstrap';
 import Button from '@mui/material/Button';
 import bannerButton from '../assets/img/bannerButton.png';
 
-const ChooseSpellsHeader = (props) => {
-  console.log(+props.playerLevel + +props.modifier);
+const HeaderChooseSpells = (props) => {
   return (
     <Container fluid>
       <div className="header-body ">
@@ -40,4 +39,4 @@ const ChooseSpellsHeader = (props) => {
   );
 };
 
-export default ChooseSpellsHeader;
+export default HeaderChooseSpells;

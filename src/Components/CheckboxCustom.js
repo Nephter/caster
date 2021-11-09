@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Input } from 'reactstrap';
 
-const MyCheckbox = (props) => {
+const CheckboxCustom = (props) => {
   const [isChecked, setIsChecked] = useState(false);
 
   const handleCheckbox = (e) => {
@@ -31,6 +31,8 @@ const MyCheckbox = (props) => {
     e.stopPropagation();
   };
 
+  const doNothing = () => {};
+
   return (
     <div
       key={props.index}
@@ -42,9 +44,10 @@ const MyCheckbox = (props) => {
         type="checkbox"
         checked={isChecked}
         onClick={handleCheckbox}
+        onChange={doNothing}
       />
     </div>
   );
 };
 
-export default MyCheckbox;
+export default CheckboxCustom;

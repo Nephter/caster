@@ -3,14 +3,16 @@ import DropdownSchoolIcon from './DropdownSchoolIcon.js';
 import PopoverCaster from './PopoverCaster.js';
 import ModalDescription from './ModalDescription.js';
 
-const FinalSpellsTable = (props) => {
+const TableFinalSpells = (props) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [dropdownIsOpen, setDropdownIsOpen] = useState(Boolean(null));
 
   const rowClickHandler = () => {
     setModalIsOpen(!modalIsOpen);
   };
-
+  console.log(props.newspellPrepped);
+  console.log(props.domain);
+  console.log(props.spell);
   var castingTime;
   switch (props.spell.casting_time) {
     case '1 action':
@@ -22,6 +24,8 @@ const FinalSpellsTable = (props) => {
     case '1 reaction':
       castingTime = 'REACTION';
       break;
+    default:
+      castingTime = props.spell.casting_time;
   }
 
   return (
@@ -35,7 +39,7 @@ const FinalSpellsTable = (props) => {
           {props.spell.name}
         </h3>
         <span
-          className="ralewayFont"
+          className="ralewayFont text-uppercase"
           style={{
             marginTop: 0,
             paddingTop: 0,
@@ -85,4 +89,4 @@ const FinalSpellsTable = (props) => {
   );
 };
 
-export default FinalSpellsTable;
+export default TableFinalSpells;

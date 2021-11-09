@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
-import { Container } from 'react-bootstrap';
 import { Card, CardBody, CardHeader, Table } from 'reactstrap';
-import ChooseSpellsTable from './Components/ChooseSpellsTable';
-import ChooseSpellsHeader from './Components/ChooseSpellsHeader';
+import TableChooseSpells from './Components/TableChooseSpells';
+import HeaderChooseSpells from './Components/HeaderChooseSpells';
 import parchment from './assets/img/fuck.svg';
-import FinalSpellsHeader from './Components/FinalSpellsHeader';
-import FinalSpellsTable from './Components/FinalSpellsTable';
+import HeaderFinalSpells from './Components/HeaderFinalSpells';
+import TableFinalSpells from './Components/TableFinalSpells';
+import TableDomainSpells from './Components/TableDomainSpells';
 
 // set preppared spells state of parent of both components, set = ([]). pass state to both components
 
@@ -17,13 +17,14 @@ import FinalSpellsTable from './Components/FinalSpellsTable';
 function App(props) {
   const [loadingTable, setLoadingTable] = useState(true);
   const [table, setTable] = useState(false);
-  const [newspellPrepped, setnewSpellPrepped] = useState({ spell: [] });
-  const [spellDescription, setSpellDescription] = useState(false);
+  const [newspellPrepped, setnewSpellPrepped] = useState({
+    spell: [...props.domain],
+  });
+  const [spellDescription, setModalSpellDescription] = useState(false);
   const [numberOfSpellsPreparable, setNumberOfSpellsPreparable] = useState(
     +props.playerLevel + +props.modifier
   );
 
-  console.log(numberOfSpellsPreparable);
   const data = props.spellsByLevel;
 
   const onPrepareClick = () => {
@@ -63,7 +64,7 @@ function App(props) {
               paddingBottom: 0,
             }}
           >
-            <ChooseSpellsHeader
+            <HeaderChooseSpells
               table={table}
               onPrepareClick={onPrepareClick}
               spellsPreparable={props.spellsPreparable}
@@ -200,7 +201,7 @@ function App(props) {
                   </tr>
                   {data.map((spell, index) => {
                     return (
-                      <ChooseSpellsTable
+                      <TableChooseSpells
                         key={index}
                         spell={spell}
                         index={index}
@@ -236,7 +237,7 @@ function App(props) {
               width: '68%',
             }}
           >
-            <FinalSpellsHeader
+            <HeaderFinalSpells
               spellSlots={props.spellSlots}
               setSpellSlots={props.setSpellSlots}
               onLongRestClick={onLongRestClick}
@@ -379,14 +380,15 @@ function App(props) {
                   </tr>
                   {newspellPrepped.spell.map((spell, index) => {
                     return (
-                      <FinalSpellsTable
+                      <TableFinalSpells
                         key={index}
                         spell={spell}
                         index={index}
                         newspellPrepped={newspellPrepped}
                         setnewSpellPrepped={setnewSpellPrepped}
                         spellDescription={spellDescription}
-                        setSpellDescription={setSpellDescription}
+                        setModalSpellDescription={setModalSpellDescription}
+                        domain={props.domain}
                         onDropdownClick={props.onDropdownClick}
                         spellSlots={props.spellSlots}
                         setSpellSlots={props.setSpellSlots}

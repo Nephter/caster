@@ -61,3 +61,19 @@ th.tableStickyHead2 {
 .ralewayFont {
   font-family: 'Raleway', sans-serif !important;
 }
+
+.list-group .btn-secondary:hover {
+  border-color: rgb(212, 212, 212) !important;
+  background-color: rgb(212, 212, 212) !important;
+  color: #212529 !important;
+  transform: none !important;
+}
+.list-group .btn-secondary:focus {
+  border-color: rgb(182, 182, 182) !important;
+  background-color: rgb(182, 182, 182) !important;
+  color: #212529 !important;
+}
+.list-group .btn-secondary:active {
+  border-color: rgb(182, 182, 182) !important;
+  background-color: rgb(182, 182, 182) !important;
+}

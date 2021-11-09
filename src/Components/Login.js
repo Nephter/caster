@@ -1,13 +1,11 @@
-import React, { useState } from 'react';
-import clericSeal from '../assets/img/cleric-seal.svg';
+import React from 'react';
+import clericSeal from '../assets/img/ClericSeal.svg';
 import bannerButton from '../assets/img/bannerButton.png';
 import { Input, Card, CardTitle, Form, Button } from 'reactstrap';
 import { domains } from '../Variables/Cleric/SpellDomains.js';
 import ButtonDomain from './ButtonDomain.js';
 
 const Login = (props) => {
-  const [domain, setDomain] = useState('.');
-
   const submitHandler = (e) => {
     e.preventDefault();
     if (props.playerLevel === undefined || props.modifier === undefined) {
@@ -16,6 +14,7 @@ const Login = (props) => {
       props.onSubmit(e);
     }
   };
+
   // EXPERIMENT props.thing.logIn[1](); making state an object, to cut down on the amount of states being passed around components
   return (
     <div
@@ -36,15 +35,16 @@ const Login = (props) => {
               <div className="pt-9">Cleric</div>
               <h1
                 className="mx-auto"
-                style={{ fontSize: '2rem', minimumHeight: '2rem' }}
+                style={{
+                  fontSize: '2rem',
+                  minimumHeight: '2rem',
+                  paddingLeft: '2px',
+                }}
               >
-                {domain}
+                {props.domainIcon}
               </h1>
             </div>
           </CardTitle>
-          {/* <CardText tag="h5" className="pt-7 pb-2" style={{ color: 'maroon' }}>
-            Keep track of your Cleric spell info
-          </CardText> */}
           <Input
             autoFocus
             placeholder="Cleric Level"
@@ -65,17 +65,18 @@ const Login = (props) => {
           {domains.map((domainType, index) => {
             return (
               <ButtonDomain
-                domainType={domainType}
                 key={index}
                 index={index}
-                domain={domain}
-                setDomain={setDomain}
+                setDomainIcon={props.setDomainIcon}
+                domainType={domainType}
+                setDomain={props.setDomain}
               />
             );
           })}
           <Button
+            disabled={props.domainIcon.type === 'img' ? true : false}
             type="submit"
-            className=" mx-auto py-1 "
+            className="mx-auto py-1 btn-primary"
             style={{
               backgroundImage: `url(${bannerButton})`,
               backgroundSize: '100% 100%',
@@ -87,9 +88,10 @@ const Login = (props) => {
               border: 0,
               outline: 0,
               boxShadow: '0 0 0 0',
+              transform: 'translate(0,-10px)',
             }}
           >
-            <div className="px-5 mb-2">Submit</div>
+            <div className="px-5 mb-2">Enter</div>
           </Button>
         </Card>
       </Form>

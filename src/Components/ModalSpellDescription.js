@@ -1,6 +1,6 @@
 import React from 'react';
 
-const SpellDescription = (props) => {
+const ModalSpellDescription = (props) => {
   return (
     <tr key={props.index}>
       <td>{props.spell.desc}</td>
@@ -8,4 +8,4 @@ const SpellDescription = (props) => {
   );
 };
 
-export default SpellDescription;
+export default ModalSpellDescription;

@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
-import MyCheckbox from './MyCheckbox.js';
+import CheckboxCustom from './CheckboxCustom.js';
 
-const useChooseSpellsTable = (props) => {
+const useTableChooseSpells = (props) => {
   const [available, setAvailable] = useState(false);
 
   return (
     <tr key={props.index}>
       <td className="prep">
-        <MyCheckbox
+        <CheckboxCustom
           key={props.index}
           available={available}
           setAvailable={setAvailable}
@@ -29,4 +29,4 @@ const useChooseSpellsTable = (props) => {
   );
 };
 
-export default useChooseSpellsTable;
+export default useTableChooseSpells;

@@ -2,7 +2,7 @@ import { Avatar, Chip } from '@mui/material';
 import React from 'react';
 import PopoverRest from './PopoverRest';
 
-const FinalSpellsHeader = (props) => {
+const HeaderFinalSpells = (props) => {
   return (
     <>
       <span className="d-flex justify-content-between">
@@ -83,4 +83,4 @@ const FinalSpellsHeader = (props) => {
   );
 };
 
-export default FinalSpellsHeader;
+export default HeaderFinalSpells;

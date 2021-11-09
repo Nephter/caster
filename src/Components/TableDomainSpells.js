@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import DropdownSchoolIcon from './DropdownSchoolIcon.js';
+import PopoverCaster from './PopoverCaster.js';
 import ModalDescription from './ModalDescription.js';
-import MyCheckbox from './MyCheckbox.js';
 
-const ChooseSpellsTable = (props) => {
+const TableFinalSpells = (props) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [dropdownIsOpen, setDropdownIsOpen] = useState(Boolean(null));
 
   const rowClickHandler = () => {
     setModalIsOpen(!modalIsOpen);
@@ -23,26 +24,18 @@ const ChooseSpellsTable = (props) => {
       break;
   }
 
+  console.log(props.spell[props.index]);
+
   return (
     <tr key={props.index} onClick={rowClickHandler} className="yourClass">
-      <td>
-        <MyCheckbox
-          key={props.index}
-          spell={props.spell}
-          index={props.index}
-          newspellPrepped={props.newspellPrepped}
-          setnewSpellPrepped={props.setnewSpellPrepped}
-          spellsPreparable={props.spellsPreparable}
-          setSpellsPreparable={props.setSpellsPreparable}
-          onCheckboxHandler={props.onCheckboxHandler}
-        />
-      </td>
-      <td className="d-flex justify-content-start align-items-center pl-1">
+      <td className="d-flex align-items-center ml-1">
         <h2 className="level">{props.spell.level}</h2>
-        <DropdownSchoolIcon spell={props.spell} />
+        <DropdownSchoolIcon spell={props.spell[props.index]} />
       </td>
-      <td>
-        <h3 style={{ fontSize: '1rem' }}>{props.spell.name}</h3>
+      <td className="pl-0">
+        <h3 className="" style={{ fontSize: '1rem' }}>
+          {props.spell.name}
+        </h3>
         <span
           className="ralewayFont"
           style={{
@@ -66,9 +59,20 @@ const ChooseSpellsTable = (props) => {
           {props.spell.components}
         </span>
       </td>
-      <td>
+      <td style={{ paddingTop: '12px' }}>
         <h5>Duration: {props.spell.duration}</h5>
         <h5>Range: {props.spell.range}</h5>
+      </td>
+      <td>
+        <PopoverCaster
+          index={props.index}
+          spell={props.spell}
+          dropdownIsOpen={dropdownIsOpen}
+          setDropdownIsOpen={setDropdownIsOpen}
+          spellSlots={props.spellSlots}
+          setSpellSlots={props.setSpellSlots}
+          onDropdownClick={props.onDropdownClick}
+        />
         <ModalDescription
           index={props.index}
           spell={props.spell}
@@ -76,11 +80,11 @@ const ChooseSpellsTable = (props) => {
           modalIsOpen={modalIsOpen}
           setModalIsOpen={setModalIsOpen}
           spellDescription={props.spellDescription}
-          setSpellDescription={props.setSpellDescription}
+          setModalSpellDescription={props.setModalSpellDescription}
         />
       </td>
     </tr>
   );
 };
 
-export default ChooseSpellsTable;
+export default TableFinalSpells;

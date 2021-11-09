@@ -5,6 +5,7 @@ import Login from './Components/Login';
 import App from './App';
 import { spellSlotsByLevel } from './Variables/SpellSlotChart';
 import tableTop from './assets/img/theme/tabletop3.jpg';
+import clericMace from './assets/img/ClericMace.svg';
 
 // if app is loading have a d20 instead of "loading..."
 // set woodgrain tableTop size smaller so I dont feel like my head is right above the table
@@ -17,52 +18,75 @@ const Layout = () => {
   const [spellSlots, setSpellSlots] = useState(null);
   const [loading, setLoading] = useState(true);
   const [spellsByLevel, setSpellsByLevel] = useState([]);
+  const [domain, setDomain] = useState([]);
+  const [domainIcon, setDomainIcon] = useState(
+    <img
+      style={{ height: '3rem', color: '#31325d' }}
+      src={clericMace}
+      alt="."
+    />
+  );
+
+  let num;
+  switch (playerLevel) {
+    case '1':
+    case '2':
+      num = '1';
+      break;
+    case '3':
+    case '4':
+      num = '2';
+      break;
+    case '5':
+    case '6':
+      num = '3';
+      break;
+    case '7':
+    case '8':
+      num = '4';
+      break;
+    case '9':
+    case '10':
+      num = '5';
+      break;
+    case '11':
+    case '12':
+      num = '6';
+      break;
+    case '13':
+    case '14':
+      num = '7';
+      break;
+    case '15':
+    case '16':
+      num = '8';
+      break;
+    case '17':
+    case '18':
+    case '19':
+    case '20':
+      num = '9';
+      break;
+    default:
+  }
+
+  //add domain spells by character level to be added to final spell table
+  useEffect(() => {
+    var domainSpellsArray = [];
+    const domainSpellsByLevel = () => {
+      for (let i = 0; i < num; i++) {
+        domainSpellsArray.push(domain[+i + 1]);
+      }
+      domainSpellsArray = [].concat.apply([], domainSpellsArray);
+      return domainSpellsArray;
+    };
+    domainSpellsByLevel();
+    setDomain(domainSpellsArray);
+  }, [domainIcon]);
 
   // fetch spell data by character level
   let spellDataJson;
   useEffect(() => {
-    let num;
-    switch (playerLevel) {
-      case '1':
-      case '2':
-        num = '1';
-        break;
-      case '3':
-      case '4':
-        num = '2';
-        break;
-      case '5':
-      case '6':
-        num = '3';
-        break;
-      case '7':
-      case '8':
-        num = '4';
-        break;
-      case '9':
-      case '10':
-        num = '5';
-        break;
-      case '11':
-      case '12':
-        num = '6';
-        break;
-      case '13':
-      case '14':
-        num = '7';
-        break;
-      case '15':
-      case '16':
-        num = '8';
-        break;
-      case '17':
-      case '18':
-      case '19':
-      case '20':
-        num = '9';
-        break;
-      default:
-    }
     const fetchJson = async () => {
       let url;
       url = './AllClericSpellsData.json';
@@ -76,8 +100,8 @@ const Layout = () => {
       var finalArray = [];
       const bigArray = () => {
         for (let i = 0; i < num; i++) {
-          var levelArray = spellDataJson.filter((sl) => {
-            return sl.level === +i + 1;
+          var levelArray = spellDataJson.filter((spell) => {
+            return spell.level === +i + 1;
           });
           finalArray.push(levelArray);
           levelArray = [];
@@ -117,6 +141,7 @@ const Layout = () => {
   };
 
   // EXPERIMENT var thing = { logIn: [loggedIn, setLoggedIn] };
+
   return (
     <div
       style={{
@@ -134,6 +159,10 @@ const Layout = () => {
             setPlayerLevel={setPlayerLevel}
             modifier={modifier}
             setModifier={setModifier}
+            domain={domain}
+            setDomain={setDomain}
+            domainIcon={domainIcon}
+            setDomainIcon={setDomainIcon}
             // EXPERIMENT thing={thing}
           />
         ) : !loading ? (
@@ -149,6 +178,10 @@ const Layout = () => {
             spellsByLevel={spellsByLevel}
             playerLevel={playerLevel}
             modifier={modifier}
+            domain={domain}
+            setDomain={setDomain}
+            domainIcon={domainIcon}
+            setDomainIcon={setDomainIcon}
           />
         )}
       </Container>

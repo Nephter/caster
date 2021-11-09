@@ -7,10 +7,12 @@ const ButtonDomain = (props) => {
   var domainIcon = domains[props.index][0].icon;
 
   const onClickHandler = () => {
-    props.setDomain(domains[props.index][0].icon);
+    props.setDomainIcon(domains[props.index][0].icon);
+    props.setDomain(domains[props.index]);
   };
+
   return (
-    <div className="list-group w-25 mx-auto ">
+    <div className="list-group w-25 mx-auto">
       <Button
         type="button"
         onClick={onClickHandler}
