@@ -9,6 +9,7 @@ import Evocation from '../assets/img/theme/Evocation2.jpg';
 import Illusion from '../assets/img/theme/Illusion2.jpg';
 import Necromancy from '../assets/img/theme/Necromancy2.jpg';
 import Transmutation from '../assets/img/theme/Transmutation2.jpg';
+import { Badge } from 'reactstrap';
 
 export default function DropdownSchoolIcon(props) {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -63,6 +64,7 @@ export default function DropdownSchoolIcon(props) {
           alt={'...'}
           src={school}
         />
+        {props.spell.domain && <Badge></Badge>}
       </Typography>
       <Popover
         id="mouse-over-popover"
