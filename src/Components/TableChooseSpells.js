@@ -21,6 +21,13 @@ const TableChooseSpells = (props) => {
     case '1 reaction':
       castingTime = 'REACTION';
       break;
+    case '10 minutes':
+      castingTime = '10 Minutes';
+      break;
+    case '1 minute':
+      castingTime = '1 MINUTE';
+    default:
+      castingTime = 'LONG TIME';
   }
 
   return (

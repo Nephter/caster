@@ -22,7 +22,7 @@ export default function PopoverRest(props) {
   const handleShortRestClick = () => {};
   const handleLongRestClick = () => {
     props.onLongRestClick();
-    props.setnewSpellPrepped({ spell: [] });
+    props.setnewSpellPrepped({ spell: [...props.domain] });
   };
 
   return (

@@ -66,6 +66,7 @@ function App(props) {
           >
             <HeaderChooseSpells
               table={table}
+              domainIcon={props.domainIcon}
               onPrepareClick={onPrepareClick}
               spellsPreparable={props.spellsPreparable}
               setSpellsPreparable={props.setSpellsPreparable}
@@ -207,6 +208,7 @@ function App(props) {
                         index={index}
                         newspellPrepped={newspellPrepped}
                         setnewSpellPrepped={setnewSpellPrepped}
+                        domainIcon={props.domainIcon}
                         spellsPreparable={props.spellsPreparable}
                         setSpellsPreparable={props.setSpellsPreparable}
                         onCheckboxHandler={props.onCheckboxHandler}
@@ -240,6 +242,8 @@ function App(props) {
             <HeaderFinalSpells
               spellSlots={props.spellSlots}
               setSpellSlots={props.setSpellSlots}
+              domainIcon={props.domainIcon}
+              domain={props.domain}
               onLongRestClick={onLongRestClick}
               setnewSpellPrepped={setnewSpellPrepped}
             />
@@ -389,6 +393,7 @@ function App(props) {
                         spellDescription={spellDescription}
                         setModalSpellDescription={setModalSpellDescription}
                         domain={props.domain}
+                        domainIcon={props.domainIcon}
                         onDropdownClick={props.onDropdownClick}
                         spellSlots={props.spellSlots}
                         setSpellSlots={props.setSpellSlots}

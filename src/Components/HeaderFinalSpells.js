@@ -10,10 +10,14 @@ const HeaderFinalSpells = (props) => {
           Spell Slots:
         </h1>
         <PopoverRest
+          domain={props.domain}
           spellSlots={props.spellSlots}
           onLongRestClick={props.onLongRestClick}
           setnewSpellPrepped={props.setnewSpellPrepped}
         />
+        <span style={{ position: 'fixed', right: '20%' }}>
+          {props.domainIcon}
+        </span>
       </span>
 
       <div style={{ width: '80%', zIndex: '20' }}>

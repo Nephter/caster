@@ -10,9 +10,7 @@ const TableFinalSpells = (props) => {
   const rowClickHandler = () => {
     setModalIsOpen(!modalIsOpen);
   };
-  console.log(props.newspellPrepped);
-  console.log(props.domain);
-  console.log(props.spell);
+
   var castingTime;
   switch (props.spell.casting_time) {
     case '1 action':
@@ -24,15 +22,20 @@ const TableFinalSpells = (props) => {
     case '1 reaction':
       castingTime = 'REACTION';
       break;
+    case '10 minutes':
+      castingTime = '10 Minutes';
+      break;
+    case '1 minute':
+      castingTime = '1 MINUTE';
     default:
-      castingTime = props.spell.casting_time;
+      castingTime = 'LONG TIME';
   }
 
   return (
     <tr key={props.index} onClick={rowClickHandler} className="yourClass">
       <td className="d-flex align-items-center ml-1">
         <h2 className="level">{props.spell.level}</h2>
-        <DropdownSchoolIcon spell={props.spell} />
+        <DropdownSchoolIcon spell={props.spell} domainIcon={props.domainIcon} />
       </td>
       <td className="pl-0">
         <h3 className="" style={{ fontSize: '1rem' }}>

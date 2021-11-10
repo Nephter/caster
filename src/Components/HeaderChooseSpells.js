@@ -34,6 +34,9 @@ const HeaderChooseSpells = (props) => {
             ''
           )}
         </Label>
+        <span style={{ position: 'fixed', right: '20%' }}>
+          {props.domainIcon}
+        </span>
       </div>
     </Container>
   );

@@ -17,7 +17,6 @@ const ButtonDomain = (props) => {
         type="button"
         onClick={onClickHandler}
         className="list-group-item p-0 m-0"
-        // style={{ background: 'transparent' }}
       >
         <span>{domainName}</span>
         <span style={{ float: 'left', marginLeft: '10px' }}>{domainIcon}</span>
