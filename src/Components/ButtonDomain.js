@@ -14,12 +14,12 @@ const ButtonDomain = (props) => {
   return (
     <div className="list-group w-25 mx-auto">
       <Button
+        className="list-group-item p-0 m-0 buttonDomain"
         type="button"
         onClick={onClickHandler}
-        className="list-group-item p-0 m-0"
       >
+        <span>{domainIcon}</span>
         <span>{domainName}</span>
-        <span style={{ float: 'left', marginLeft: '10px' }}>{domainIcon}</span>
       </Button>
     </div>
   );

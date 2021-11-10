@@ -3,6 +3,8 @@ import DropdownSchoolIcon from './DropdownSchoolIcon.js';
 import PopoverCaster from './PopoverCaster.js';
 import ModalDescription from './ModalDescription.js';
 
+//command needs to be seperated out for readability
+
 const TableFinalSpells = (props) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [dropdownIsOpen, setDropdownIsOpen] = useState(Boolean(null));
@@ -23,12 +25,17 @@ const TableFinalSpells = (props) => {
       castingTime = 'REACTION';
       break;
     case '10 minutes':
-      castingTime = '10 Minutes';
+      castingTime = '10 MINUTES';
       break;
     case '1 minute':
       castingTime = '1 MINUTE';
-    default:
-      castingTime = 'LONG TIME';
+      break;
+    case '24 hours':
+      castingTime = '24 HOURS';
+      break;
+    case '1 hour':
+      castingTime = '1 HOUR';
+      break;
   }
 
   return (

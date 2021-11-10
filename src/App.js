@@ -6,7 +6,8 @@ import HeaderChooseSpells from './Components/HeaderChooseSpells';
 import parchment from './assets/img/fuck.svg';
 import HeaderFinalSpells from './Components/HeaderFinalSpells';
 import TableFinalSpells from './Components/TableFinalSpells';
-import TableDomainSpells from './Components/TableDomainSpells';
+
+import clericMace from './assets/img/ClericMace.svg';
 
 // set preppared spells state of parent of both components, set = ([]). pass state to both components
 
@@ -27,6 +28,8 @@ function App(props) {
 
   const data = props.spellsByLevel;
 
+  console.log(props.domain);
+
   const onPrepareClick = () => {
     setTable(true);
   };
@@ -40,7 +43,7 @@ function App(props) {
     'Loading...'
   ) : (
     <div
-      className=""
+      className="mt-6"
       style={{
         backgroundImage: `url(${parchment})`,
         backgroundSize: 'contain',
@@ -56,7 +59,7 @@ function App(props) {
             }}
           />
           <CardHeader
-            className="border-0"
+            className="border-0 mt-6"
             style={{
               background: 'transparent',
               position: 'fixed',
@@ -100,34 +103,34 @@ function App(props) {
                     }}
                   >
                     <th
-                      className="sort tableStickyHead2"
+                      className="sort tableStickyHead"
                       scope="col"
                       style={{ backgroundPosition: '-53px' }}
                     >
-                      <h3 style={{ color: 'maroon' }}>Prep</h3>
+                      <h3>Prep</h3>
                     </th>
                     <th
-                      className="sort tableStickyHead2 pl-0"
+                      className="sort tableStickyHead pl-0"
                       scope="col"
                       style={{ backgroundPosition: '-114px' }}
                     >
-                      <h3 style={{ color: 'maroon' }}>Lvl</h3>
+                      <h3>Lvl</h3>
                     </th>
                     <th
-                      className="sort tableStickyHead2"
+                      className="sort tableStickyHead"
                       scope="col"
                       style={{ backgroundPosition: '-204px' }}
                     >
-                      <h3 style={{ color: 'maroon' }}>Name</h3>
+                      <h3>Name</h3>
                     </th>
                     <th
-                      className="sort tableStickyHead2"
+                      className="sort tableStickyHead"
                       scope="col"
                       style={{
                         backgroundPosition: '-458px',
                       }}
                     >
-                      <h3 style={{ color: 'maroon' }}>Casting Info</h3>
+                      <h3>Casting Info</h3>
                     </th>
                   </tr>
                 </thead>
@@ -225,17 +228,18 @@ function App(props) {
         <Card style={{ background: 'transparent' }}>
           <div
             style={{
-              height: '155px',
+              height: '165px',
               background: 'transparent',
             }}
           />
           <CardHeader
-            className="border-0"
+            className="border-0 mt-6"
             style={{
               background: 'transparent',
               position: 'fixed',
               top: '10px',
               paddingBottom: 0,
+              paddingRight: 0,
               width: '68%',
             }}
           >
@@ -278,27 +282,21 @@ function App(props) {
                         backgroundPosition: '-49px',
                       }}
                     >
-                      <h3 className="pl-0 pt-0" style={{ color: 'maroon' }}>
-                        Lvl
-                      </h3>
+                      <h3 className="pl-0 pt-0 ">Lvl</h3>
                     </th>
                     <th
                       className="sort tableStickyHead pl-0 pt-0"
                       scope="col"
                       style={{ backgroundPosition: '-141px' }}
                     >
-                      <h3 className="pt-0" style={{ color: 'maroon' }}>
-                        Name
-                      </h3>
+                      <h3 className="pt-0">Name</h3>
                     </th>
                     <th
                       className="sort tableStickyHead pt-0"
                       scope="col"
                       style={{ backgroundPosition: '-358px' }}
                     >
-                      <h3 className="pt-0" style={{ color: 'maroon' }}>
-                        Casting Info
-                      </h3>
+                      <h3 className="pt-0">Casting Info</h3>
                     </th>
                     <th
                       className="tableStickyHead pt-0"
@@ -307,9 +305,7 @@ function App(props) {
                         backgroundPosition: '-550px',
                       }}
                     >
-                      <h3 className="pt-0" style={{ color: 'maroon' }}>
-                        Cast it!
-                      </h3>
+                      <h3 className="pt-0">Cast it!</h3>
                     </th>
                   </tr>
                 </thead>
@@ -350,7 +346,7 @@ function App(props) {
                           padding: 0,
                         }}
                       >
-                        ............................................................................
+                        .......................................................................
                       </h4>
                     </td>
                     <td
@@ -408,6 +404,19 @@ function App(props) {
           </CardBody>
         </Card>
       )}
+      <div
+        style={{
+          position: 'absolute',
+          top: '30%',
+          left: '35%',
+          opacity: '.15',
+          fontSize: '300px',
+          zIndex: '1',
+          pointerEvents: 'none',
+        }}
+      >
+        {props.domainIcon}{' '}
+      </div>
     </div>
   );
 }

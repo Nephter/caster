@@ -1,7 +1,8 @@
 import React from 'react';
 import clericSeal from '../assets/img/ClericSeal.svg';
-import bannerButton from '../assets/img/bannerButton.png';
-import { Input, Card, CardTitle, Form, Button } from 'reactstrap';
+import buttonBanner from '../assets/img/buttonBanner.png';
+import Button from '@mui/material/Button';
+import { Input, Card, CardTitle, Form } from 'reactstrap';
 import { domains } from '../Variables/Cleric/SpellDomains.js';
 import ButtonDomain from './ButtonDomain.js';
 
@@ -14,8 +15,6 @@ const Login = (props) => {
       props.onSubmit(e);
     }
   };
-
-  // EXPERIMENT props.thing.logIn[1](); making state an object, to cut down on the amount of states being passed around components
   return (
     <div
       className="w-75 mx-auto"
@@ -29,29 +28,20 @@ const Login = (props) => {
         onSubmit={submitHandler}
         className="text-center d-flex justify-content-center"
       >
-        <Card className="" style={{ background: 'transparent' }} body>
-          <CardTitle className=" d-flex mx-auto" style={{ fontSize: '2rem' }}>
+        <Card className="b-t" body>
+          <CardTitle className="d-flex mx-auto" style={{ fontSize: '2rem' }}>
             <div>
-              <div className="pt-9">Cleric</div>
-              <h1
-                className="mx-auto"
-                style={{
-                  fontSize: '2rem',
-                  minimumHeight: '2rem',
-                  paddingLeft: '2px',
-                }}
-              >
-                {props.domainIcon}
-              </h1>
+              <div className="pt-9 primaryText">Cleric</div>
+              <div className="mx-auto domainIcon pt-2">{props.domainIcon}</div>
             </div>
           </CardTitle>
           <Input
             autoFocus
             placeholder="Cleric Level"
-            className="text-center no-outline border-0 opacity-7 text-black w-50 mx-auto mb-1 mt-5"
+            className="text-center border-0 opacity-7 text-black w-50 mx-auto mb-1 mt-5 "
             type="number"
             onChange={(k) => props.setPlayerLevel(k.target.value)}
-            style={{ height: '32px' }}
+            style={{ height: '2rem' }}
           />
           <Input
             placeholder="Wisdom Modifier"
@@ -59,9 +49,8 @@ const Login = (props) => {
             type="number"
             value={props.modifier}
             onChange={(s) => props.setModifier(s.target.value)}
-            style={{ height: '32px' }}
+            style={{ height: '2rem' }}
           />
-
           {domains.map((domainType, index) => {
             return (
               <ButtonDomain
@@ -74,24 +63,17 @@ const Login = (props) => {
             );
           })}
           <Button
+            className="mx-auto pt-1 mb-2 buttonBanner"
             disabled={props.domainIcon.type === 'img' ? true : false}
             type="submit"
-            className="mx-auto py-1 btn-primary"
             style={{
-              backgroundImage: `url(${bannerButton})`,
-              backgroundSize: '100% 100%',
-              backgroundColor: 'transparent',
-              color: 'maroon',
-              fontSize: '1rem',
+              backgroundImage: `url(${buttonBanner})`,
               fontFamily: 'Patrick Hand SC, cursive',
-              top: '1rem',
-              border: 0,
-              outline: 0,
-              boxShadow: '0 0 0 0',
-              transform: 'translate(0,-10px)',
+              opacity: `${props.domainIcon.type === 'img' ? '.6' : '1'}`,
+              transform: 'translate(2px,-10px)',
             }}
           >
-            <div className="px-5 mb-2">Enter</div>
+            <div className="px-5 mb-2 primaryText">Enter</div>
           </Button>
         </Card>
       </Form>

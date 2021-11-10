@@ -6,6 +6,7 @@ import App from './App';
 import { spellSlotsByLevel } from './Variables/SpellSlotChart';
 import tableTop from './assets/img/theme/tabletop3.jpg';
 import clericMace from './assets/img/ClericMace.svg';
+import { domains } from './Variables/Cleric/SpellDomains';
 
 // if app is loading have a d20 instead of "loading..."
 // set woodgrain tableTop size smaller so I dont feel like my head is right above the table
@@ -20,11 +21,7 @@ const Layout = () => {
   const [spellsByLevel, setSpellsByLevel] = useState([]);
   const [domain, setDomain] = useState([]);
   const [domainIcon, setDomainIcon] = useState(
-    <img
-      style={{ height: '3rem', color: '#31325d' }}
-      src={clericMace}
-      alt="."
-    />
+    <img className="classSymbol" src={clericMace} alt="." />
   );
 
   let num;
@@ -70,11 +67,39 @@ const Layout = () => {
     default:
   }
 
+  // go by player level not by spell casting level!!!!!!!!!!!!!!!!!!!!!!!!!!!1
+  useEffect(() => {
+    var channelDivinityArray = [];
+  }, []);
+
   //add domain spells by character level to be added to final spell table
   useEffect(() => {
     var domainSpellsArray = [];
     const domainSpellsByLevel = () => {
-      for (let i = 0; i < num; i++) {
+      let domainSpellGroup;
+      switch (num) {
+        case '1':
+          domainSpellGroup = '1';
+          break;
+        case '2':
+          domainSpellGroup = '2';
+          break;
+        case '3':
+          domainSpellGroup = '3';
+          break;
+        case '4':
+          domainSpellGroup = '4';
+          break;
+        case '5':
+        case '6':
+        case '7':
+        case '8':
+        case '9':
+          domainSpellGroup = '5';
+          break;
+        default:
+      }
+      for (let i = 0; i < domainSpellGroup; i++) {
         domainSpellsArray.push(domain[+i + 1]);
       }
       domainSpellsArray = [].concat.apply([], domainSpellsArray);
@@ -82,6 +107,7 @@ const Layout = () => {
     };
     domainSpellsByLevel();
     setDomain(domainSpellsArray);
+    console.log(domain);
   }, [domainIcon]);
 
   // fetch spell data by character level

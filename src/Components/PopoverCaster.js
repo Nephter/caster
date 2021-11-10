@@ -63,6 +63,16 @@ export default function PopoverCaster(props) {
           >
             {props.spell.name}
           </Typography>
+          {props.spell.ritual === true && (
+            <MenuItem
+              className="d-flex justify-content-center"
+              onClick={() => alert('Spell cast as ritual')}
+              style={{ fontFamily: 'Patrick Hand sc, cursive' }}
+            >
+              Ritual
+            </MenuItem>
+          )}
+
           {props.spellSlots.map((s, key) => {
             return s === 0 ? (
               ''

@@ -38,7 +38,8 @@ export default function PopoverRest(props) {
         style={{
           fontSize: '1rem',
           position: 'relative',
-          top: '10px',
+          top: '3px',
+          right: '50%',
           border: '1px solid grey',
         }}
       >

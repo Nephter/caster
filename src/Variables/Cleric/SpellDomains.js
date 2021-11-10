@@ -11,6 +11,7 @@ import {
 export const domains = [
   [
     { domain: 'Knowledge', icon: <GiScrollUnfurled /> },
+    // lvl 1
     [
       {
         index: 'command',
@@ -100,28 +101,9 @@ export const domains = [
           name: 'Divination',
           url: '/api/magic-schools/divination',
         },
-        classes: [
-          {
-            index: 'bard',
-            name: 'Bard',
-            url: '/api/classes/bard',
-          },
-          {
-            index: 'wizard',
-            name: 'Wizard',
-            url: '/api/classes/wizard',
-          },
-        ],
-        subclasses: [
-          {
-            index: 'lore',
-            name: 'Lore',
-            url: '/api/subclasses/lore',
-          },
-        ],
-        url: '/api/spells/identify',
       },
     ],
+    // lvl 3
     [
       {
         index: 'augury',
@@ -230,6 +212,7 @@ export const domains = [
         url: '/api/spells/suggestion',
       },
     ],
+    // lvl 5
     [
       {
         index: 'nondetection',
@@ -321,6 +304,7 @@ export const domains = [
         url: '/api/spells/speak-with-dead',
       },
     ],
+    // lvl 7
     [
       {
         index: 'arcane-eye',
@@ -426,6 +410,7 @@ export const domains = [
         url: '/api/spells/confusion',
       },
     ],
+    // lvl 9
     [
       {
         index: 'legend-lore',

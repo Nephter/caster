@@ -17,6 +17,18 @@ const ModalDescription = (props) => {
     case '1 reaction':
       castingTime = 'REACTION';
       break;
+    case '10 minutes':
+      castingTime = '10 Minutes';
+      break;
+    case '1 minute':
+      castingTime = '1 MINUTE';
+      break;
+    case '24 hours':
+      castingTime = '24 HOURS';
+      break;
+    case '1 hour':
+      castingTime = '1 HOUR';
+      break;
   }
 
   const modalStyles = {
@@ -83,7 +95,8 @@ const ModalDescription = (props) => {
         >
           {props.spell.components}
         </span>
-      </div>{' '}
+      </div>
+      {props.spell.material && <h4>Material: {props.spell.material}</h4>}
       <div className="">
         <h4>Duration: {props.spell.duration}</h4>
         <h4>Range: {props.spell.range}</h4>

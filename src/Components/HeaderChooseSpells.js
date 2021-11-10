@@ -1,6 +1,6 @@
 import { Container, Label } from 'reactstrap';
 import Button from '@mui/material/Button';
-import bannerButton from '../assets/img/bannerButton.png';
+import buttonBanner from '../assets/img/buttonBanner.png';
 
 const HeaderChooseSpells = (props) => {
   return (
@@ -10,22 +10,18 @@ const HeaderChooseSpells = (props) => {
           {!props.table ? (
             props.spellsPreparable === 0 ? (
               <Button
+                className="buttonBanner"
                 size="small"
                 onClick={props.onPrepareClick}
                 style={{
-                  backgroundImage: `url(${bannerButton})`,
-                  backgroundSize: '100% 100%',
-                  backgroundColor: 'transparent',
-                  color: 'maroon',
-                  fontSize: '1rem',
+                  backgroundImage: `url(${buttonBanner})`,
                   fontFamily: 'Patrick Hand SC, cursive',
-                  top: '1rem',
                 }}
               >
-                <div className="px-5">Prepare!</div>
+                <div className="px-5 primaryText">Prepare!</div>
               </Button>
             ) : (
-              <h1 style={{ color: 'maroon' }}>
+              <h1>
                 Preparable: {props.spellsPreparable}/
                 {+props.playerLevel + +props.modifier}
               </h1>
@@ -34,9 +30,6 @@ const HeaderChooseSpells = (props) => {
             ''
           )}
         </Label>
-        <span style={{ position: 'fixed', right: '20%' }}>
-          {props.domainIcon}
-        </span>
       </div>
     </Container>
   );

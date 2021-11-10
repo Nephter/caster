@@ -66,17 +66,27 @@ export default function DropdownSchoolIcon(props) {
         />
         {props.spell.domain && (
           <Badge
-            className="p-1"
             style={{
               fontSize: '.8rem',
               color: '#32325d',
               borderRadius: '90%',
-              transform: 'translate(-8px, 8px)',
+              transform: 'translate(-5px, -10px)',
             }}
           >
             {props.domainIcon}
           </Badge>
         )}
+
+        {/* // <img
+          //   className="p-1"
+          //   src={props.domainIcon}
+          //   style={{
+          //     fontSize: '.8rem',
+          //     color: '#32325d',
+          //     borderRadius: '90%',
+          //     transform: 'translate(-8px, 8px)',
+          //   }}
+          // /> */}
       </Typography>
       <Popover
         id="mouse-over-popover"

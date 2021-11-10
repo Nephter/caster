@@ -6,21 +6,16 @@ const HeaderFinalSpells = (props) => {
   return (
     <>
       <span className="d-flex justify-content-between">
-        <h1 className="" style={{ color: 'maroon', paddingBottom: '5px' }}>
-          Spell Slots:
-        </h1>
+        <h1 className="pb-1 primaryText">Spell Slots:</h1>
         <PopoverRest
           domain={props.domain}
           spellSlots={props.spellSlots}
           onLongRestClick={props.onLongRestClick}
           setnewSpellPrepped={props.setnewSpellPrepped}
         />
-        <span style={{ position: 'fixed', right: '20%' }}>
-          {props.domainIcon}
-        </span>
       </span>
 
-      <div style={{ width: '80%', zIndex: '20' }}>
+      <div>
         {props.spellSlots.map((k, key) => {
           var num = `Lvl ${key + 1}`;
           return k === 0 ? (
@@ -28,13 +23,12 @@ const HeaderFinalSpells = (props) => {
           ) : k === 1 ? (
             <Chip
               style={{
-                label: { paddingTop: '4px' },
+                // change
                 border: '1px solid maroon',
                 background: 'transparent',
-                // paddingRight: '7px',
-                marginInline: '5px',
+                marginInline: '4px',
                 fontFamily: 'Patrick Hand SC, cursive',
-                height: '15px',
+                height: '16px',
               }}
               dir="rtl"
               key={key}
@@ -56,12 +50,12 @@ const HeaderFinalSpells = (props) => {
           ) : (
             <Chip
               style={{
-                // paddingRight: '7px',
-                marginInline: '5px',
+                marginInline: '4px',
                 background: 'transparent',
                 border: '1px solid gray',
                 fontFamily: 'Patrick Hand SC, cursive',
                 height: '15px',
+                width: '58px',
               }}
               dir="rtl"
               key={key}
