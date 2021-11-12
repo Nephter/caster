@@ -8,7 +8,7 @@ import Illusion from '../assets/img/theme/Illusion2.jpg';
 import Necromancy from '../assets/img/theme/Necromancy2.jpg';
 import Transmutation from '../assets/img/theme/Transmutation2.jpg';
 
-export default function ModalDropdownSchoolIcon(props) {
+export default function ModalSchoolIcon(props) {
   var school;
   switch (props.spell.school.name) {
     case 'Abjuration':
@@ -35,6 +35,7 @@ export default function ModalDropdownSchoolIcon(props) {
     case 'Transmutation':
       school = Transmutation;
       break;
+    default:
   }
 
   return <img className=" rounded-circle avatar-xl" alt={'...'} src={school} />;

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import { Card, CardBody, CardHeader, Table } from 'reactstrap';
 import parchment from '../assets/img/TableParchment.svg';
@@ -9,13 +9,7 @@ import TableChannelDivinitySpells from './TableChannelDivinitySpells';
 
 const TableFinal = (props) => {
   const [view, setView] = useState(false);
-  const [table, setTable] = useState(false);
   const [shortRested, setShortRested] = useState(null);
-  // const [newSpellPrepped, setNewSpellPrepped] = useState({
-  //   spell: [...props.domain],
-  // });
-
-  const data = props.spellsByLevel;
 
   const onShortRestClick = () => {
     setShortRested(false);
@@ -47,11 +41,7 @@ const TableFinal = (props) => {
             }}
           >
             <HeaderChannelDivinitySpells
-              longRested={props.longRested}
-              setLongRested={props.setLongRested}
-              newSpellPrepped={props.newSpellPrepped}
               setNewSpellPrepped={props.setNewSpellPrepped}
-              domainIcon={props.domainIcon}
               domain={props.domain}
               onLongRestClick={props.onLongRestClick}
               onShortRestClick={onShortRestClick}
@@ -190,20 +180,8 @@ const TableFinal = (props) => {
                       key={index}
                       spell={spell}
                       index={index}
-                      table={table}
                       longRested={props.longRested}
-                      setLongRested={props.setLongRested}
                       shortRested={shortRested}
-                      setShortRested={setShortRested}
-                      spellDescription={props.spellDescription}
-                      setModalSpellDescription={props.setModalSpellDescription}
-                      domain={props.domain}
-                      domainIcon={props.domainIcon}
-                      onDropdownClick={props.onDropdownClick}
-                      spellSlots={props.spellSlots}
-                      setSpellSlots={props.setSpellSlots}
-                      spellsPreparable={props.spellsPreparable}
-                      setSpellsPreparable={props.setSpellsPreparable}
                       useChannelDivinity={props.useChannelDivinity}
                       cDCasts={props.cDCasts}
                     />
@@ -236,12 +214,10 @@ const TableFinal = (props) => {
         >
           <HeaderFinalSpells
             spellSlots={props.spellSlots}
-            setSpellSlots={props.setSpellSlots}
             domainIcon={props.domainIcon}
             domain={props.domain}
             onLongRestClick={props.onLongRestClick}
             onShortRestClick={onShortRestClick}
-            newSpellPrepped={props.newSpellPrepped}
             setNewSpellPrepped={props.setNewSpellPrepped}
           />
         </CardHeader>
@@ -378,17 +354,9 @@ const TableFinal = (props) => {
                     key={index}
                     spell={spell}
                     index={index}
-                    newSpellPrepped={props.newSpellPrepped}
-                    setNewSpellPrepped={props.setNewSpellPrepped}
-                    spellDescription={props.spellDescription}
-                    setModalSpellDescription={props.setModalSpellDescription}
-                    domain={props.domain}
                     domainIcon={props.domainIcon}
                     onDropdownClick={props.onDropdownClick}
                     spellSlots={props.spellSlots}
-                    setSpellSlots={props.setSpellSlots}
-                    spellsPreparable={props.spellsPreparable}
-                    setSpellsPreparable={props.setSpellsPreparable}
                   />
                 );
               })}

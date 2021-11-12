@@ -2,16 +2,14 @@ import { useState } from 'react';
 import PopoverCDCaster from './PopoverCDCaster.js';
 import PopoverAbilityCaster from './PopoverAbilityCaster.js';
 import ModalCDDescription from './ModalCDDescription.js';
-import ChannelDivinityIcon from './ChannelDivinityIcon.js';
 import DropdownCDIcon from './DropdownCDIcon.js';
 
 // channel divinity spells once at lvl 1-5, twice lvl 6-17, thrice at lvl 18+
 // warding flare, wrath of the storm, used a number of times equal to wisdom modifier
 // spells that dont specify casting time are cast at any time as long as you have channel divinity available
 
-const TableFinalSpells = (props) => {
+const TableChannelDivinitySpells = (props) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
-  const [dropdownIsOpen, setDropdownIsOpen] = useState(Boolean(null));
 
   const rowClickHandler = () => {
     setModalIsOpen(!modalIsOpen);
@@ -102,13 +100,7 @@ const TableFinalSpells = (props) => {
             index={props.index}
             spell={props.spell}
             longRested={props.longRested}
-            setLongRested={props.setLongRested}
             shortRested={props.shortRested}
-            setShortRested={props.setShortRested}
-            dropdownIsOpen={dropdownIsOpen}
-            setDropdownIsOpen={setDropdownIsOpen}
-            onDropdownClick={props.onDropdownClick}
-            channelDivinity={props.channelDivinity}
             useChannelDivinity={props.useChannelDivinity}
             cDCasts={props.cDCasts}
           />
@@ -116,30 +108,18 @@ const TableFinalSpells = (props) => {
           <PopoverAbilityCaster
             index={props.index}
             spell={props.spell}
-            table={props.table}
             shortRested={props.shortRested}
-            setShortRested={props.setShortRested}
-            dropdownIsOpen={dropdownIsOpen}
-            setDropdownIsOpen={setDropdownIsOpen}
-            onDropdownClick={props.onDropdownClick}
-            channelDivinity={props.channelDivinity}
-            useChannelDivinity={props.useChannelDivinity}
-            cDCasts={props.cDCasts}
           />
         )}
 
         <ModalCDDescription
           index={props.index}
           spell={props.spell}
-          rowClickHandler={rowClickHandler}
           modalIsOpen={modalIsOpen}
-          setModalIsOpen={setModalIsOpen}
-          spellDescription={props.spellDescription}
-          setModalSpellDescription={props.setModalSpellDescription}
         />
       </td>
     </tr>
   );
 };
 
-export default TableFinalSpells;
+export default TableChannelDivinitySpells;

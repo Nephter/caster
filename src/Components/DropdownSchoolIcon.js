@@ -49,6 +49,7 @@ export default function DropdownSchoolIcon(props) {
     case 'Transmutation':
       school = Transmutation;
       break;
+    default:
   }
 
   return (
@@ -76,17 +77,6 @@ export default function DropdownSchoolIcon(props) {
             {props.domainIcon}
           </Badge>
         )}
-
-        {/* // <img
-          //   className="p-1"
-          //   src={props.domainIcon}
-          //   style={{
-          //     fontSize: '.8rem',
-          //     color: '#32325d',
-          //     borderRadius: '90%',
-          //     transform: 'translate(-8px, 8px)',
-          //   }}
-          // /> */}
       </Typography>
       <Popover
         id="mouse-over-popover"

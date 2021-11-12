@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Modal from 'react-modal';
 import parchment from '../assets/img/ModalParchment.svg';
-import ModalDropdownSchoolIcon from './ModalDropdownSchoolIcon';
+import ModalSchoolIcon from './ModalSchoolIcon';
 
 Modal.setAppElement('#root');
 
@@ -29,6 +29,7 @@ const ModalDescription = (props) => {
     case '1 hour':
       castingTime = '1 HOUR';
       break;
+    default:
   }
 
   const modalStyles = {
@@ -65,10 +66,7 @@ const ModalDescription = (props) => {
 
   return (
     <Modal key={props.index} style={modalStyles} isOpen={props.modalIsOpen}>
-      <ModalDropdownSchoolIcon
-        spell={props.spell}
-        modalIsOpen={props.modalIsOpen}
-      />
+      <ModalSchoolIcon spell={props.spell} modalIsOpen={props.modalIsOpen} />
       <div className="ralewayFont pt-1" style={{ fontSize: '.8rem' }}>
         {props.spell.school.name}
       </div>

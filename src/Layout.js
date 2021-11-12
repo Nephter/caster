@@ -55,6 +55,7 @@ const Layout = () => {
     case '20':
       ChannelDivinityCasts = '3';
       break;
+    default:
   }
 
   let spellLevel;
@@ -236,7 +237,6 @@ const Layout = () => {
             setPlayerLevel={setPlayerLevel}
             modifier={modifier}
             setModifier={setModifier}
-            domain={domain}
             setDomain={setDomain}
             domainIcon={domainIcon}
             setDomainIcon={setDomainIcon}
@@ -251,24 +251,20 @@ const Layout = () => {
             setSpellSlots={setSpellSlots}
             spellsPreparable={spellsPreparable}
             setSpellsPreparable={setSpellsPreparable}
-            onDropdownClick={onDropdownClick}
-            onCheckboxHandler={onCheckboxHandler}
             spellsByLevel={spellsByLevel}
             playerLevel={playerLevel}
             modifier={modifier}
             domain={domain}
-            setDomain={setDomain}
             domainIcon={domainIcon}
-            setDomainIcon={setDomainIcon}
             channelDivinity={channelDivinity}
-            setChannelDivinity={setChannelDivinity}
             cDCasts={cDCasts}
             setCDCasts={setCDCasts}
             useChannelDivinity={useChannelDivinity}
-            ChannelDivinityCasts={ChannelDivinityCasts}
             longRestCD={longRestCD}
             preservedSpellSlots={preservedSpellSlots}
             setPreservedSpellSlots={setPreservedSpellSlots}
+            onDropdownClick={onDropdownClick}
+            onCheckboxHandler={onCheckboxHandler}
           />
         )}
       </Container>

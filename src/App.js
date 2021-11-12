@@ -4,10 +4,6 @@ import { Card, CardBody, CardHeader, Table } from 'reactstrap';
 import TableParchment from './assets/img/TableParchment.svg';
 import HeaderChooseSpells from './Components/HeaderChooseSpells';
 import TableChooseSpells from './Components/TableChooseSpells';
-import HeaderFinalSpells from './Components/HeaderFinalSpells';
-import TableFinalSpells from './Components/TableFinalSpells';
-import HeaderChannelDivinitySpells from './Components/HeaderChannelDivinitySpells';
-import TableChannelDivinitySpells from './Components/TableChannelDivinitySpells';
 import TableFinal from './Components/TableFinal';
 
 // set preppared spells state of parent of both components, set = ([]). pass state to both components
@@ -18,7 +14,6 @@ function App(props) {
   const [loadingTable, setLoadingTable] = useState(true);
   const [table, setTable] = useState(false);
   const [longRested, setLongRested] = useState(true);
-  const [spellDescription, setModalSpellDescription] = useState(false);
   const [newSpellPrepped, setNewSpellPrepped] = useState({
     spell: [...props.domain],
   });
@@ -76,12 +71,8 @@ function App(props) {
             >
               <HeaderChooseSpells
                 table={table}
-                domainIcon={props.domainIcon}
                 onPrepareClick={onPrepareClick}
                 spellsPreparable={props.spellsPreparable}
-                setSpellsPreparable={props.setSpellsPreparable}
-                numberOfSpellsPreparable={props.numberOfSpellsPreparable}
-                setNumberOfSpellsPreparable={props.setNumberOfSpellsPreparable}
                 playerLevel={props.playerLevel}
                 modifier={props.modifier}
               />
@@ -234,21 +225,15 @@ function App(props) {
       ) : (
         <TableFinal
           spellSlots={props.spellSlots}
-          setSpellSlots={props.setSpellSlots}
           domainIcon={props.domainIcon}
           domain={props.domain}
           onLongRestClick={onLongRestClick}
           setNewSpellPrepped={setNewSpellPrepped}
           newSpellPrepped={newSpellPrepped}
-          spellDescription={spellDescription}
-          setModalSpellDescription={setModalSpellDescription}
           onDropdownClick={props.onDropdownClick}
-          spellsPreparable={props.spellsPreparable}
-          setSpellsPreparable={props.setSpellsPreparable}
           channelDivinity={props.channelDivinity}
           useChannelDivinity={props.useChannelDivinity}
           longRested={longRested}
-          setLongRested={setLongRested}
           cDCasts={props.cDCasts}
         />
       )}
@@ -271,39 +256,3 @@ function App(props) {
 }
 
 export default App;
-
-{
-  /* <CardFooter className="py-4">
-                    <nav aria-label="...">
-                      <Pagination
-                        className="pagination justify-content-end mb-0"
-                        listClassName="justify-content-end mb-0"
-                      >
-                        <PaginationItem className="active">
-                          <PaginationLink
-                            href="#pablo"
-                            onClick={(e) => e.preventDefault()}
-                          >
-                            1
-                          </PaginationLink>
-                        </PaginationItem>
-                        <PaginationItem>
-                          <PaginationLink
-                            href="#pablo"
-                            onClick={(e) => e.preventDefault()}
-                          >
-                            2 <span className="sr-only">(current)</span>
-                          </PaginationLink>
-                        </PaginationItem>
-                        <PaginationItem>
-                          <PaginationLink
-                            href="#pablo"
-                            onClick={(e) => e.preventDefault()}
-                          >
-                            3
-                          </PaginationLink>
-                        </PaginationItem>
-                      </Pagination>
-                    </nav>
-                  </CardFooter> */
-}

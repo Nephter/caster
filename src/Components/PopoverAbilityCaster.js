@@ -29,11 +29,6 @@ export default function PopoverAbilityCaster(props) {
     }
   }, []);
 
-  useEffect(() => {
-    console.log(button);
-    console.log(props.shortRested);
-  }, [button]);
-
   const handleAbilityClick = () => {
     setButton(true);
   };

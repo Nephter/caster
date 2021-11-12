@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Input } from 'reactstrap';
 
@@ -7,7 +7,6 @@ const CheckboxCustom = (props) => {
 
   const handleCheckbox = (e) => {
     const spellIndex = props.newSpellPrepped.spell.indexOf(props.spell);
-    // checked
     if (isChecked) {
       props.onCheckboxHandler(1);
       props.newSpellPrepped.spell.splice(spellIndex, 1);
@@ -15,8 +14,6 @@ const CheckboxCustom = (props) => {
         spell: [...props.newSpellPrepped.spell],
       });
       setIsChecked(!isChecked);
-
-      // NOT checked
     } else {
       if (props.spellsPreparable === 0) {
         alert('You cannot prepare any more spells!');

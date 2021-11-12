@@ -36,6 +36,7 @@ const TableFinalSpells = (props) => {
     case '1 hour':
       castingTime = '1 HOUR';
       break;
+    default:
   }
 
   return (
@@ -85,7 +86,6 @@ const TableFinalSpells = (props) => {
           dropdownIsOpen={dropdownIsOpen}
           setDropdownIsOpen={setDropdownIsOpen}
           spellSlots={props.spellSlots}
-          setSpellSlots={props.setSpellSlots}
           onDropdownClick={props.onDropdownClick}
         />
         <ModalDescription
@@ -94,8 +94,6 @@ const TableFinalSpells = (props) => {
           rowClickHandler={rowClickHandler}
           modalIsOpen={modalIsOpen}
           setModalIsOpen={setModalIsOpen}
-          spellDescription={props.spellDescription}
-          setSpellDescription={props.setSpellDescription}
         />
       </td>
     </tr>

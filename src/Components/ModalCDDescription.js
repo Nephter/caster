@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Modal from 'react-modal';
 import parchment from '../assets/img/ModalParchment.svg';
 
@@ -28,6 +28,7 @@ const ModalDescription = (props) => {
     case '1 hour':
       castingTime = '1 HOUR';
       break;
+    default:
   }
 
   const modalStyles = {

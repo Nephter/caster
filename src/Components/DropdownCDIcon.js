@@ -3,7 +3,7 @@ import Popover from '@mui/material/Popover';
 import Typography from '@mui/material/Typography';
 import clericMace from '../assets/img/ClericMace.svg';
 
-export default function ModalDropdownSchoolIcon(props) {
+export default function DropdownCDIcon(props) {
   const [anchorEl, setAnchorEl] = React.useState(null);
 
   const handlePopoverOpen = (event) => {
@@ -56,7 +56,7 @@ export default function ModalDropdownSchoolIcon(props) {
           }}
           sx={{ p: 1 }}
         >
-          hi
+          Use Channel Divinity to Cast
         </Typography>
       </Popover>
     </div>

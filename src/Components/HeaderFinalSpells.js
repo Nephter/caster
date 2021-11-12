@@ -12,7 +12,6 @@ const HeaderFinalSpells = (props) => {
         <span>
           <PopoverRest
             domain={props.domain}
-            spellSlots={props.spellSlots}
             onLongRestClick={props.onLongRestClick}
             onShortRestClick={props.onShortRestClick}
             setNewSpellPrepped={props.setNewSpellPrepped}
