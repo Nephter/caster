@@ -16,7 +16,6 @@ const Layout = () => {
   const [playerLevel, setPlayerLevel] = useState(0);
   const [modifier, setModifier] = useState(0);
   const [spellSlots, setSpellSlots] = useState(null);
-  const [preservedSpellSlots, setPreservedSpellSlots] = useState(null);
   const [loading, setLoading] = useState(true);
   const [spellsByLevel, setSpellsByLevel] = useState([]);
   const [channelDivinity, setChannelDivinity] = useState([]);
@@ -219,6 +218,8 @@ const Layout = () => {
     setSpellSlots(newSpellSlotsValues);
   };
 
+  // EXPERIMENT var thing = { logIn: [loggedIn, setLoggedIn] };
+
   return (
     <div
       style={{
@@ -242,6 +243,7 @@ const Layout = () => {
             setDomainIcon={setDomainIcon}
             channelDivinity={channelDivinity}
             setChannelDivinity={setChannelDivinity}
+            // EXPERIMENT thing={thing}
           />
         ) : !loading ? (
           'Loading...'
@@ -267,8 +269,6 @@ const Layout = () => {
             useChannelDivinity={useChannelDivinity}
             ChannelDivinityCasts={ChannelDivinityCasts}
             longRestCD={longRestCD}
-            preservedSpellSlots={preservedSpellSlots}
-            setPreservedSpellSlots={setPreservedSpellSlots}
           />
         )}
       </Container>

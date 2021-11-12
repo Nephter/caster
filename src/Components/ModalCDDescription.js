@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import Modal from 'react-modal';
 import parchment from '../assets/img/ModalParchment.svg';
-import ModalDropdownSchoolIcon from './ModalDropdownSchoolIcon';
 
 Modal.setAppElement('#root');
 
@@ -65,13 +64,7 @@ const ModalDescription = (props) => {
 
   return (
     <Modal key={props.index} style={modalStyles} isOpen={props.modalIsOpen}>
-      <ModalDropdownSchoolIcon
-        spell={props.spell}
-        modalIsOpen={props.modalIsOpen}
-      />
-      <div className="ralewayFont pt-1" style={{ fontSize: '.8rem' }}>
-        {props.spell.school.name}
-      </div>
+      <div className="ralewayFont pt-1" style={{ fontSize: '.8rem' }}></div>
       <h1 style={{ fontSize: '2rem', transform: 'translate(0, 5px)' }}>
         {props.spell.name}
       </h1>
@@ -86,15 +79,17 @@ const ModalDescription = (props) => {
           {castingTime}
           {' • '}
         </span>
-        <span
-          className="ralewayFont"
-          style={{
-            fontSize: '.7rem',
-            color: 'black',
-          }}
-        >
-          {props.spell.components}
-        </span>
+        {props.spell.components && (
+          <span
+            className="ralewayFont"
+            style={{
+              fontSize: '.7rem',
+              color: 'black',
+            }}
+          >
+            {props.spell.components}
+          </span>
+        )}
       </div>
       {props.spell.material && <h4>Material: {props.spell.material}</h4>}
       <div className="">

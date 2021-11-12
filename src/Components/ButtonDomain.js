@@ -1,6 +1,7 @@
 import React from 'react';
 import { Button } from 'reactstrap';
 import { domains } from '../Variables/Cleric/SpellDomains.js';
+import { channelDivinity } from '../Variables/Cleric/SpellChannelDivinity.js';
 
 const ButtonDomain = (props) => {
   var domainName = domains[props.index][0].domain;
@@ -9,6 +10,7 @@ const ButtonDomain = (props) => {
   const onClickHandler = () => {
     props.setDomainIcon(domains[props.index][0].icon);
     props.setDomain(domains[props.index]);
+    props.setChannelDivinity(channelDivinity[props.index]);
   };
 
   return (

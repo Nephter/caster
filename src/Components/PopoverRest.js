@@ -19,16 +19,19 @@ export default function PopoverRest(props) {
     setAnchorEl(null);
   };
 
-  const handleShortRestClick = () => {};
+  const handleShortRestClick = () => {
+    props.onShortRestClick();
+  };
+
   const handleLongRestClick = () => {
     props.onLongRestClick();
-    props.setnewSpellPrepped({ spell: [...props.domain] });
+    props.setNewSpellPrepped({ spell: [...props.domain] });
   };
 
   return (
     <div>
       <IconButton
-        className="castButton font-weight-bolder"
+        className="castButton font-weight-bolder mr-4"
         aria-label="more"
         id="long-button"
         aria-controls="long-menu"
@@ -37,9 +40,6 @@ export default function PopoverRest(props) {
         onClick={handleClick}
         style={{
           fontSize: '1rem',
-          position: 'relative',
-          top: '3px',
-          right: '50%',
           border: '1px solid grey',
         }}
       >

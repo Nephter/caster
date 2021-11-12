@@ -1,6 +1,6 @@
 import React from 'react';
 import clericSeal from '../assets/img/ClericSeal.svg';
-import buttonBanner from '../assets/img/buttonBanner.png';
+import ButtonBanner from '../assets/img/ButtonBanner.png';
 import Button from '@mui/material/Button';
 import { Input, Card, CardTitle, Form } from 'reactstrap';
 import { domains } from '../Variables/Cleric/SpellDomains.js';
@@ -59,6 +59,8 @@ const Login = (props) => {
                 setDomainIcon={props.setDomainIcon}
                 domainType={domainType}
                 setDomain={props.setDomain}
+                channelDivinity={props.channelDivinity}
+                setChannelDivinity={props.setChannelDivinity}
               />
             );
           })}
@@ -67,7 +69,7 @@ const Login = (props) => {
             disabled={props.domainIcon.type === 'img' ? true : false}
             type="submit"
             style={{
-              backgroundImage: `url(${buttonBanner})`,
+              backgroundImage: `url(${ButtonBanner})`,
               fontFamily: 'Patrick Hand SC, cursive',
               opacity: `${props.domainIcon.type === 'img' ? '.6' : '1'}`,
               transform: 'translate(2px,-10px)',

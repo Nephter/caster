@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import DropdownSchoolIcon from './DropdownSchoolIcon.js';
+import ModalDropdownSchoolIcon from './DropdownSchoolIcon.js';
 import ModalDescription from './ModalDescription.js';
 import CheckboxCustom from './CheckboxCustom.js';
 
@@ -42,8 +42,8 @@ const TableChooseSpells = (props) => {
           key={props.index}
           spell={props.spell}
           index={props.index}
-          newspellPrepped={props.newspellPrepped}
-          setnewSpellPrepped={props.setnewSpellPrepped}
+          newSpellPrepped={props.newSpellPrepped}
+          setNewSpellPrepped={props.setNewSpellPrepped}
           spellsPreparable={props.spellsPreparable}
           setSpellsPreparable={props.setSpellsPreparable}
           onCheckboxHandler={props.onCheckboxHandler}
@@ -51,7 +51,7 @@ const TableChooseSpells = (props) => {
       </td>
       <td className="d-flex justify-content-start align-items-center pl-1">
         <h2 className="level">{props.spell.level}</h2>
-        <DropdownSchoolIcon spell={props.spell} />
+        <ModalDropdownSchoolIcon spell={props.spell} />
       </td>
       <td>
         <h3 style={{ fontSize: '1rem' }}>{props.spell.name}</h3>

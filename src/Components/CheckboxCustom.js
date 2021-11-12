@@ -6,13 +6,13 @@ const CheckboxCustom = (props) => {
   const [isChecked, setIsChecked] = useState(false);
 
   const handleCheckbox = (e) => {
-    const spellIndex = props.newspellPrepped.spell.indexOf(props.spell);
+    const spellIndex = props.newSpellPrepped.spell.indexOf(props.spell);
     // checked
     if (isChecked) {
       props.onCheckboxHandler(1);
-      props.newspellPrepped.spell.splice(spellIndex, 1);
-      props.setnewSpellPrepped({
-        spell: [...props.newspellPrepped.spell],
+      props.newSpellPrepped.spell.splice(spellIndex, 1);
+      props.setNewSpellPrepped({
+        spell: [...props.newSpellPrepped.spell],
       });
       setIsChecked(!isChecked);
 
@@ -22,8 +22,8 @@ const CheckboxCustom = (props) => {
         alert('You cannot prepare any more spells!');
       } else {
         props.onCheckboxHandler(-1);
-        props.setnewSpellPrepped({
-          spell: [...props.newspellPrepped.spell, props.spell],
+        props.setNewSpellPrepped({
+          spell: [...props.newSpellPrepped.spell, props.spell],
         });
         setIsChecked(!isChecked);
       }

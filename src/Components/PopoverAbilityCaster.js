@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import IconButton from '@mui/material/IconButton';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
@@ -7,8 +7,9 @@ import { Typography } from '@mui/material';
 
 const ITEM_HEIGHT = 48;
 
-export default function PopoverCaster(props) {
+export default function PopoverAbilityCaster(props) {
   const [anchorEl, setAnchorEl] = useState(props.dropdownIsOpen);
+  const [button, setButton] = useState(props.shortRested);
 
   const open = Boolean(anchorEl);
 
@@ -22,14 +23,25 @@ export default function PopoverCaster(props) {
     setAnchorEl(null);
   };
 
-  const handleDropdownClick = (key) => {
-    console.log(key);
-    props.onDropdownClick(key);
+  useEffect(() => {
+    if (props.spell.longRest === true && props.longRested === false) {
+      setButton(true);
+    }
+  }, []);
+
+  useEffect(() => {
+    console.log(button);
+    console.log(props.shortRested);
+  }, [button]);
+
+  const handleAbilityClick = () => {
+    setButton(true);
   };
 
   return (
     <div key={props.index}>
       <IconButton
+        disabled={button}
         className="castButton"
         aria-label="more"
         id="long-button"
@@ -64,30 +76,14 @@ export default function PopoverCaster(props) {
           >
             {props.spell.name}
           </Typography>
-          {props.spell.ritual === true && (
-            <MenuItem
-              className="d-flex justify-content-center"
-              onClick={() => alert('Spell cast as ritual')}
-              style={{ fontFamily: 'Patrick Hand sc, cursive' }}
-            >
-              Ritual
-            </MenuItem>
-          )}
 
-          {props.spellSlots.map((s, key) => {
-            return s === 0 ? (
-              ''
-            ) : (
-              <MenuItem
-                className="d-flex justify-content-center"
-                key={key}
-                onClick={() => handleDropdownClick(key)}
-                style={{ fontFamily: 'Patrick Hand sc, cursive' }}
-              >
-                {key + 1}
-              </MenuItem>
-            );
-          })}
+          <MenuItem
+            className="d-flex justify-content-center"
+            onClick={handleAbilityClick}
+            style={{ fontFamily: 'Patrick Hand sc, cursive' }}
+          >
+            Use
+          </MenuItem>
         </Menu>
       </IconButton>
     </div>

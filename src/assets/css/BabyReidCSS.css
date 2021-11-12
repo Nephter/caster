@@ -11,7 +11,7 @@
 }
 .MuiMenu-paper {
   background-color: transparent !important;
-  background-image: url(../img/fuck.svg) !important;
+  background-image: url(../img/TableParchment.svg) !important;
   background-size: cover;
   box-shadow: none !important;
   border: 0;
@@ -19,7 +19,7 @@
 
 .MuiPopover-paper {
   background-color: transparent !important;
-  background-image: url(../img/fuck.svg) !important;
+  background-image: url(../img/TableParchment.svg) !important;
   background-size: cover;
   box-shadow: none !important;
   border: 0;
@@ -34,7 +34,7 @@ th.tableStickyHead {
   position: sticky;
   top: 0;
   z-index: 10;
-  background-image: url(../img/fuck.svg) !important;
+  background-image: url(../img/TableParchment.svg) !important;
   background-position-y: -110px !important;
   background-size: 690px 768px !important;
 }
@@ -84,7 +84,7 @@ th.tableStickyHead {
   position: sticky;
   top: 0;
   z-index: 10;
-  background-image: url(../img/fuck.svg) !important;
+  background-image: url(../img/TableParchment.svg) !important;
   background-position-y: -110px !important;
   background-size: 690px 768px !important;
 } */

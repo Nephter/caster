@@ -1,6 +1,6 @@
 import { Container, Label } from 'reactstrap';
 import Button from '@mui/material/Button';
-import buttonBanner from '../assets/img/buttonBanner.png';
+import ButtonBanner from '../assets/img/ButtonBanner.png';
 
 const HeaderChooseSpells = (props) => {
   return (
@@ -14,7 +14,7 @@ const HeaderChooseSpells = (props) => {
                 size="small"
                 onClick={props.onPrepareClick}
                 style={{
-                  backgroundImage: `url(${buttonBanner})`,
+                  backgroundImage: `url(${ButtonBanner})`,
                   fontFamily: 'Patrick Hand SC, cursive',
                 }}
               >

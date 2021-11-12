@@ -3,12 +3,13 @@ import {
   GiHospitalCross,
   GiSun,
   GiOakLeaf,
-  GiWhirlwind,
+  GiLightningHelix,
   GiDualityMask,
   GiVerticalBanner,
 } from 'react-icons/gi';
 
 export const domains = [
+  //knowledge
   [
     { domain: 'Knowledge', icon: <GiScrollUnfurled /> },
     // lvl 1
@@ -532,6 +533,7 @@ export const domains = [
       },
     ],
   ],
+  //life
   [
     { domain: 'Life', icon: <GiHospitalCross /> },
     [
@@ -1095,6 +1097,7 @@ export const domains = [
       },
     ],
   ],
+  //light
   [
     { domain: 'Light', icon: <GiSun /> },
     [
@@ -1779,6 +1782,7 @@ export const domains = [
       },
     ],
   ],
+  //nature
   [
     { domain: 'Nature', icon: <GiOakLeaf /> },
     [
@@ -2313,8 +2317,9 @@ export const domains = [
       },
     ],
   ],
+  //tempest
   [
-    { domain: 'Tempest', icon: <GiWhirlwind /> },
+    { domain: 'Tempest', icon: <GiLightningHelix /> },
     [
       {
         index: 'fog-cloud',
@@ -3002,6 +3007,7 @@ export const domains = [
       },
     ],
   ],
+  //trickery
   [
     { domain: 'Trickery', icon: <GiDualityMask /> },
     [
@@ -3559,6 +3565,7 @@ export const domains = [
       },
     ],
   ],
+  //war
   [
     { domain: 'War', icon: <GiVerticalBanner /> },
     [

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import DropdownSchoolIcon from './DropdownSchoolIcon.js';
+import ModalDropdownSchoolIcon from './DropdownSchoolIcon.js';
 import PopoverCaster from './PopoverCaster.js';
 import ModalDescription from './ModalDescription.js';
 
@@ -42,7 +42,10 @@ const TableFinalSpells = (props) => {
     <tr key={props.index} onClick={rowClickHandler} className="yourClass">
       <td className="d-flex align-items-center ml-1">
         <h2 className="level">{props.spell.level}</h2>
-        <DropdownSchoolIcon spell={props.spell} domainIcon={props.domainIcon} />
+        <ModalDropdownSchoolIcon
+          spell={props.spell}
+          domainIcon={props.domainIcon}
+        />
       </td>
       <td className="pl-0">
         <h3 className="" style={{ fontSize: '1rem' }}>

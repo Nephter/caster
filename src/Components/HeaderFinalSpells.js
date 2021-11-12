@@ -6,13 +6,18 @@ const HeaderFinalSpells = (props) => {
   return (
     <>
       <span className="d-flex justify-content-between">
-        <h1 className="pb-1 primaryText">Spell Slots:</h1>
-        <PopoverRest
-          domain={props.domain}
-          spellSlots={props.spellSlots}
-          onLongRestClick={props.onLongRestClick}
-          setnewSpellPrepped={props.setnewSpellPrepped}
-        />
+        <span>
+          <h1 className="pb-1 primaryText">Spell Slots:</h1>
+        </span>
+        <span>
+          <PopoverRest
+            domain={props.domain}
+            spellSlots={props.spellSlots}
+            onLongRestClick={props.onLongRestClick}
+            onShortRestClick={props.onShortRestClick}
+            setNewSpellPrepped={props.setNewSpellPrepped}
+          />
+        </span>
       </span>
 
       <div>
