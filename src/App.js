@@ -10,6 +10,8 @@ import TableFinal from './Components/TableFinal';
 
 //all checkboxes that are selected are used as a reference in final table
 
+// preserve selected spells prepared
+
 function App(props) {
   const [loadingTable, setLoadingTable] = useState(true);
   const [table, setTable] = useState(false);
@@ -42,6 +44,10 @@ function App(props) {
     props.setSpellsPreparable(numberOfSpellsPreparable);
   };
 
+  const switchView = () => {
+    setView(!view);
+  };
+
   return !loadingTable ? (
     'Loading...'
   ) : (
@@ -54,195 +60,152 @@ function App(props) {
       }}
     >
       {!table ? (
-        <Card style={{ background: 'transparent' }}>
+        <div>
           <div
             style={{
-              height: '155px',
+              backgroundImage: `url(${buttonBookmarkWide})`,
+              backgroundRepeat: 'no-repeat',
+              position: 'relative',
+              top: '8px',
+              left: '35px',
+              padding: '20px',
+              // boxShadow: '20px 20px 5px',
+            }}
+          ></div>
+          <button
+            onClick={switchView}
+            color="link"
+            style={{
+              position: 'absolute',
+              top: '88px',
+              left: '178px',
+              color: '#E5E4E2',
               background: 'transparent',
-              width: 'inherit',
+              border: 0,
+              boxShadow: '0 0 0 0',
+              outline: 0,
             }}
           >
-            <CardHeader
-              className="border-0"
+            Channel Divinity
+          </button>
+          <Card className="b-t">
+            <div
+              className="b-t"
               style={{
-                background: 'transparent',
+                height: '165px',
                 width: 'inherit',
               }}
             >
-              <HeaderChooseSpells
-                table={table}
-                onPrepareClick={onPrepareClick}
-                spellsPreparable={props.spellsPreparable}
-                playerLevel={props.playerLevel}
-                modifier={props.modifier}
-              />
-            </CardHeader>
-          </div>
-          <CardBody style={{ paddingTop: 0 }}>
-            <Table
-              hover
-              borderless
-              style={{
-                height: '600px',
-                width: '100%',
-              }}
-            >
-              <div
-                className="table spellTableBody"
+              <CardHeader
+                className="border-0 b-t pt-2"
                 style={{
-                  marginTop: '-80px',
-                  overflow: 'scroll',
-                  maxHeight: '70vh',
+                  width: 'inherit',
                 }}
               >
-                <thead className="thead-light">
-                  <tr
-                    style={{
-                      backgroundImage: `url(${TableParchment})`,
-                    }}
-                  >
-                    <th
-                      className="sort tableStickyHead"
-                      scope="col"
-                      style={{ backgroundPosition: '-53px' }}
-                    >
-                      <h3>Prep</h3>
-                    </th>
-                    <th
-                      className="sort tableStickyHead pl-0"
-                      scope="col"
-                      style={{ backgroundPosition: '-114px' }}
-                    >
-                      <h3>Lvl</h3>
-                    </th>
-                    <th
-                      className="sort tableStickyHead"
-                      scope="col"
-                      style={{ backgroundPosition: '-204px' }}
-                    >
-                      <h3>Name</h3>
-                    </th>
-                    <th
-                      className="sort tableStickyHead"
-                      scope="col"
+                <HeaderChooseSpells
+                  table={table}
+                  onPrepareClick={onPrepareClick}
+                  spellsPreparable={props.spellsPreparable}
+                  playerLevel={props.playerLevel}
+                  modifier={props.modifier}
+                />
+              </CardHeader>
+            </div>
+            <CardBody>
+              <Table hover borderless>
+                <div className="table spellTableBody">
+                  <thead className="thead-light">
+                    <tr
                       style={{
-                        backgroundPosition: '-458px',
+                        backgroundImage: `url(${TableParchment})`,
                       }}
                     >
-                      <h3>Casting Info</h3>
-                    </th>
-                  </tr>
-                </thead>
-                <tbody
-                  style={{
-                    minWidth: '100%',
-                    cursor: 'pointer',
-                    transform: 'translateY(-20px)',
-                  }}
-                >
-                  <tr
-                    style={{
-                      padding: 0,
-                    }}
-                  >
-                    <td
-                      style={{
-                        padding: 0,
-                      }}
-                    >
-                      <h4
+                      <th
+                        className=" tableStickyHead pt-0"
+                        style={{ backgroundPosition: '-49px' }}
+                      >
+                        <h3 className="pl-0 pt-0 ">Prep</h3>
+                      </th>
+                      <th
+                        className=" tableStickyHead pl-0"
+                        style={{ backgroundPosition: '-150px' }}
+                      >
+                        <h3 className="pt-0">Lvl</h3>
+                      </th>
+                      <th
+                        className=" tableStickyHead pt-0"
+                        style={{ backgroundPosition: '-185px' }}
+                      >
+                        <h3 className="pt-0">Name</h3>
+                      </th>
+                      <th
+                        className=" tableStickyHead pt-0"
                         style={{
-                          color: 'transparent',
-                          padding: 0,
+                          backgroundPosition: '-459px',
                         }}
                       >
-                        .
-                      </h4>
-                    </td>
-                    <td
-                      style={{
-                        padding: 0,
-                      }}
-                    >
-                      <h4
-                        style={{
-                          color: 'transparent',
-                          padding: 0,
-                        }}
-                      >
-                        .
-                      </h4>
-                    </td>
-                    <td
-                      style={{
-                        padding: 0,
-                      }}
-                    >
-                      <h4
-                        style={{
-                          color: 'transparent',
-                          padding: 0,
-                        }}
-                      >
-                        ............................................................
-                      </h4>
-                    </td>
-                    <td
-                      style={{
-                        padding: 0,
-                      }}
-                    >
-                      <h4
-                        style={{
-                          color: 'transparent',
-                          padding: 0,
-                        }}
-                      >
-                        ..........
-                      </h4>
-                    </td>
-                  </tr>
-                  {data.map((spell, index) => {
-                    return (
-                      <TableChooseSpells
-                        key={index}
-                        spell={spell}
-                        index={index}
-                        newSpellPrepped={newSpellPrepped}
-                        setNewSpellPrepped={setNewSpellPrepped}
-                        domainIcon={props.domainIcon}
-                        spellsPreparable={props.spellsPreparable}
-                        setSpellsPreparable={props.setSpellsPreparable}
-                        onCheckboxHandler={props.onCheckboxHandler}
-                      />
-                    );
-                  })}
-                </tbody>
-              </div>
-            </Table>
-          </CardBody>
-        </Card>
+                        <h3 className="pt-0">Casting Info</h3>
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody className="invisibleTable-body">
+                    <tr className="invisibleTable-row">
+                      <td>
+                        <h4>.</h4>
+                      </td>
+                      <td>
+                        <h4>.</h4>
+                      </td>
+                      <td>
+                        <h4>
+                          ..........................................................................................
+                        </h4>
+                      </td>
+                      <td>
+                        <h4>..........</h4>
+                      </td>
+                    </tr>
+                    {data.map((spell, index) => {
+                      return (
+                        <TableChooseSpells
+                          key={index}
+                          spell={spell}
+                          index={index}
+                          newSpellPrepped={newSpellPrepped}
+                          setNewSpellPrepped={setNewSpellPrepped}
+                          domainIcon={props.domainIcon}
+                          spellsPreparable={props.spellsPreparable}
+                          setSpellsPreparable={props.setSpellsPreparable}
+                          onCheckboxHandler={props.onCheckboxHandler}
+                        />
+                      );
+                    })}
+                  </tbody>
+                </div>
+              </Table>
+            </CardBody>
+          </Card>
+        </div>
       ) : (
         <TableFinal
-          spellSlots={props.spellSlots}
-          domainIcon={props.domainIcon}
-          domain={props.domain}
+          longRested={longRested}
           onLongRestClick={onLongRestClick}
           setNewSpellPrepped={setNewSpellPrepped}
           newSpellPrepped={newSpellPrepped}
-          onDropdownClick={props.onDropdownClick}
+          spellSlots={props.spellSlots}
+          domainIcon={props.domainIcon}
+          domain={props.domain}
           channelDivinity={props.channelDivinity}
           useChannelDivinity={props.useChannelDivinity}
-          longRested={longRested}
+          onDropdownClick={props.onDropdownClick}
           cDCasts={props.cDCasts}
         />
       )}
       <div
-        className=""
         style={{
           position: 'absolute',
           top: '30%',
-          left: '35%',
+          left: '33%',
           opacity: '.15',
           fontSize: '300px',
           zIndex: '1',
