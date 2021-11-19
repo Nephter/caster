@@ -36,7 +36,6 @@ const CheckboxCustom = (props) => {
       className="d-flex justify-content-center align-items-center castButton pt-1 pl-3"
     >
       <Input
-        className=""
         style={{ position: 'relative', cursor: 'pointer' }}
         type="checkbox"
         checked={isChecked}

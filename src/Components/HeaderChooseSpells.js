@@ -1,30 +1,31 @@
 import { Container, Label } from 'reactstrap';
 import Button from '@mui/material/Button';
-import ButtonBanner from '../assets/img/ButtonBanner.png';
 
 const HeaderChooseSpells = (props) => {
   return (
     <Container fluid>
-      <div className="header-body ">
+      <div className="header-body">
+        <h1 className="pt-2">Choose Spells to Prepare</h1>
         <Label for="spellsPreparable">
           {!props.table ? (
             props.spellsPreparable === 0 ? (
               <Button
-                className="buttonBanner"
                 size="small"
+                variant="contained"
+                color="success"
                 onClick={props.onPrepareClick}
-                style={{
-                  backgroundImage: `url(${ButtonBanner})`,
-                  fontFamily: 'Patrick Hand SC, cursive',
+                sx={{
+                  top: '-35px',
+                  left: '485px',
+                  color: 'white',
                 }}
               >
-                <div className="px-5 primaryText">Prepare!</div>
+                Prepare!
               </Button>
             ) : (
-              <h1>
-                Preparable: {props.spellsPreparable}/
-                {+props.playerLevel + +props.modifier}
-              </h1>
+              <h2 className="secondaryText">
+                Preparable: {props.spellsPreparable}
+              </h2>
             )
           ) : (
             ''

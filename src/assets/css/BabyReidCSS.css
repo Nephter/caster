@@ -2,12 +2,42 @@
   background: transparent !important;
 }
 
+.invisibleTable-body {
+  min-width: 100%;
+  cursor: pointer;
+  transform: translateY(-25px);
+}
+
+.invisibleTable-row {
+  padding: 0 !important;
+}
+.invisibleTable-row td {
+  padding: 0 !important;
+}
+.invisibleTable-row h4 {
+  padding: 0 !important;
+  color: transparent;
+}
+
 .spellTableBody::-webkit-scrollbar {
   display: none;
 }
 .spellTableBody {
   -ms-overflow-style: none;
   scrollbar-width: none;
+  margin-top: -97px;
+  overflow: scroll;
+  max-height: 65vh;
+}
+.cdTableBody::-webkit-scrollbar {
+  display: none;
+}
+.cdTableBody {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  margin-top: -81px;
+  overflow: scroll;
+  max-height: 65vh;
 }
 .MuiMenu-paper {
   background-color: transparent !important;
@@ -30,24 +60,30 @@
   padding-inline-start: 0 !important;
 }
 
+.MuiButtonBase-MuiIconButton {
+  color: white !important;
+}
+
 th.tableStickyHead {
   position: sticky;
   top: 0;
   z-index: 10;
+  padding-top: 0;
   background-image: url(../img/TableParchment.svg) !important;
-  background-position-y: -110px !important;
+  background-position-y: -120px !important;
   background-size: 690px 768px !important;
 }
 
 .tableStickyHead h3 {
-  color: #4d1205;
+  color: #661503;
 }
 
 .header-body h1 {
-  color: #4d1205;
+  color: #661503;
 }
+
 .header-body Button {
-  color: #4d1205;
+  color: #e5e4e2;
 }
 
 .buttonDomain span:nth-child(1) {
@@ -64,6 +100,10 @@ th.tableStickyHead {
   filter: contrast(0.85);
 }
 
+.ff-pat {
+  font-family: 'Patrick Hand SC, cursive';
+}
+
 .domainIcon {
   font-size: 2rem;
   max-height: 3rem;
@@ -78,35 +118,34 @@ th.tableStickyHead {
 }
 
 .primaryText {
-  color: #4d1205;
-}
-/* th.tableStickyHead2 {
-  position: sticky;
-  top: 0;
-  z-index: 10;
-  background-image: url(../img/TableParchment.svg) !important;
-  background-position-y: -110px !important;
-  background-size: 690px 768px !important;
-} */
-
-.yourClass {
-  cursor: 'pointer';
+  color: #661503;
 }
 
-.yourClass > .castButton {
+.secondaryText {
+  font-size: 1rem;
+  color: #664703;
+}
+
+.clickableRow {
+  cursor: pointer;
+}
+
+.clickableRow > .castButton {
   pointer-events: none;
 }
-.yourClass td {
+.clickableRow td {
   flex-direction: 'column';
   justify-content: 'start';
 }
 
-.level {
-  margin-bottom: 0px !important;
-  line-height: 1;
-}
 .ralewayFont {
   font-family: 'Raleway', sans-serif !important;
+}
+
+.ralewayFont-span {
+  font-family: 'Raleway', sans-serif !important;
+  font-size: 0.7rem;
+  color: black;
 }
 
 .list-group .btn-secondary:hover {
@@ -123,4 +162,10 @@ th.tableStickyHead {
 .list-group .btn-secondary:active {
   border-color: rgb(182, 182, 182) !important;
   background-color: rgb(182, 182, 182) !important;
+}
+
+.modalTitle {
+  font-size: 2rem;
+  transform: translate(0, 5px);
+  color: #661503;
 }

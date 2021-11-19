@@ -44,60 +44,29 @@ function App(props) {
     props.setSpellsPreparable(numberOfSpellsPreparable);
   };
 
-  const switchView = () => {
-    setView(!view);
-  };
-
   return !loadingTable ? (
     'Loading...'
   ) : (
     <div
-      className="mt-6"
+      // className="mx-auto"
       style={{
         backgroundImage: `url(${TableParchment})`,
         backgroundSize: 'contain',
         backgroundRepeat: 'no-repeat',
+        marginTop: '10vh',
       }}
     >
       {!table ? (
         <div>
-          <div
-            style={{
-              backgroundImage: `url(${buttonBookmarkWide})`,
-              backgroundRepeat: 'no-repeat',
-              position: 'relative',
-              top: '8px',
-              left: '35px',
-              padding: '20px',
-              // boxShadow: '20px 20px 5px',
-            }}
-          ></div>
-          <button
-            onClick={switchView}
-            color="link"
-            style={{
-              position: 'absolute',
-              top: '88px',
-              left: '178px',
-              color: '#E5E4E2',
-              background: 'transparent',
-              border: 0,
-              boxShadow: '0 0 0 0',
-              outline: 0,
-            }}
-          >
-            Channel Divinity
-          </button>
           <Card className="b-t">
             <div
-              className="b-t"
               style={{
                 height: '165px',
                 width: 'inherit',
               }}
             >
               <CardHeader
-                className="border-0 b-t pt-2"
+                className="border-0 b-t pt-5"
                 style={{
                   width: 'inherit',
                 }}
@@ -113,9 +82,13 @@ function App(props) {
             </div>
             <CardBody>
               <Table hover borderless>
-                <div className="table spellTableBody">
+                <div
+                  className="table spellTableBody b-t"
+                  style={{ marginTop: '-42px' }}
+                >
                   <thead className="thead-light">
                     <tr
+                      className="pt-0"
                       style={{
                         backgroundImage: `url(${TableParchment})`,
                       }}
@@ -199,15 +172,16 @@ function App(props) {
           useChannelDivinity={props.useChannelDivinity}
           onDropdownClick={props.onDropdownClick}
           cDCasts={props.cDCasts}
+          playerLevel={props.playerLevel}
         />
       )}
       <div
         style={{
-          position: 'absolute',
-          top: '30%',
-          left: '33%',
+          position: 'relative',
+          bottom: '55%',
+          left: '22%',
           opacity: '.15',
-          fontSize: '300px',
+          fontSize: '350px',
           zIndex: '1',
           pointerEvents: 'none',
         }}

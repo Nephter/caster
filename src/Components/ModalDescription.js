@@ -66,40 +66,35 @@ const ModalDescription = (props) => {
 
   return (
     <Modal key={props.index} style={modalStyles} isOpen={props.modalIsOpen}>
-      <ModalSchoolIcon spell={props.spell} modalIsOpen={props.modalIsOpen} />
-      <div className="ralewayFont pt-1" style={{ fontSize: '.8rem' }}>
-        {props.spell.school.name}
+      <div
+        className="ralewayFont pt-1 align-top d-inline-block text-center"
+        style={{ fontSize: '.8rem', width: '80px' }}
+      >
+        <div>
+          <ModalSchoolIcon
+            spell={props.spell}
+            modalIsOpen={props.modalIsOpen}
+          />
+        </div>
+        <h5>{props.spell.school.name}</h5>
       </div>
-      <h1 style={{ fontSize: '2rem', transform: 'translate(0, 5px)' }}>
-        {props.spell.name}
-      </h1>
+      <h1 className="modalTitle">{props.spell.name}</h1>
       <div>
-        <span
-          className="ralewayFont"
-          style={{
-            fontSize: '.7rem',
-            color: 'black',
-          }}
-        >
+        <span className="ralewayFont-span">
           {castingTime}
           {' • '}
         </span>
-        <span
-          className="ralewayFont"
-          style={{
-            fontSize: '.7rem',
-            color: 'black',
-          }}
-        >
-          {props.spell.components}
-        </span>
+        <span className="ralewayFont-span">{props.spell.components}</span>
+        {props.spell.ritual === true ? (
+          <span className="ralewayFont-span">{' • '}RITUAL</span>
+        ) : null}
       </div>
       {props.spell.material && <h4>Material: {props.spell.material}</h4>}
-      <div className="">
+      <div>
         <h4>Duration: {props.spell.duration}</h4>
         <h4>Range: {props.spell.range}</h4>
       </div>
-      <hr style={{ margin: '10px' }} />
+      <hr className="m-2" />
       <div>
         <h3>{props.spell.desc}</h3>
         {props.spell.higher_level && (

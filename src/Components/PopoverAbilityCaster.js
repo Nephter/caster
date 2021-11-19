@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useState, useEffect } from 'react';
-import IconButton from '@mui/material/IconButton';
+import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import { Typography } from '@mui/material';
@@ -9,7 +9,7 @@ const ITEM_HEIGHT = 48;
 
 export default function PopoverAbilityCaster(props) {
   const [anchorEl, setAnchorEl] = useState(props.dropdownIsOpen);
-  const [button, setButton] = useState(props.shortRested);
+  const [button, setButton] = useState(false);
 
   const open = Boolean(anchorEl);
 
@@ -31,12 +31,15 @@ export default function PopoverAbilityCaster(props) {
 
   const handleAbilityClick = () => {
     setButton(true);
+    props.setShortRested([...props.shortRested, props.index]);
   };
 
   return (
     <div key={props.index}>
-      <IconButton
-        disabled={button}
+      <Button
+        size="small"
+        variant="outlined"
+        disabled={!(props.shortRested.indexOf(props.index) === -1)}
         className="castButton"
         aria-label="more"
         id="long-button"
@@ -44,7 +47,6 @@ export default function PopoverAbilityCaster(props) {
         aria-expanded={open ? 'true' : undefined}
         aria-haspopup="true"
         onClick={handleClick}
-        style={{ fontSize: '1rem', position: 'relative' }}
       >
         Cast
         <Menu
@@ -63,24 +65,23 @@ export default function PopoverAbilityCaster(props) {
           }}
         >
           <Typography
+            variant="h6"
             className="d-flex justify-content-center"
             key={props.index}
-            style={{
-              fontFamily: 'Patrick Hand sc, cursive',
-            }}
           >
             {props.spell.name}
           </Typography>
-
           <MenuItem
             className="d-flex justify-content-center"
             onClick={handleAbilityClick}
-            style={{ fontFamily: 'Patrick Hand sc, cursive' }}
+            sx={{
+              fontFamily: 'Patrick Hand sc, cursive',
+            }}
           >
-            Use
+            <h3>Use</h3>
           </MenuItem>
         </Menu>
-      </IconButton>
+      </Button>
     </div>
   );
 }

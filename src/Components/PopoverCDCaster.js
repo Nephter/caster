@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useState, useEffect } from 'react';
-import IconButton from '@mui/material/IconButton';
+import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import { Typography } from '@mui/material';
@@ -9,7 +9,7 @@ const ITEM_HEIGHT = 48;
 
 export default function PopoverCDCaster(props) {
   const [anchorEl, setAnchorEl] = useState(props.dropdownIsOpen);
-  const [button, setButton] = useState(props.shortRested);
+  const [button, setButton] = useState(false);
 
   const open = Boolean(anchorEl);
 
@@ -23,15 +23,12 @@ export default function PopoverCDCaster(props) {
     setAnchorEl(null);
   };
 
-  useEffect(() => {
-    if (
-      props.spell.longRest === true &&
-      props.cDCasts === 0 &&
-      props.longRested === false
-    ) {
-      setButton(true);
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (props.cDCasts === 0) {
+  //     console.log('CDCaster');
+  //     setButton(true);
+  //   }
+  // }, []);
 
   useEffect(() => {
     if (props.cDCasts === 0) {
@@ -42,11 +39,13 @@ export default function PopoverCDCaster(props) {
 
   const handleChannelDivinityClick = () => {
     props.useChannelDivinity();
+    // props.setShortRested([...props.shortRested, props.index]);
   };
-
   return (
     <div key={props.index}>
-      <IconButton
+      <Button
+        size="small"
+        variant="outlined"
         disabled={button}
         className="castButton"
         aria-label="more"
@@ -55,7 +54,6 @@ export default function PopoverCDCaster(props) {
         aria-expanded={open ? 'true' : undefined}
         aria-haspopup="true"
         onClick={handleClick}
-        style={{ fontSize: '1rem', position: 'relative' }}
       >
         Cast
         <Menu
@@ -74,24 +72,21 @@ export default function PopoverCDCaster(props) {
           }}
         >
           <Typography
+            variant="h6"
             className="d-flex justify-content-center"
             key={props.index}
-            style={{
-              fontFamily: 'Patrick Hand sc, cursive',
-            }}
           >
             {props.spell.name}
           </Typography>
-
           <MenuItem
             className="d-flex justify-content-center"
             onClick={handleChannelDivinityClick}
-            style={{ fontFamily: 'Patrick Hand sc, cursive' }}
+            sx={{ fontFamily: 'Patrick Hand sc, cursive' }}
           >
-            Channel Divinity
+            <h3>Channel Divinity</h3>
           </MenuItem>
         </Menu>
-      </IconButton>
+      </Button>
     </div>
   );
 }

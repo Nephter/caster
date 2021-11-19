@@ -6,6 +6,11 @@ import App from './App';
 import { spellSlotsByLevel } from './Variables/SpellSlotChart';
 import tableTop from './assets/img/theme/tabletop3.jpg';
 import clericMace from './assets/img/ClericMace.svg';
+import { createTheme, ThemeProvider, styled } from '@mui/material/styles';
+import { baseThemeOptions } from './base-theme-options.js';
+import { lightThemeOptions } from './light-theme-options.js';
+
+const theme = createTheme(baseThemeOptions, lightThemeOptions);
 
 // if app is loading have a d20 instead of "loading..."
 // set woodgrain tableTop size smaller so I dont feel like my head is right above the table
@@ -221,54 +226,57 @@ const Layout = () => {
   };
 
   return (
-    <div
-      style={{
-        backgroundImage: `url(${tableTop})`,
-        height: '100vh',
-        overflow: 'hidden',
-        backgroundSize: '50% auto',
-      }}
-    >
-      <Container className="d-flex justify-content-center">
-        {!loggedIn ? (
-          <Login
-            onSubmit={onSubmit}
-            playerLevel={playerLevel}
-            setPlayerLevel={setPlayerLevel}
-            modifier={modifier}
-            setModifier={setModifier}
-            setDomain={setDomain}
-            domainIcon={domainIcon}
-            setDomainIcon={setDomainIcon}
-            channelDivinity={channelDivinity}
-            setChannelDivinity={setChannelDivinity}
-          />
-        ) : !loading ? (
-          'Loading...'
-        ) : (
-          <App
-            spellSlots={spellSlots}
-            setSpellSlots={setSpellSlots}
-            spellsPreparable={spellsPreparable}
-            setSpellsPreparable={setSpellsPreparable}
-            spellsByLevel={spellsByLevel}
-            playerLevel={playerLevel}
-            modifier={modifier}
-            domain={domain}
-            domainIcon={domainIcon}
-            channelDivinity={channelDivinity}
-            cDCasts={cDCasts}
-            setCDCasts={setCDCasts}
-            useChannelDivinity={useChannelDivinity}
-            longRestCD={longRestCD}
-            preservedSpellSlots={preservedSpellSlots}
-            setPreservedSpellSlots={setPreservedSpellSlots}
-            onDropdownClick={onDropdownClick}
-            onCheckboxHandler={onCheckboxHandler}
-          />
-        )}
-      </Container>
-    </div>
+    <ThemeProvider theme={theme}>
+      <div
+        style={{
+          backgroundImage: `url(${tableTop})`,
+          height: '100vh',
+          overflow: 'hidden',
+          backgroundSize: '50% auto',
+          zIndex: '-500',
+        }}
+      >
+        <Container className="d-flex justify-content-center">
+          {!loggedIn ? (
+            <Login
+              onSubmit={onSubmit}
+              playerLevel={playerLevel}
+              setPlayerLevel={setPlayerLevel}
+              modifier={modifier}
+              setModifier={setModifier}
+              setDomain={setDomain}
+              domainIcon={domainIcon}
+              setDomainIcon={setDomainIcon}
+              channelDivinity={channelDivinity}
+              setChannelDivinity={setChannelDivinity}
+            />
+          ) : !loading ? (
+            'Loading...'
+          ) : (
+            <App
+              spellSlots={spellSlots}
+              setSpellSlots={setSpellSlots}
+              spellsPreparable={spellsPreparable}
+              setSpellsPreparable={setSpellsPreparable}
+              spellsByLevel={spellsByLevel}
+              playerLevel={playerLevel}
+              modifier={modifier}
+              domain={domain}
+              domainIcon={domainIcon}
+              channelDivinity={channelDivinity}
+              cDCasts={cDCasts}
+              setCDCasts={setCDCasts}
+              useChannelDivinity={useChannelDivinity}
+              longRestCD={longRestCD}
+              preservedSpellSlots={preservedSpellSlots}
+              setPreservedSpellSlots={setPreservedSpellSlots}
+              onDropdownClick={onDropdownClick}
+              onCheckboxHandler={onCheckboxHandler}
+            />
+          )}
+        </Container>
+      </div>
+    </ThemeProvider>
   );
 };
 

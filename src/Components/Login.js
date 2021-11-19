@@ -22,6 +22,7 @@ const Login = (props) => {
         backgroundImage: `url(${clericSeal})`,
         backgroundRepeat: 'no-repeat',
         backgroundSize: 'cover',
+        maxWidth: '517px',
       }}
     >
       <Form
@@ -47,7 +48,7 @@ const Login = (props) => {
             placeholder="Wisdom Modifier"
             className="text-center border-0 opacity-7 text-black w-50 mx-auto mb-1"
             type="number"
-            value={props.modifier}
+            // value={props.modifier}
             onChange={(s) => props.setModifier(s.target.value)}
             style={{ height: '2rem' }}
           />

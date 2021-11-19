@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useState } from 'react';
-import IconButton from '@mui/material/IconButton';
+import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import { Typography } from '@mui/material';
@@ -29,7 +29,9 @@ export default function PopoverCaster(props) {
 
   return (
     <div key={props.index}>
-      <IconButton
+      <Button
+        size="small"
+        variant="outlined"
         className="castButton"
         aria-label="more"
         id="long-button"
@@ -37,7 +39,6 @@ export default function PopoverCaster(props) {
         aria-expanded={open ? 'true' : undefined}
         aria-haspopup="true"
         onClick={handleClick}
-        style={{ fontSize: '1rem', position: 'relative' }}
       >
         Cast
         <Menu
@@ -52,15 +53,14 @@ export default function PopoverCaster(props) {
             style: {
               maxHeight: ITEM_HEIGHT * 4.5,
               paddingInline: '8px',
+              minWidth: '100px',
             },
           }}
         >
           <Typography
+            variant="h6"
             className="d-flex justify-content-center"
             key={props.index}
-            style={{
-              fontFamily: 'Patrick Hand sc, cursive',
-            }}
           >
             {props.spell.name}
           </Typography>
@@ -68,7 +68,10 @@ export default function PopoverCaster(props) {
             <MenuItem
               className="d-flex justify-content-center"
               onClick={() => alert('Spell cast as ritual')}
-              style={{ fontFamily: 'Patrick Hand sc, cursive' }}
+              style={{
+                fontFamily: 'Patrick Hand sc, cursive',
+                fontSize: '1.2rem',
+              }}
             >
               Ritual
             </MenuItem>
@@ -79,17 +82,20 @@ export default function PopoverCaster(props) {
               ''
             ) : (
               <MenuItem
-                className="d-flex justify-content-center"
+                className="d-flex justify-content-center "
                 key={key}
                 onClick={() => handleDropdownClick(key)}
-                style={{ fontFamily: 'Patrick Hand sc, cursive' }}
+                sx={{
+                  fontFamily: 'Patrick Hand sc, cursive',
+                  fontSize: '1.2rem',
+                }}
               >
                 {key + 1}
               </MenuItem>
             );
           })}
         </Menu>
-      </IconButton>
+      </Button>
     </div>
   );
 }

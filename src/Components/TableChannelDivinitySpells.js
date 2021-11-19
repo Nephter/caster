@@ -48,9 +48,9 @@ const TableChannelDivinitySpells = (props) => {
   }
 
   return (
-    <tr key={props.index} onClick={rowClickHandler} className="yourClass">
-      <td className="d-flex align-items-center ml-1">
-        <h2 className="level">{props.spell.level}</h2>
+    <tr key={props.index} onClick={rowClickHandler} className="clickableRow">
+      <td className="d-flex align-items-center ml-1 pb-2 ">
+        <h2>{props.spell.level}</h2>
         <DropdownCDIcon
           spell={props.spell}
           channelDivinity={props.channelDivinity}
@@ -59,48 +59,31 @@ const TableChannelDivinitySpells = (props) => {
       <td className="pl-0">
         <span>
           <span>
-            <h3 className="" style={{ fontSize: '1rem' }}>
-              {props.spell.name}
-            </h3>
+            <h3 className="secondaryText">{props.spell.name}</h3>
           </span>
-          {props.spell.longRest && <span>TRUUUUUU</span>}
+          {/* {props.spell.longRest && <span>TRUUUUUU</span>} */}
         </span>
-        <span
-          className="ralewayFont"
-          style={{
-            marginTop: 0,
-            paddingTop: 0,
-            fontFamily: 'Raleway, sans-serif ',
-            fontSize: '.65rem',
-            color: 'black',
-          }}
-        >
-          {castingTime}{' '}
-        </span>
+        <span className="ralewayFont-span">{castingTime} </span>
         {props.spell.components && (
-          <span
-            style={{
-              fontFamily: 'Raleway, sans-serif ',
-              fontSize: '.7rem',
-              color: 'black',
-            }}
-          >
+          <span className="ralewayFont-span">
             {' • '}
             {props.spell.components}
           </span>
         )}
       </td>
-      <td style={{ paddingTop: '12px' }}>
+      <td>
         <h5>Duration: {props.spell.duration}</h5>
         <h5>Range: {props.spell.range}</h5>
       </td>
-      <td key={props.index + 'reRender'}>
+      {/* change */}
+      <td>
         {props.spell.channelDivinity ? (
           <PopoverCDCaster
             index={props.index}
             spell={props.spell}
             longRested={props.longRested}
             shortRested={props.shortRested}
+            setShortRested={props.setShortRested}
             useChannelDivinity={props.useChannelDivinity}
             cDCasts={props.cDCasts}
           />
@@ -109,6 +92,7 @@ const TableChannelDivinitySpells = (props) => {
             index={props.index}
             spell={props.spell}
             shortRested={props.shortRested}
+            setShortRested={props.setShortRested}
           />
         )}
 

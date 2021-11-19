@@ -17,7 +17,7 @@ export default function DropdownCDIcon(props) {
   const open = Boolean(anchorEl);
 
   return (
-    <div className="">
+    <div>
       <Typography
         aria-owns={open ? 'mouse-over-popover' : undefined}
         aria-haspopup="true"
@@ -50,14 +50,7 @@ export default function DropdownCDIcon(props) {
         onClose={handlePopoverClose}
         disableRestoreFocus
       >
-        <Typography
-          style={{
-            fontFamily: 'Patrick Hand SC, cursive',
-          }}
-          sx={{ p: 1 }}
-        >
-          Use Channel Divinity to Cast
-        </Typography>
+        <Typography variant="h3">Use Channel Divinity to Cast</Typography>
       </Popover>
     </div>
   );

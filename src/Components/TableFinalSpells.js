@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import ModalDropdownSchoolIcon from './DropdownSchoolIcon.js';
+import DropdownSchoolIcon from './DropdownSchoolIcon.js';
 import PopoverCaster from './PopoverCaster.js';
 import ModalDescription from './ModalDescription.js';
 
@@ -40,42 +40,23 @@ const TableFinalSpells = (props) => {
   }
 
   return (
-    <tr key={props.index} onClick={rowClickHandler} className="yourClass">
-      <td className="d-flex align-items-center ml-1">
-        <h2 className="level">{props.spell.level}</h2>
-        <ModalDropdownSchoolIcon
-          spell={props.spell}
-          domainIcon={props.domainIcon}
-        />
+    <tr key={props.index} onClick={rowClickHandler} className="clickableRow">
+      <td className="d-flex align-items-center ml-1 pb-2">
+        <h2>{props.spell.level}</h2>
+        <DropdownSchoolIcon spell={props.spell} domainIcon={props.domainIcon} />
       </td>
       <td className="pl-0">
-        <h3 className="" style={{ fontSize: '1rem' }}>
-          {props.spell.name}
-        </h3>
-        <span
-          className="ralewayFont text-uppercase"
-          style={{
-            marginTop: 0,
-            paddingTop: 0,
-            fontFamily: 'Raleway, sans-serif ',
-            fontSize: '.65rem',
-            color: 'black',
-          }}
-        >
+        <h3 className="secondaryText">{props.spell.name}</h3>
+        <span className="ralewayFont-span text-uppercase">
           {castingTime}
           {' • '}
         </span>
-        <span
-          style={{
-            fontFamily: 'Raleway, sans-serif ',
-            fontSize: '.7rem',
-            color: 'black',
-          }}
-        >
-          {props.spell.components}
-        </span>
+        <span className="ralewayFont-span">{props.spell.components}</span>
+        {props.spell.ritual === true ? (
+          <span className="ralewayFont-span">{' • '}RITUAL</span>
+        ) : null}
       </td>
-      <td style={{ paddingTop: '12px' }}>
+      <td>
         <h5>Duration: {props.spell.duration}</h5>
         <h5>Range: {props.spell.range}</h5>
       </td>

@@ -1,6 +1,7 @@
 import React from 'react';
 import Modal from 'react-modal';
 import parchment from '../assets/img/ModalParchment.svg';
+import clericMace from '../assets/img/ClericMace.svg';
 
 Modal.setAppElement('#root');
 
@@ -65,45 +66,34 @@ const ModalDescription = (props) => {
 
   return (
     <Modal key={props.index} style={modalStyles} isOpen={props.modalIsOpen}>
-      <div className="ralewayFont pt-1" style={{ fontSize: '.8rem' }}></div>
-      <h1 style={{ fontSize: '2rem', transform: 'translate(0, 5px)' }}>
-        {props.spell.name}
-      </h1>
+      <div className="ralewayFont pt-1" style={{ fontSize: '.8rem' }} />
+      <img
+        className="ml-3 rounded-circle avatar b-t"
+        alt={'...'}
+        src={clericMace}
+      />
+      <h1 className="modalTitle">{props.spell.name}</h1>
       <div>
-        <span
-          className="ralewayFont"
-          style={{
-            fontSize: '.7rem',
-            color: 'black',
-          }}
-        >
-          {castingTime}
-          {' • '}
-        </span>
+        <span className="ralewayFont-span">{castingTime}</span>
         {props.spell.components && (
-          <span
-            className="ralewayFont"
-            style={{
-              fontSize: '.7rem',
-              color: 'black',
-            }}
-          >
+          <span className="ralewayFont-span">
+            {' • '}
             {props.spell.components}
           </span>
         )}
       </div>
       {props.spell.material && <h4>Material: {props.spell.material}</h4>}
-      <div className="">
+      <div>
         <h4>Duration: {props.spell.duration}</h4>
         <h4>Range: {props.spell.range}</h4>
       </div>
-      <hr style={{ margin: '10px' }} />
+      <hr className="m-2" />
       <div>
         <h3>{props.spell.desc}</h3>
         {props.spell.higher_level && (
-          <h3>
+          <h2>
             Higher Level: <h3>{props.spell.higher_level}</h3>
-          </h3>
+          </h2>
         )}
       </div>
     </Modal>

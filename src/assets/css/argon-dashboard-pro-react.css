@@ -28,6 +28,7 @@
 /* @import url('https://fonts.googleapis.com/css2?family=Tangerine&display=swap'); */
 /* @import url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap'); */
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap');
 
 html.rtl {
   direction: rtl;
@@ -1881,7 +1882,7 @@ section {
 body {
   margin: 0;
   /* font-family: Open Sans, sans-serif; */
-  font-family: 'Patrick Hand SC', cursive;
+  font-family: cursive;
   /* font-family: 'Tangerine', cursive; */
   font-size: 1rem;
   font-weight: 400;
@@ -3430,14 +3431,13 @@ pre code {
 /* change this table info edit */
 .table {
   width: 100%;
-  /* margin-bottom: 1rem; */
   color: #525f7f;
   background-color: transparent;
   cursor: 'pointer';
+  height: 600px;
 }
 .table th,
 .table td {
-  /* padding: 1rem; */
   vertical-align: top;
   border-top: 1px solid #e9ecef;
   cursor: 'pointer';
@@ -6811,6 +6811,7 @@ input[type='button'].btn-block {
   flex: 1 1 auto;
   min-height: 1px;
   padding: 1.5rem;
+  padding-top: 0;
 }
 
 .card-title {

@@ -1,11 +1,19 @@
 import React from 'react';
 import PopoverRest from './PopoverRest';
 
-const HeaderFinalSpells = (props) => {
+const HeaderChannelDivinitySpells = (props) => {
   return (
     <>
       <span className="d-flex justify-content-between">
-        <h1 className="pb-1 primaryText">Channel Divinity Abilities:</h1>
+        <h1
+          className="pb-1 primaryText"
+          style={{
+            paddingLeft: '1rem',
+            marginTop: '-31px',
+          }}
+        >
+          Channel Divinity Abilities:
+        </h1>
         <PopoverRest
           domain={props.domain}
           onLongRestClick={props.onLongRestClick}
@@ -17,4 +25,4 @@ const HeaderFinalSpells = (props) => {
   );
 };
 
-export default HeaderFinalSpells;
+export default HeaderChannelDivinitySpells;

@@ -37,7 +37,7 @@ const TableChooseSpells = (props) => {
   }
 
   return (
-    <tr key={props.index} onClick={rowClickHandler} className="yourClass">
+    <tr key={props.index} onClick={rowClickHandler} className="clickableRow">
       <td>
         <CheckboxCustom
           key={props.index}
@@ -49,34 +49,20 @@ const TableChooseSpells = (props) => {
           onCheckboxHandler={props.onCheckboxHandler}
         />
       </td>
-      <td className="d-flex justify-content-start align-items-center pl-1">
-        <h2 className="level">{props.spell.level}</h2>
+      <td className="d-flex justify-content-start align-items-center pl-1 ">
+        <h2>{props.spell.level}</h2>
         <DropdownSchoolIcon spell={props.spell} />
       </td>
       <td>
-        <h3 style={{ fontSize: '1rem' }}>{props.spell.name}</h3>
-        <span
-          className="ralewayFont"
-          style={{
-            marginTop: 0,
-            paddingTop: 0,
-            fontFamily: 'Raleway, sans-serif ',
-            fontSize: '.65rem',
-            color: 'black',
-          }}
-        >
+        <h3 className="secondaryText">{props.spell.name}</h3>
+        <span className="ralewayFont-span">
           {castingTime}
           {' • '}
         </span>
-        <span
-          style={{
-            fontFamily: 'Raleway, sans-serif ',
-            fontSize: '.7rem',
-            color: 'black',
-          }}
-        >
-          {props.spell.components}
-        </span>
+        <span className="ralewayFont-span">{props.spell.components}</span>
+        {props.spell.ritual === true ? (
+          <span className="ralewayFont-span">{' • '}RITUAL</span>
+        ) : null}
       </td>
       <td>
         <h5>Duration: {props.spell.duration}</h5>

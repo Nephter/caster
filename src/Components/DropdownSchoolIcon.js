@@ -1,6 +1,7 @@
 import * as React from 'react';
 import Popover from '@mui/material/Popover';
 import Typography from '@mui/material/Typography';
+import Badge from '@mui/material/Badge';
 import Abjuration from '../assets/img/theme/Abjuration2.jpg';
 import Conjuration from '../assets/img/theme/Conjuration2.jpg';
 import Divination from '../assets/img/theme/Divination2.jpg';
@@ -9,7 +10,6 @@ import Evocation from '../assets/img/theme/Evocation2.jpg';
 import Illusion from '../assets/img/theme/Illusion2.jpg';
 import Necromancy from '../assets/img/theme/Necromancy2.jpg';
 import Transmutation from '../assets/img/theme/Transmutation2.jpg';
-import { Badge } from 'reactstrap';
 
 export default function DropdownSchoolIcon(props) {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -53,7 +53,7 @@ export default function DropdownSchoolIcon(props) {
   }
 
   return (
-    <div className="">
+    <div>
       <Typography
         aria-owns={open ? 'mouse-over-popover' : undefined}
         aria-haspopup="true"
@@ -65,18 +65,7 @@ export default function DropdownSchoolIcon(props) {
           alt={'...'}
           src={school}
         />
-        {props.spell.domain && (
-          <Badge
-            style={{
-              fontSize: '.8rem',
-              color: '#32325d',
-              borderRadius: '90%',
-              transform: 'translate(-5px, -10px)',
-            }}
-          >
-            {props.domainIcon}
-          </Badge>
-        )}
+        {props.spell.domain && <Badge>{props.domainIcon}</Badge>}
       </Typography>
       <Popover
         id="mouse-over-popover"
@@ -96,14 +85,7 @@ export default function DropdownSchoolIcon(props) {
         onClose={handlePopoverClose}
         disableRestoreFocus
       >
-        <Typography
-          style={{
-            fontFamily: 'Patrick Hand SC, cursive',
-          }}
-          sx={{ p: 1 }}
-        >
-          {props.spell.school.name}
-        </Typography>
+        <Typography variant="h3">{props.spell.school.name}</Typography>
       </Popover>
     </div>
   );

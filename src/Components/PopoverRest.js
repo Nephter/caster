@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useState } from 'react';
-import IconButton from '@mui/material/IconButton';
+import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 
@@ -29,19 +29,18 @@ export default function PopoverRest(props) {
   };
 
   return (
-    <div>
-      <IconButton
-        className="castButton font-weight-bolder mr-4"
+    <div style={{ marginTop: '-30px' }}>
+      <Button
+        size="small"
+        variant="contained"
+        color="success"
+        className="castButton mr-3"
         aria-label="more"
         id="long-button"
         aria-controls="long-menu"
         aria-expanded={open ? 'true' : undefined}
         aria-haspopup="true"
         onClick={handleClick}
-        style={{
-          fontSize: '1rem',
-          border: '1px solid grey',
-        }}
       >
         Rest
         <Menu
@@ -64,17 +63,17 @@ export default function PopoverRest(props) {
             style={{ fontFamily: 'Patrick Hand sc, cursive' }}
             onClick={handleShortRestClick}
           >
-            Short
+            <h3>Short</h3>
           </MenuItem>
           <MenuItem
             className="d-flex justify-content-center"
             style={{ fontFamily: 'Patrick Hand sc, cursive' }}
             onClick={handleLongRestClick}
           >
-            Long
+            <h3>Long</h3>
           </MenuItem>
         </Menu>
-      </IconButton>
+      </Button>
     </div>
   );
 }
