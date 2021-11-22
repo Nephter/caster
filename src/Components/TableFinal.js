@@ -16,18 +16,16 @@ const TableFinal = (props) => {
 
   const onShortRestClick = () => {
     setShortRested([]);
-    // props.setCDCasts()
+    props.setCDCasts(props.ChannelDivinityCasts);
   };
 
   const spellButton = () => {
     setView(false);
   };
 
-  const cdButton = () => {
+  const cdViewChangeButton = () => {
     setView(true);
   };
-
-  console.log(props.playerLevel);
 
   return view ? (
     //  --------------------------CHANNEL DIVINITY--------------------
@@ -77,7 +75,7 @@ const TableFinal = (props) => {
       >
         {/* CD Button  */}
         <Button
-          onClick={cdButton}
+          onClick={cdViewChangeButton}
           style={{
             position: 'relative',
             top: '-5px',
@@ -183,6 +181,8 @@ const TableFinal = (props) => {
                       setShortRested={setShortRested}
                       useChannelDivinity={props.useChannelDivinity}
                       cDCasts={props.cDCasts}
+                      setCDCasts={props.setCDCasts}
+                      ChannelDivinityCasts={props.ChannelDivinityCasts}
                     />
                   );
                 })}
@@ -241,7 +241,7 @@ const TableFinal = (props) => {
       >
         {/* CD Button  */}
         <Button
-          onClick={cdButton}
+          onClick={cdViewChangeButton}
           style={{
             position: 'relative',
             top: '-5px',
@@ -379,7 +379,7 @@ export default TableFinal;
 //       >
 //         {/* CD Button  */}
 //         <Button
-//           onClick={cdButton}
+//           onClick={cdViewChangeButton}
 //           style={{
 //             position: 'relative',
 //             top: '-5px',
@@ -409,7 +409,7 @@ export default TableFinal;
 //       >
 //         {/* CD Button  */}
 //         <Button
-//           onClick={cdButton}
+//           onClick={cdViewChangeButton}
 //           style={{
 //             position: 'relative',
 //             top: '-5px',

@@ -23,6 +23,7 @@ const Login = (props) => {
         backgroundRepeat: 'no-repeat',
         backgroundSize: 'cover',
         maxWidth: '517px',
+        marginTop: '10vh',
       }}
     >
       <Form
@@ -57,8 +58,8 @@ const Login = (props) => {
               <ButtonDomain
                 key={index}
                 index={index}
-                setDomainIcon={props.setDomainIcon}
                 domainType={domainType}
+                setDomainIcon={props.setDomainIcon}
                 setDomain={props.setDomain}
                 channelDivinity={props.channelDivinity}
                 setChannelDivinity={props.setChannelDivinity}

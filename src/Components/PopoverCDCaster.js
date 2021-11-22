@@ -34,8 +34,13 @@ export default function PopoverCDCaster(props) {
     if (props.cDCasts === 0) {
       setButton(true);
       setAnchorEl(false);
+    } else if (props.cDCasts === props.ChannelDivinityCasts) {
+      setButton(false);
     }
   }, [props.cDCasts]);
+
+  console.log(props.ChannelDivinityCasts);
+  console.log(props.cDCasts);
 
   const handleChannelDivinityClick = () => {
     props.useChannelDivinity();

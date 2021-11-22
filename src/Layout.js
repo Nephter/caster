@@ -272,6 +272,7 @@ const Layout = () => {
               setPreservedSpellSlots={setPreservedSpellSlots}
               onDropdownClick={onDropdownClick}
               onCheckboxHandler={onCheckboxHandler}
+              ChannelDivinityCasts={ChannelDivinityCasts}
             />
           )}
         </Container>

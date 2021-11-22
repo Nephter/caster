@@ -86,6 +86,7 @@ const TableChannelDivinitySpells = (props) => {
             setShortRested={props.setShortRested}
             useChannelDivinity={props.useChannelDivinity}
             cDCasts={props.cDCasts}
+            ChannelDivinityCasts={props.ChannelDivinityCasts}
           />
         ) : (
           <PopoverAbilityCaster

@@ -172,7 +172,9 @@ function App(props) {
           useChannelDivinity={props.useChannelDivinity}
           onDropdownClick={props.onDropdownClick}
           cDCasts={props.cDCasts}
+          setCDCasts={props.setCDCasts}
           playerLevel={props.playerLevel}
+          ChannelDivinityCasts={props.ChannelDivinityCasts}
         />
       )}
       <div
