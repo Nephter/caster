@@ -1,14 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import { Card, CardBody, CardHeader, Table } from 'reactstrap';
-import BackgroundTable from './assets/img/BackgroundTable.svg';
 import HeaderChooseSpells from './Components/HeaderChooseSpells';
 import TableChooseSpells from './Components/TableChooseSpells';
 import TableFinal from './Components/TableFinal';
-
-// set preppared spells state of parent of both components, set = ([]). pass state to both components
-
-//all checkboxes that are selected are used as a reference in final table
 
 // preserve selected spells prepared
 
@@ -25,14 +20,17 @@ function App(props) {
 
   const data = props.spellsByLevel;
 
+  // resets PreservedSpellSlots to spellSlots
   useEffect(() => {
     props.setPreservedSpellSlots(props.spellSlots);
   }, []);
 
+  // changes view to TableFinal once spells are prepared
   const onPrepareClick = () => {
     setTable(true);
   };
 
+  // resets chosen spells, longRested and view (back to TableChooseSpells)
   const onLongRestClick = () => {
     props.setSpellSlots(props.preservedSpellSlots);
     props.setCDCasts(props.longRestCD);
@@ -47,30 +45,12 @@ function App(props) {
   return !loadingTable ? (
     'Loading...'
   ) : (
-    <div
-      // className="mx-auto"
-      style={{
-        backgroundImage: `url(${BackgroundTable})`,
-        backgroundSize: 'contain',
-        backgroundRepeat: 'no-repeat',
-        marginTop: '10vh',
-      }}
-    >
+    <div className="parchment" style={{ width: '645px', height: '743' }}>
       {!table ? (
         <div>
           <Card className="b-t">
-            <div
-              style={{
-                height: '165px',
-                width: 'inherit',
-              }}
-            >
-              <CardHeader
-                className="border-0 b-t pt-5"
-                style={{
-                  width: 'inherit',
-                }}
-              >
+            <div style={{ height: '165px', width: 'inherit' }}>
+              <CardHeader className="chooseSpellsCard-header">
                 <HeaderChooseSpells
                   table={table}
                   onPrepareClick={onPrepareClick}
@@ -78,73 +58,44 @@ function App(props) {
                 />
               </CardHeader>
             </div>
-            <CardBody>
+            <CardBody className="chooseSpellsCard-body">
               <Table hover borderless>
-                <div
-                  className="table spellTableBody b-t"
-                  style={{ marginTop: '-42px' }}
-                >
-                  <thead className="thead-light">
-                    <tr className="pt-0">
-                      <th
-                        className=" tableStickyHead pt-0"
-                        style={{ backgroundPosition: '-49px' }}
-                      >
-                        <h3 className="pl-0 pt-0 ">Prep</h3>
-                      </th>
-                      <th
-                        className=" tableStickyHead pl-0"
-                        style={{ backgroundPosition: '-150px' }}
-                      >
-                        <h3 className="pt-0">Lvl</h3>
-                      </th>
-                      <th
-                        className=" tableStickyHead pt-0"
-                        style={{ backgroundPosition: '-185px' }}
-                      >
-                        <h3 className="pt-0">Name</h3>
-                      </th>
-                      <th
-                        className=" tableStickyHead pt-0"
-                        style={{
-                          backgroundPosition: '-459px',
-                        }}
-                      >
-                        <h3 className="pt-0">Casting Info</h3>
-                      </th>
-                    </tr>
-                  </thead>
-                  <tbody className="invisibleTable-body">
-                    <tr className="invisibleTable-row">
-                      <td>
-                        <h4>.</h4>
-                      </td>
-                      <td>
-                        <h4>.</h4>
-                      </td>
-                      <td>
-                        <h4>
-                          ..........................................................................................
-                        </h4>
-                      </td>
-                      <td>
-                        <h4>..........</h4>
-                      </td>
-                    </tr>
-                    {data.map((spell, index) => {
-                      return (
-                        <TableChooseSpells
-                          key={index}
-                          spell={spell}
-                          index={index}
-                          newSpellPrepped={newSpellPrepped}
-                          setNewSpellPrepped={setNewSpellPrepped}
-                          {...props}
-                        />
-                      );
-                    })}
-                  </tbody>
-                </div>
+                <thead>
+                  <tr className="chooseSpellsTable-row">
+                    <th>
+                      <h3>Prep</h3>
+                    </th>
+                    <th>
+                      <h3>Lvl</h3>
+                    </th>
+                    <th>
+                      <h3>Name</h3>
+                    </th>
+                    <th>
+                      <h3>Casting Info</h3>
+                    </th>
+                  </tr>
+                </thead>
+                <tbody className="invisibleChooseSpellsTable-body">
+                  <tr className="invisibleChooseSpellsTable-row">
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  {data.map((spell, index) => {
+                    return (
+                      <TableChooseSpells
+                        key={index}
+                        spell={spell}
+                        index={index}
+                        newSpellPrepped={newSpellPrepped}
+                        setNewSpellPrepped={setNewSpellPrepped}
+                        {...props}
+                      />
+                    );
+                  })}
+                </tbody>
               </Table>
             </CardBody>
           </Card>
@@ -153,24 +104,12 @@ function App(props) {
         <TableFinal
           longRested={longRested}
           onLongRestClick={onLongRestClick}
-          setNewSpellPrepped={setNewSpellPrepped}
           newSpellPrepped={newSpellPrepped}
+          setNewSpellPrepped={setNewSpellPrepped}
           {...props}
         />
       )}
-      <div
-        style={{
-          position: 'relative',
-          bottom: '55%',
-          left: '22%',
-          opacity: '.15',
-          fontSize: '350px',
-          zIndex: '1',
-          pointerEvents: 'none',
-        }}
-      >
-        {props.domainIcon}{' '}
-      </div>
+      <div className="watermarkDomainIcon">{props.domainIcon} </div>
     </div>
   );
 }

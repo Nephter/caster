@@ -26,7 +26,7 @@ export default function DropdownCDIcon(props) {
       >
         {props.spell.channelDivinity && (
           <img
-            className="ml-3 rounded-circle avatar-sm"
+            className="ml-4 rounded-circle avatar-sm"
             alt={'...'}
             src={clericMace}
           />

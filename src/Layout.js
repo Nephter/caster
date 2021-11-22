@@ -4,7 +4,6 @@ import { Container } from 'reactstrap';
 import Login from './Components/Login';
 import App from './App';
 import { spellSlotsByLevel } from './Variables/SpellSlotChart';
-import tableTop from './assets/img/theme/tabletop3.jpg';
 import clericMace from './assets/img/ClericMace.svg';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { baseThemeOptions } from './base-theme-options.js';
@@ -160,15 +159,7 @@ const Layout = () => {
 
   return (
     <ThemeProvider theme={theme}>
-      <div
-        style={{
-          backgroundImage: `url(${tableTop})`,
-          height: '100vh',
-          overflow: 'hidden',
-          backgroundSize: '50% auto',
-          zIndex: '-500',
-        }}
-      >
+      <div className="backgroundTabletop">
         <Container className="d-flex justify-content-center">
           {!loggedIn ? (
             <Login

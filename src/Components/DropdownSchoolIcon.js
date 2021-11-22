@@ -2,14 +2,7 @@ import * as React from 'react';
 import Popover from '@mui/material/Popover';
 import Typography from '@mui/material/Typography';
 import Badge from '@mui/material/Badge';
-import Abjuration from '../assets/img/theme/Abjuration2.jpg';
-import Conjuration from '../assets/img/theme/Conjuration2.jpg';
-import Divination from '../assets/img/theme/Divination2.jpg';
-import Enchantment from '../assets/img/theme/Enchantment2.jpg';
-import Evocation from '../assets/img/theme/Evocation2.jpg';
-import Illusion from '../assets/img/theme/Illusion2.jpg';
-import Necromancy from '../assets/img/theme/Necromancy2.jpg';
-import Transmutation from '../assets/img/theme/Transmutation2.jpg';
+import { switchSpellSchool } from '../Variables/SwitchStatements.js';
 
 export default function DropdownSchoolIcon(props) {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -24,35 +17,8 @@ export default function DropdownSchoolIcon(props) {
 
   const open = Boolean(anchorEl);
 
-  // outputs icon based on spell school
-  var school;
-  switch (props.spell.school.name) {
-    case 'Abjuration':
-      school = Abjuration;
-      break;
-    case 'Conjuration':
-      school = Conjuration;
-      break;
-    case 'Divination':
-      school = Divination;
-      break;
-    case 'Enchantment':
-      school = Enchantment;
-      break;
-    case 'Evocation':
-      school = Evocation;
-      break;
-    case 'Illusion':
-      school = Illusion;
-      break;
-    case 'Necromancy':
-      school = Necromancy;
-      break;
-    case 'Transmutation':
-      school = Transmutation;
-      break;
-    default:
-  }
+  // sets School Icon of spell
+  let spellSchool = switchSpellSchool(props.spell.school.name);
 
   return (
     <div>
@@ -65,7 +31,7 @@ export default function DropdownSchoolIcon(props) {
         <img
           className="ml-3 rounded-circle avatar-sm"
           alt={'...'}
-          src={school}
+          src={spellSchool}
         />
         {props.spell.domain && <Badge>{props.domainIcon}</Badge>}
       </Typography>

@@ -16,7 +16,7 @@ const HeaderFinalSpells = (props) => {
       </span>
       <div
         className="d-flex justify-content-start"
-        style={{ width: '98%', paddingLeft: '10px' }}
+        style={{ width: '97%', paddingLeft: '10px' }}
       >
         {props.spellSlots.map((k, key) => {
           var num = `Lvl ${key + 1}`;

@@ -15,6 +15,8 @@ const TableChannelDivinitySpells = (props) => {
   const rowClickHandler = () => {
     setModalIsOpen(!modalIsOpen);
   };
+
+  // sets Casting Time of spell
   let castingTime = switchCastingTime(props.spell.casting_time);
 
   return (
@@ -28,7 +30,6 @@ const TableChannelDivinitySpells = (props) => {
           <span>
             <h3 className="secondaryText">{props.spell.name}</h3>
           </span>
-          {/* {props.spell.longRest && <span>TRUUUUUU</span>} */}
         </span>
         <span className="ralewayFont-span">{castingTime} </span>
         {props.spell.components && (

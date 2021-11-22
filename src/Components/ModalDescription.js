@@ -7,6 +7,7 @@ import { switchCastingTime } from '../Variables/SwitchStatements.js';
 Modal.setAppElement('#root');
 
 const ModalDescription = (props) => {
+  // sets Casting Time of spell
   let castingTime = switchCastingTime(props.spell.casting_time);
 
   const modalStyles = {

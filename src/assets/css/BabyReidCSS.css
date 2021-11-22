@@ -1,34 +1,21 @@
 .b-t {
   background: transparent !important;
 }
-
-.invisibleTable-body {
-  min-width: 100%;
-  cursor: pointer;
-  transform: translateY(-25px);
-}
-
-.invisibleTable-row {
-  padding: 0 !important;
-}
-.invisibleTable-row td {
-  padding: 0 !important;
-}
-.invisibleTable-row h4 {
-  padding: 0 !important;
-  color: transparent;
-}
-
 .spellTableBody::-webkit-scrollbar {
   display: none;
 }
 .spellTableBody {
   -ms-overflow-style: none;
   scrollbar-width: none;
-  margin-top: -97px;
   overflow: scroll;
-  max-height: 65vh;
+  width: 100%;
+  color: #525f7f;
+  background-color: transparent;
+  cursor: pointer;
+  height: 620px;
+  margin-top: -42px;
 }
+
 .cdTableBody::-webkit-scrollbar {
   display: none;
 }
@@ -39,6 +26,7 @@
   overflow: scroll;
   max-height: 65vh;
 }
+
 .MuiMenu-paper {
   background-color: transparent !important;
   background-image: url(../img/BackgroundTable.svg) !important;
@@ -62,20 +50,6 @@
 
 .MuiButtonBase-MuiIconButton {
   color: white !important;
-}
-
-th.tableStickyHead {
-  position: sticky;
-  top: 0;
-  z-index: 10;
-  padding-top: 0;
-  background-image: url(../img/BackgroundTable.svg) !important;
-  background-position-y: -120px !important;
-  background-size: 690px 768px !important;
-}
-
-.tableStickyHead h3 {
-  color: #661503;
 }
 
 .header-body h1 {
@@ -134,8 +108,7 @@ th.tableStickyHead {
   pointer-events: none;
 }
 .clickableRow td {
-  flex-direction: 'column';
-  justify-content: 'start';
+  padding: 0.5rem;
 }
 
 .ralewayFont {
@@ -168,4 +141,291 @@ th.tableStickyHead {
   font-size: 2rem;
   transform: translate(0, 5px);
   color: #661503;
+}
+
+.table .thead-light th {
+  color: #8898aa;
+  background-color: #f6f9fc;
+  border-color: #e9ecef;
+  position: sticky;
+}
+.table .chooseSpellsTable th {
+  color: #8898aa;
+  background-color: #f6f9fc;
+  border-color: #e9ecef;
+  position: sticky;
+}
+
+/* element.className = element with that className */
+/* .className element = element within element with that className */
+
+th.tableStickyHead {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  padding-top: 0;
+  background-image: url(../img/BackgroundTable.svg) !important;
+  background-position-y: -120px !important;
+  background-size: 690px 768px !important;
+}
+
+.tableStickyHead h3 {
+  color: #661503;
+}
+
+.chooseSpellsCard-header {
+  border: 0;
+  background: transparent;
+  padding-top: 48px;
+  width: inherit;
+}
+
+.chooseSpellsCard-body::-webkit-scrollbar {
+  display: none;
+}
+.chooseSpellsCard-body {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  overflow: scroll;
+  width: 100%;
+  color: #525f7f;
+  background-color: transparent;
+  cursor: pointer;
+  height: 595px;
+  margin-top: -42px;
+}
+
+.watermarkDomainIcon {
+  position: relative;
+  bottom: 50%;
+  left: 22%;
+  opacity: 0.15;
+  font-size: 350px;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.backgroundTabletop {
+  background-image: url(../img/BackgroundTabletop.jpg);
+  height: 100vh;
+  overflow: hidden;
+  background-size: 50% auto;
+  z-index: -500;
+}
+
+.parchment {
+  background-image: url(../img/Parchment.svg);
+  background-size: contain;
+  background-repeat: no-repeat;
+  margin-top: 10vh;
+}
+
+.buttonBookmark {
+  background-image: url(../img/ButtonBookmark.svg);
+  background-repeat: no-repeat;
+  position: relative;
+  top: 8px;
+  left: 35px;
+  padding: 20px;
+  height: 0;
+}
+
+.buttonBookmark button {
+  position: relative;
+  top: -25px;
+  left: -13px;
+  color: #e5e4e2;
+  background: transparent;
+  border: 0;
+  box-shadow: 0 0 0 0;
+  outline: 0;
+  padding-inline: 15px;
+}
+
+.buttonBookmarkWide {
+  background-image: url(../img/ButtonBookmarkWide.svg);
+  background-repeat: no-repeat;
+  background-size: contain;
+  position: relative;
+  top: -32px;
+  left: 118px;
+  padding: 2px;
+  width: 150px;
+}
+
+.buttonBookmarkWide button {
+  position: relative;
+  top: -5px;
+  left: 5px;
+  color: #e5e4e2;
+  background: transparent;
+  border: 0;
+  box-shadow: 0 0 0 0;
+  outline: 0;
+}
+
+.finalCard-header {
+  padding-top: 0;
+  background: transparent !important;
+  border: 0;
+  width: inherit;
+}
+
+.finalCard-body::-webkit-scrollbar {
+  display: none;
+}
+.finalCard-body {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  overflow: scroll;
+  width: 100%;
+  color: #525f7f;
+  background-color: transparent;
+  cursor: pointer;
+  height: 595px;
+}
+.finalCard-body table {
+  height: 0;
+}
+
+th.tableStickyHead {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  padding-top: 0;
+  background-image: url(../img/BackgroundTable.svg) !important;
+  background-position-y: -120px !important;
+  background-size: 690px 768px !important;
+}
+
+.tableStickyHead h3 {
+  color: #661503;
+}
+
+.chooseSpellsTable-row th {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  padding-top: 0;
+  background-image: url(../img/BackgroundTable.svg) !important;
+  background-position-y: -120px !important;
+  background-size: 690px 768px !important;
+}
+.chooseSpellsTable-row th:nth-child(1) {
+  background-position: -49px;
+}
+.chooseSpellsTable-row th:nth-child(2) {
+  background-position: -150px;
+  padding-left: 0;
+}
+.chooseSpellsTable-row th:nth-child(3) {
+  background-position: -185px;
+}
+.chooseSpellsTable-row th:nth-child(4) {
+  background-position: -459px;
+}
+
+.chooseSpellsTable-row h3 {
+  color: #661503;
+}
+
+.finalTable-row th {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  padding-top: 0 !important;
+  background-image: url(../img/BackgroundTable.svg) !important;
+  background-position-y: -120px !important;
+  background-size: 690px 768px !important;
+}
+.finalTable-row th:nth-child(1) {
+  background-position: -49px;
+  padding-bottom: 0;
+}
+.finalTable-row th:nth-child(2) {
+  background-position: -155px;
+  padding-left: 0;
+  padding-bottom: 0;
+}
+.finalTable-row th:nth-child(3) {
+  background-position: -358px;
+  padding-bottom: 0;
+}
+.finalTable-row th:nth-child(4) {
+  background-position: -543px;
+  padding-bottom: 0;
+}
+
+.finalTable-row h3 {
+  color: #661503;
+}
+
+.invisibleChooseSpellsTable-body {
+  min-width: 100%;
+  cursor: pointer;
+  transform: translateY(-25px);
+}
+.invisibleChooseSpellsTable-row {
+  padding: 0 !important;
+}
+.invisibleChooseSpellsTable-row td {
+  padding: 0 !important;
+}
+.invisibleChooseSpellsTable-row td:nth-child(1) {
+  width: 68px;
+  height: 25px;
+}
+.invisibleChooseSpellsTable-row td:nth-child(2) {
+  width: 80px;
+  height: 25px;
+}
+.invisibleChooseSpellsTable-row td:nth-child(3) {
+  width: 271px;
+  height: 25px;
+}
+.invisibleChooseSpellsTable-row td:nth-child(4) {
+  width: 181px;
+  height: 25px;
+}
+
+.invisibleTable-body {
+  min-width: 100%;
+  cursor: pointer;
+  transform: translateY(-25px);
+}
+.invisibleTable-row {
+  padding: 0 !important;
+}
+.invisibleTable-row td {
+  padding: 0 !important;
+}
+
+.invisibleFinalTable-body {
+  min-width: 100%;
+  cursor: pointer;
+  transform: translateY(-25px);
+}
+.invisibleFinalTable-row {
+  padding: 0 !important;
+}
+.invisibleFinalTable-row td {
+  padding: 0 !important;
+}
+
+.invisibleFinalTable-row td:nth-child(1) {
+  padding-right: 0 !important;
+  width: 109px !important;
+  height: 25px;
+}
+.invisibleFinalTable-row td:nth-child(2) {
+  width: 209px;
+  height: 25px;
+}
+.invisibleFinalTable-row td:nth-child(3) {
+  width: 181px;
+  height: 25px;
+}
+.invisibleFinalTable-row td:nth-child(4) {
+  width: 97px;
+  height: 25px;
 }

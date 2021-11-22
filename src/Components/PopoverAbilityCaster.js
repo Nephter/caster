@@ -23,12 +23,14 @@ export default function PopoverAbilityCaster(props) {
     setAnchorEl(null);
   };
 
+  // checks to set button state based on longRest property
   useEffect(() => {
     if (props.spell.longRest === true && props.longRested === false) {
       setButton(true);
     }
   }, []);
 
+  // sets button state based on ability cast
   const handleAbilityClick = () => {
     setButton(true);
     props.setShortRested([...props.shortRested, props.index]);

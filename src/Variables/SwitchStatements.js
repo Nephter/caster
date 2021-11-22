@@ -1,3 +1,12 @@
+import Abjuration from '../assets/img/schoolIcons/Abjuration2.jpg';
+import Conjuration from '../assets/img/schoolIcons/Conjuration2.jpg';
+import Divination from '../assets/img/schoolIcons/Divination2.jpg';
+import Enchantment from '../assets/img/schoolIcons/Enchantment2.jpg';
+import Evocation from '../assets/img/schoolIcons/Evocation2.jpg';
+import Illusion from '../assets/img/schoolIcons/Illusion2.jpg';
+import Necromancy from '../assets/img/schoolIcons/Necromancy2.jpg';
+import Transmutation from '../assets/img/schoolIcons/Transmutation2.jpg';
+
 export const switchCastingTime = (propsCastingTime) => {
   var castingTime;
   switch (propsCastingTime) {
@@ -105,4 +114,36 @@ export const switchSpellLevel = (propsPlayerLevel) => {
     default:
   }
   return spellLevel;
+};
+
+export const switchSpellSchool = (propsSpellSchool) => {
+  var school;
+  switch (propsSpellSchool) {
+    case 'Abjuration':
+      school = Abjuration;
+      break;
+    case 'Conjuration':
+      school = Conjuration;
+      break;
+    case 'Divination':
+      school = Divination;
+      break;
+    case 'Enchantment':
+      school = Enchantment;
+      break;
+    case 'Evocation':
+      school = Evocation;
+      break;
+    case 'Illusion':
+      school = Illusion;
+      break;
+    case 'Necromancy':
+      school = Necromancy;
+      break;
+    case 'Transmutation':
+      school = Transmutation;
+      break;
+    default:
+  }
+  return school;
 };

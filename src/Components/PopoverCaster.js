@@ -22,8 +22,8 @@ export default function PopoverCaster(props) {
     setAnchorEl(null);
   };
 
+  // sets spell slot state based on clicked dropdown
   const handleDropdownClick = (key) => {
-    console.log(key);
     props.onDropdownClick(key);
   };
 

@@ -8,14 +8,9 @@ const useTableChooseSpells = (props) => {
     <tr key={props.index}>
       <td className="prep">
         <CheckboxCustom
-          key={props.index}
           available={available}
           setAvailable={setAvailable}
-          spellPrepped={props.spellPrepped}
-          setSpellPrepped={props.setSpellPrepped}
-          spellsPreparable={props.spellsPreparable}
-          setSpellsPreparable={props.setSpellsPreparable}
-          onCheckboxHandler={props.onCheckboxHandler}
+          {...props}
         />
       </td>
       <td>

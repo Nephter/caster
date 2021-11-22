@@ -14,6 +14,7 @@ const TableFinalSpells = (props) => {
     setModalIsOpen(!modalIsOpen);
   };
 
+  // sets Casting Time of spell
   let castingTime = switchCastingTime(props.spell.casting_time);
 
   return (

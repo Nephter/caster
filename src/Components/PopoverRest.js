@@ -19,10 +19,12 @@ export default function PopoverRest(props) {
     setAnchorEl(null);
   };
 
+  // sets short rest state and effects on dropdown click
   const handleShortRestClick = () => {
     props.onShortRestClick();
   };
 
+  // sets long rest state and effects on dropdown click
   const handleLongRestClick = () => {
     props.onLongRestClick();
     props.setNewSpellPrepped({ spell: [...props.domain] });

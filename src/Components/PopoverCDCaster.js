@@ -23,6 +23,7 @@ export default function PopoverCDCaster(props) {
     setAnchorEl(null);
   };
 
+  // sets button state based on Channel Divinity casts
   useEffect(() => {
     if (props.cDCasts === 0) {
       setButton(true);
@@ -32,6 +33,7 @@ export default function PopoverCDCaster(props) {
     }
   }, [props.cDCasts]);
 
+  // sets Channel Divinity casts basted on clicked dropdown
   const handleChannelDivinityClick = () => {
     props.useChannelDivinity();
   };
