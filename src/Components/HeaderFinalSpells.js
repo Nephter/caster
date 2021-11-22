@@ -12,12 +12,7 @@ const HeaderFinalSpells = (props) => {
         >
           Spell Slots:
         </h1>
-        <PopoverRest
-          domain={props.domain}
-          onLongRestClick={props.onLongRestClick}
-          onShortRestClick={props.onShortRestClick}
-          setNewSpellPrepped={props.setNewSpellPrepped}
-        />
+        <PopoverRest {...props} />
       </span>
       <div
         className="d-flex justify-content-start"

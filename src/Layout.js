@@ -6,14 +6,13 @@ import App from './App';
 import { spellSlotsByLevel } from './Variables/SpellSlotChart';
 import tableTop from './assets/img/theme/tabletop3.jpg';
 import clericMace from './assets/img/ClericMace.svg';
-import { createTheme, ThemeProvider, styled } from '@mui/material/styles';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { baseThemeOptions } from './base-theme-options.js';
 import { lightThemeOptions } from './light-theme-options.js';
+import { switchChannelDivinityCasts } from './Variables/SwitchStatements.js';
+import { switchSpellLevel } from './Variables/SwitchStatements.js';
 
 const theme = createTheme(baseThemeOptions, lightThemeOptions);
-
-// if app is loading have a d20 instead of "loading..."
-// set woodgrain tableTop size smaller so I dont feel like my head is right above the table
 
 const Layout = () => {
   const [loggedIn, setLoggedIn] = useState(false);
@@ -32,85 +31,19 @@ const Layout = () => {
     <img className="classSymbol" src={clericMace} alt="." />
   );
 
-  let ChannelDivinityCasts;
-  switch (playerLevel) {
-    case '1':
-    case '2':
-    case '3':
-    case '4':
-    case '5':
-      ChannelDivinityCasts = '1';
-      break;
-    case '6':
-    case '7':
-    case '8':
-    case '9':
-    case '10':
-    case '11':
-    case '12':
-    case '13':
-    case '14':
-    case '15':
-    case '16':
-    case '17':
-      ChannelDivinityCasts = '2';
-      break;
-    case '18':
-    case '19':
-    case '20':
-      ChannelDivinityCasts = '3';
-      break;
-    default:
-  }
+  // outputs Channel Divinity slots based on player level
+  let channelDivinityCasts = switchChannelDivinityCasts(playerLevel);
 
-  let spellLevel;
-  switch (playerLevel) {
-    case '1':
-    case '2':
-      spellLevel = '1';
-      break;
-    case '3':
-    case '4':
-      spellLevel = '2';
-      break;
-    case '5':
-    case '6':
-      spellLevel = '3';
-      break;
-    case '7':
-    case '8':
-      spellLevel = '4';
-      break;
-    case '9':
-    case '10':
-      spellLevel = '5';
-      break;
-    case '11':
-    case '12':
-      spellLevel = '6';
-      break;
-    case '13':
-    case '14':
-      spellLevel = '7';
-      break;
-    case '15':
-    case '16':
-      spellLevel = '8';
-      break;
-    case '17':
-    case '18':
-    case '19':
-    case '20':
-      spellLevel = '9';
-      break;
-    default:
-  }
+  // outputs Spell Slot levels based on player level
+  let spellLevel = switchSpellLevel(playerLevel);
 
+  // sets Channel Divinity slots based on player level
   useEffect(() => {
-    setCDCasts(+ChannelDivinityCasts);
-    setLongRestCD(+ChannelDivinityCasts);
+    setCDCasts(+channelDivinityCasts);
+    setLongRestCD(+channelDivinityCasts);
   }, [playerLevel]);
 
+  // subtracts 1 from Channel Divinity slots
   const useChannelDivinity = () => {
     let newCDValue = +cDCasts;
     newCDValue = newCDValue - 1;
@@ -272,7 +205,7 @@ const Layout = () => {
               setPreservedSpellSlots={setPreservedSpellSlots}
               onDropdownClick={onDropdownClick}
               onCheckboxHandler={onCheckboxHandler}
-              ChannelDivinityCasts={ChannelDivinityCasts}
+              ChannelDivinityCasts={channelDivinityCasts}
             />
           )}
         </Container>

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import { Card, CardBody, CardHeader, Table } from 'reactstrap';
-import TableParchment from './assets/img/TableParchment.svg';
+import BackgroundTable from './assets/img/BackgroundTable.svg';
 import HeaderChooseSpells from './Components/HeaderChooseSpells';
 import TableChooseSpells from './Components/TableChooseSpells';
 import TableFinal from './Components/TableFinal';
@@ -50,7 +50,7 @@ function App(props) {
     <div
       // className="mx-auto"
       style={{
-        backgroundImage: `url(${TableParchment})`,
+        backgroundImage: `url(${BackgroundTable})`,
         backgroundSize: 'contain',
         backgroundRepeat: 'no-repeat',
         marginTop: '10vh',
@@ -74,9 +74,7 @@ function App(props) {
                 <HeaderChooseSpells
                   table={table}
                   onPrepareClick={onPrepareClick}
-                  spellsPreparable={props.spellsPreparable}
-                  playerLevel={props.playerLevel}
-                  modifier={props.modifier}
+                  {...props}
                 />
               </CardHeader>
             </div>
@@ -87,12 +85,7 @@ function App(props) {
                   style={{ marginTop: '-42px' }}
                 >
                   <thead className="thead-light">
-                    <tr
-                      className="pt-0"
-                      style={{
-                        backgroundImage: `url(${TableParchment})`,
-                      }}
-                    >
+                    <tr className="pt-0">
                       <th
                         className=" tableStickyHead pt-0"
                         style={{ backgroundPosition: '-49px' }}
@@ -146,10 +139,7 @@ function App(props) {
                           index={index}
                           newSpellPrepped={newSpellPrepped}
                           setNewSpellPrepped={setNewSpellPrepped}
-                          domainIcon={props.domainIcon}
-                          spellsPreparable={props.spellsPreparable}
-                          setSpellsPreparable={props.setSpellsPreparable}
-                          onCheckboxHandler={props.onCheckboxHandler}
+                          {...props}
                         />
                       );
                     })}
@@ -165,16 +155,7 @@ function App(props) {
           onLongRestClick={onLongRestClick}
           setNewSpellPrepped={setNewSpellPrepped}
           newSpellPrepped={newSpellPrepped}
-          spellSlots={props.spellSlots}
-          domainIcon={props.domainIcon}
-          domain={props.domain}
-          channelDivinity={props.channelDivinity}
-          useChannelDivinity={props.useChannelDivinity}
-          onDropdownClick={props.onDropdownClick}
-          cDCasts={props.cDCasts}
-          setCDCasts={props.setCDCasts}
-          playerLevel={props.playerLevel}
-          ChannelDivinityCasts={props.ChannelDivinityCasts}
+          {...props}
         />
       )}
       <div

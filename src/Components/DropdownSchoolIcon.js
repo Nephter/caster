@@ -23,6 +23,8 @@ export default function DropdownSchoolIcon(props) {
   };
 
   const open = Boolean(anchorEl);
+
+  // outputs icon based on spell school
   var school;
   switch (props.spell.school.name) {
     case 'Abjuration':

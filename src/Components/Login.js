@@ -7,6 +7,7 @@ import { domains } from '../Variables/Cleric/SpellDomains.js';
 import ButtonDomain from './ButtonDomain.js';
 
 const Login = (props) => {
+  // submits Login form once player level and modifier are input
   const submitHandler = (e) => {
     e.preventDefault();
     if (props.playerLevel === undefined || props.modifier === undefined) {
@@ -15,6 +16,7 @@ const Login = (props) => {
       props.onSubmit(e);
     }
   };
+
   return (
     <div
       className="w-75 mx-auto"
@@ -49,7 +51,6 @@ const Login = (props) => {
             placeholder="Wisdom Modifier"
             className="text-center border-0 opacity-7 text-black w-50 mx-auto mb-1"
             type="number"
-            // value={props.modifier}
             onChange={(s) => props.setModifier(s.target.value)}
             style={{ height: '2rem' }}
           />
@@ -59,10 +60,7 @@ const Login = (props) => {
                 key={index}
                 index={index}
                 domainType={domainType}
-                setDomainIcon={props.setDomainIcon}
-                setDomain={props.setDomain}
-                channelDivinity={props.channelDivinity}
-                setChannelDivinity={props.setChannelDivinity}
+                {...props}
               />
             );
           })}

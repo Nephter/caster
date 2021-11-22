@@ -23,13 +23,6 @@ export default function PopoverCDCaster(props) {
     setAnchorEl(null);
   };
 
-  // useEffect(() => {
-  //   if (props.cDCasts === 0) {
-  //     console.log('CDCaster');
-  //     setButton(true);
-  //   }
-  // }, []);
-
   useEffect(() => {
     if (props.cDCasts === 0) {
       setButton(true);
@@ -39,13 +32,10 @@ export default function PopoverCDCaster(props) {
     }
   }, [props.cDCasts]);
 
-  console.log(props.ChannelDivinityCasts);
-  console.log(props.cDCasts);
-
   const handleChannelDivinityClick = () => {
     props.useChannelDivinity();
-    // props.setShortRested([...props.shortRested, props.index]);
   };
+
   return (
     <div key={props.index}>
       <Button

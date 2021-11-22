@@ -41,7 +41,7 @@
 }
 .MuiMenu-paper {
   background-color: transparent !important;
-  background-image: url(../img/TableParchment.svg) !important;
+  background-image: url(../img/BackgroundTable.svg) !important;
   background-size: cover;
   box-shadow: none !important;
   border: 0;
@@ -49,7 +49,7 @@
 
 .MuiPopover-paper {
   background-color: transparent !important;
-  background-image: url(../img/TableParchment.svg) !important;
+  background-image: url(../img/BackgroundTable.svg) !important;
   background-size: cover;
   box-shadow: none !important;
   border: 0;
@@ -69,7 +69,7 @@ th.tableStickyHead {
   top: 0;
   z-index: 10;
   padding-top: 0;
-  background-image: url(../img/TableParchment.svg) !important;
+  background-image: url(../img/BackgroundTable.svg) !important;
   background-position-y: -120px !important;
   background-size: 690px 768px !important;
 }

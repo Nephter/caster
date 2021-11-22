@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import { Card, CardBody, CardHeader, Table } from 'reactstrap';
-import parchment from '../assets/img/TableParchment.svg';
-import buttonBookmarkWide from '../assets/img/buttonBookmarkWide.svg';
-import buttonBookmark from '../assets/img/buttonBookmark.svg';
+import parchment from '../assets/img/BackgroundTable.svg';
+import ButtonBookmarkWide from '../assets/img/ButtonBookmarkWide.svg';
+import ButtonBookmark from '../assets/img/ButtonBookmark.svg';
 import HeaderFinalSpells from './HeaderFinalSpells';
 import TableFinalSpells from './TableFinalSpells';
 import HeaderChannelDivinitySpells from './HeaderChannelDivinitySpells';
@@ -33,7 +33,7 @@ const TableFinal = (props) => {
       {/* Spell Banner */}
       <div
         style={{
-          backgroundImage: `url(${buttonBookmark})`,
+          backgroundImage: `url(${ButtonBookmark})`,
           backgroundRepeat: 'no-repeat',
           position: 'relative',
           top: '8px',
@@ -63,7 +63,7 @@ const TableFinal = (props) => {
       {/* CD banner */}
       <div
         style={{
-          backgroundImage: `url(${buttonBookmarkWide})`,
+          backgroundImage: `url(${ButtonBookmarkWide})`,
           backgroundRepeat: 'no-repeat',
           backgroundSize: 'contain',
           position: 'relative',
@@ -105,9 +105,7 @@ const TableFinal = (props) => {
             }}
           >
             <HeaderChannelDivinitySpells
-              setNewSpellPrepped={props.setNewSpellPrepped}
-              domain={props.domain}
-              onLongRestClick={props.onLongRestClick}
+              {...props}
               onShortRestClick={onShortRestClick}
             />
           </CardHeader>
@@ -116,11 +114,7 @@ const TableFinal = (props) => {
           <Table hover borderless>
             <div className="table cdTableBody" style={{ marginTop: '-112px' }}>
               <thead className="thead-light">
-                <tr
-                  style={{
-                    backgroundImage: `url(${parchment})`,
-                  }}
-                >
+                <tr>
                   <th
                     className="tableStickyHead pt-0"
                     style={{
@@ -176,13 +170,9 @@ const TableFinal = (props) => {
                       key={index}
                       spell={spell}
                       index={index}
-                      longRested={props.longRested}
+                      {...props}
                       shortRested={shortRested}
                       setShortRested={setShortRested}
-                      useChannelDivinity={props.useChannelDivinity}
-                      cDCasts={props.cDCasts}
-                      setCDCasts={props.setCDCasts}
-                      ChannelDivinityCasts={props.ChannelDivinityCasts}
                     />
                   );
                 })}
@@ -198,7 +188,7 @@ const TableFinal = (props) => {
       {/* Spell Banner */}
       <div
         style={{
-          backgroundImage: `url(${buttonBookmark})`,
+          backgroundImage: `url(${ButtonBookmark})`,
           backgroundRepeat: 'no-repeat',
           position: 'relative',
           top: '8px',
@@ -229,7 +219,7 @@ const TableFinal = (props) => {
       <div
         style={{
           visibility: `${+props.playerLevel === 1 ? 'hidden' : 'visible'}`,
-          backgroundImage: `url(${buttonBookmarkWide})`,
+          backgroundImage: `url(${ButtonBookmarkWide})`,
           backgroundRepeat: 'no-repeat',
           backgroundSize: 'contain',
           position: 'relative',
@@ -273,14 +263,7 @@ const TableFinal = (props) => {
               width: 'inherit',
             }}
           >
-            <HeaderFinalSpells
-              onShortRestClick={onShortRestClick}
-              spellSlots={props.spellSlots}
-              domainIcon={props.domainIcon}
-              domain={props.domain}
-              onLongRestClick={props.onLongRestClick}
-              setNewSpellPrepped={props.setNewSpellPrepped}
-            />
+            <HeaderFinalSpells onShortRestClick={onShortRestClick} {...props} />
           </CardHeader>
         </div>
         <CardBody>
@@ -346,9 +329,7 @@ const TableFinal = (props) => {
                       key={index}
                       spell={spell}
                       index={index}
-                      domainIcon={props.domainIcon}
-                      onDropdownClick={props.onDropdownClick}
-                      spellSlots={props.spellSlots}
+                      {...props}
                     />
                   );
                 })}
@@ -367,7 +348,7 @@ export default TableFinal;
 //       <div
 //         style={{
 //           visibility: 'hidden',
-//           backgroundImage: `url(${buttonBookmarkWide})`,
+//           backgroundImage: `url(${ButtonBookmarkWide})`,
 //           backgroundRepeat: 'no-repeat',
 //           backgroundSize: 'contain',
 //           position: 'relative',
@@ -397,7 +378,7 @@ export default TableFinal;
 //     ) : (
 //       <div
 //         style={{
-//           backgroundImage: `url(${buttonBookmarkWide})`,
+//           backgroundImage: `url(${ButtonBookmarkWide})`,
 //           backgroundRepeat: 'no-repeat',
 //           backgroundSize: 'contain',
 //           position: 'relative',

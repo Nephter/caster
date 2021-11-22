@@ -2,35 +2,12 @@ import React from 'react';
 import Modal from 'react-modal';
 import parchment from '../assets/img/ModalParchment.svg';
 import ModalSchoolIcon from './ModalSchoolIcon';
+import { switchCastingTime } from '../Variables/SwitchStatements.js';
 
 Modal.setAppElement('#root');
 
 const ModalDescription = (props) => {
-  var castingTime;
-  switch (props.spell.casting_time) {
-    case '1 action':
-      castingTime = 'ACTION';
-      break;
-    case '1 bonus action':
-      castingTime = 'BONUS ACTION';
-      break;
-    case '1 reaction':
-      castingTime = 'REACTION';
-      break;
-    case '10 minutes':
-      castingTime = '10 Minutes';
-      break;
-    case '1 minute':
-      castingTime = '1 MINUTE';
-      break;
-    case '24 hours':
-      castingTime = '24 HOURS';
-      break;
-    case '1 hour':
-      castingTime = '1 HOUR';
-      break;
-    default:
-  }
+  let castingTime = switchCastingTime(props.spell.casting_time);
 
   const modalStyles = {
     marginLeft: '10px',
