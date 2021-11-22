@@ -1,11 +1,11 @@
 import React from 'react';
 import clericSeal from '../assets/img/ClericSeal.svg';
-import ButtonBanner from '../assets/img/ButtonBanner.png';
+
 import Button from '@mui/material/Button';
 import { Input, Card, CardTitle, Form } from 'reactstrap';
 import { domains } from '../Variables/Cleric/SpellDomains.js';
 import ButtonDomain from './ButtonDomain.js';
-
+import buttonBanner from '../assets/img/buttonBanner.png';
 const Login = (props) => {
   // submits Login form once player level and modifier are input
   const submitHandler = (e) => {
@@ -69,7 +69,7 @@ const Login = (props) => {
             disabled={props.domainIcon.type === 'img' ? true : false}
             type="submit"
             style={{
-              backgroundImage: `url(${ButtonBanner})`,
+              backgroundImage: `url(${buttonBanner})`,
               fontFamily: 'Patrick Hand SC, cursive',
               opacity: `${props.domainIcon.type === 'img' ? '.6' : '1'}`,
               transform: 'translate(2px,-10px)',

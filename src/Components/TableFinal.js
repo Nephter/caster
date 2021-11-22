@@ -133,7 +133,10 @@ const TableFinal = (props) => {
                 </th>
               </tr>
             </thead>
-            <tbody className="invisibleFinalTable-body">
+            <tbody
+              className="invisibleFinalTable-body"
+              style={{ filter: 'brightness(.9)' }}
+            >
               <tr className="invisibleFinalTable-row">
                 <td></td>
                 <td></td>
