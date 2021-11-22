@@ -221,7 +221,7 @@ th.tableStickyHead {
 }
 
 .buttonBookmark {
-  background-image: url(../img/ButtonBookmark.svg);
+  background-image: url(../img/buttonBookmark.svg);
   background-repeat: no-repeat;
   position: relative;
   top: 8px;
@@ -243,7 +243,7 @@ th.tableStickyHead {
 }
 
 .buttonBookmarkWide {
-  background-image: url(../img/ButtonBookmarkWide.svg);
+  background-image: url(../img/buttonBookmarkWide.svg);
   background-repeat: no-repeat;
   background-size: contain;
   position: relative;
